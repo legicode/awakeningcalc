@@ -1,0 +1,52 @@
+body{
+	font-family: sans-serif;
+	font-size: 16px;
+	background-color: #6D517C;
+	color: black;
+}
+table{
+	border-collapse: collapse;
+	background-color: #BEA3CC;
+}
+td.large, td.options{
+	width: 800px;
+	border: 12px solid #583D66;
+	border-left-width: 50px;
+	border-right-width: 50px;
+}
+td.intro{
+	text-align: left;
+	font-size: 18px;
+	padding: 25px;
+	border: 12px solid #583D66;
+	border-left-width: 50px;
+	border-right-width: 50px;
+}
+td.options{
+	padding-top: 0px;
+	padding-bottom: 15px;
+}
+th, td{
+	border: 2px solid;
+	text-align: center;
+	padding: 10px;
+	width: 35px;
+	border-color: #3A2F3F;
+}
+th{
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+	border-color: #3A2F3F;
+}
+th.names{
+	width: 82px;
+}
+table#main{
+	margin-left: auto; 
+	margin-right: auto;
+	padding: 10px;
+}
+table.statstable{
+	margin-left: auto; 
+	margin-right: auto;
+}

@@ -45,7 +45,7 @@ th{
 	border-color: #3A2F3F;
 }
 th.names{
-	width: 80px;
+	width: 70px;
 }
 th.classes{
 	width: 122px;
@@ -60,3 +60,4 @@ table.statstable{
 	margin-right: auto;
 
 }
+

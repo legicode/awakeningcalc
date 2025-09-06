@@ -8,12 +8,6 @@ table{
 	border-collapse: collapse;
 	background-color: #BEA3CC;
 }
-td.large, td.options{
-	width: 800px;
-	border: 12px solid #583D66;
-	border-left-width: 50px;
-	border-right-width: 50px;
-}
 td.intro{
 	text-align: left;
 	font-size: 18px;
@@ -21,6 +15,18 @@ td.intro{
 	border: 12px solid #583D66;
 	border-left-width: 50px;
 	border-right-width: 50px;
+}
+td.options, td.table1, td.table2{
+	width: 800px;
+	border: 12px solid #583D66;
+	border-left-width: 50px;
+	border-right-width: 50px;
+}
+td.table1{
+	height: 662px;
+}
+td.table2{
+	height: 1674px;
 }
 td.options{
 	padding-top: 0px;

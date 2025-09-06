@@ -1,7 +1,7 @@
 body{
 	font-family: sans-serif;
 	font-size: 16px;
-	background-color: #6D517C;
+	background-color: #7C5D8C;
 	color: black;
 }
 table{
@@ -49,4 +49,5 @@ table#main{
 table.statstable{
 	margin-left: auto; 
 	margin-right: auto;
+
 }

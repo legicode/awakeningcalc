@@ -39,7 +39,10 @@ th{
 	border-color: #3A2F3F;
 }
 th.names{
-	width: 82px;
+	width: 80px;
+}
+th.classes{
+	width: 122px;
 }
 table#main{
 	margin-left: auto; 
@@ -49,5 +52,4 @@ table#main{
 table.statstable{
 	margin-left: auto; 
 	margin-right: auto;
-
 }

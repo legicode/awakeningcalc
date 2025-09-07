@@ -37,12 +37,12 @@ th, td{
 	text-align: center;
 	padding: 10px;
 	width: 35px;
-	border-color: #3A2F3F;
+	border-color: #44354C;
 }
 th{
 	border-top: 4px solid;
 	border-bottom: 4px solid;
-	border-color: #3A2F3F;
+	border-color: #44354C;
 }
 th.names{
 	width: 70px;
@@ -58,4 +58,5 @@ table#main{
 table.statstable{
 	margin-left: auto; 
 	margin-right: auto;
+
 }

@@ -12,19 +12,20 @@
 				Stat growths and caps calculator for modded Fire Emblem Awakening. Mods implemented:<br />
 				<a href="https://gamebanana.com/mods/424187">Unofficial Gay Awakening run by Manakete_Smoocher and UnassumingVenusaur</a><br />
 				<a href="https://gamebanana.com/mods/365214">Gender-lock Removal Project version B by LJ_Reflet</a> <i>(additions compatible with vanilla)</i><br />
-				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br /><br />
+				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br />
+				<a href="https://github.com/chrom-sevy/Fire-Emblem-Awakening-USA-Patches/blob/main/detgrowth/code.s">Fixed growths by Sohn</a><br /><br />
 				<a href="https://legicode.github.io/thabescalc/">Click here for the Thabes Overwritten stat calculator.</a><br /><br />
 				Developed by <a href="https://bsky.app/profile/homestar.bsky.social">legi</a>. More features coming soon!
 			</td></tr>
 
-			<tr><td class="options">
-				<h2>True Hit calculator</h2>
+			<tr><td class="calculator">
+				<h2>True hit calculator</h2>
 				Displayed hit rate: 
 				<select id="displayedHit" onChange="updateHit()"></select> &nbsp&nbsp
 				True hit rate: <b><span id="trueHit"></span></b><br/>
 			</td></tr>
 
-			<tr><td class="options">
+			<tr><td class="calculator">
 				<h2>Skill activation calculator</h2>
 				Skill stat: <select id="skillstat" onChange="updateProcs()"></select>  &nbsp Rightful King: <input type="checkbox" id="rightfulking" onChange="updateProcs()"><br /><br />
 				Vengeance: <input type="checkbox" id="vengeance" onChange="updateProcs()"> &nbsp
@@ -37,8 +38,8 @@
 				<span id="procs"><br /></span>
 			</td></tr>
 
-			<tr><td class="options">
-				<h2>Stat Growths (Gen 1)</h2>
+			<tr><td class="table1">
+				<h2>Stat growths (gen 1)</h2>
 				Robin's asset: 
 				<select id="asset1" onChange="updateAsset(this.value)">
 					<option value="HP">HP</option>
@@ -62,10 +63,7 @@
 					<option value="Resistance">Resistance</option>
 				</select><br /><br />
 				Donnel's Aptitude: <input type="checkbox" id="aptitude1" onChange="updateAptitude(1)"> &nbsp 
-				<button type="button" onClick="baseGrowths1()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths1()">Show full class stats</button> 
-			</td></tr>
-
-			<tr><td class="table1">
+				<button type="button" onClick="baseGrowths1()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths1()">Show full class stats</button><br /><br />
 				<table class="statstable" id="gen1growths">
 					<tr>
 						<th class="names">Name</th>
@@ -94,8 +92,8 @@
 				</table>
 			</td></tr>
 
-			<tr><td class="options">
-				<h2>Stat Growths (Gen 2)</h2>
+			<tr><td class="table2">
+				<h2>Stat growths (gen 2)</h2>
 				Robin's asset: 
 				<select id="asset2" onChange="updateAsset(this.value)">
 					<option value="HP">HP</option>
@@ -118,10 +116,7 @@
 					<option value="Defense">Defense</option>
 					<option value="Resistance">Resistance</option>
 				</select><br /><br />
-				Donnel's Aptitude: <input type="checkbox" id="aptitude2" onChange="updateAptitude(2)"> &nbsp <button type="button" onClick="baseGrowths2()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths2()">Show full class stats</button> 
-			</td></tr>
-
-			<tr><span id="growths2"><td class="table2">
+				Donnel's Aptitude: <input type="checkbox" id="aptitude2" onChange="updateAptitude(2)"> &nbsp <button type="button" onClick="baseGrowths2()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths2()">Show full class stats</button><br /><br />
 				<table class="statstable" id="gen2growths">
 					<tr>
 						<th class="names">Name</th>
@@ -137,10 +132,10 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></span></tr>
+			</td></tr>
 
-			<tr><td class="options">
-				<h2>Stat Caps (Gen 1)</h2>
+			<tr><td class="table1">
+				<h2>Stat caps (gen 1)</h2>
 				Robin's asset: 
 				<select id="asset3" onChange="updateAsset(this.value)">
 					<option value="HP">HP</option>
@@ -163,10 +158,7 @@
 					<option value="Defense">Defense</option>
 					<option value="Resistance">Resistance</option>
 				</select><br /><br />
-				Limit Breaker: <input type="checkbox" id="limitbreaker1" onChange="updateLimitBreaker(1)"> &nbsp <button type="button" onClick="baseCaps1()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps1()">Show full class stats</button> 
-			</td></tr>
-
-			<tr><span id="caps1"><td class="table1">
+				Limit Breaker: <input type="checkbox" id="limitbreaker1" onChange="updateLimitBreaker(1)"> &nbsp <button type="button" onClick="baseCaps1()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps1()">Show full class stats</button><br /><br />
 				<table class="statstable" id="gen1caps">
 					<tr>
 						<th class="names">Name</th>
@@ -193,10 +185,10 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></span></tr>
+			</td></tr>
 
-			<tr><td class="options">
-				<h2>Stat Caps (Gen 2)</h2>
+			<tr><td class="table2">
+				<h2>Stat caps (gen 2)</h2>
 				Robin's asset: 
 				<select id="asset4" onChange="updateAsset(this.value)">
 					<option value="HP">HP</option>
@@ -219,10 +211,7 @@
 					<option value="Defense">Defense</option>
 					<option value="Resistance">Resistance</option>
 				</select><br /><br />
-				Limit Breaker: <input type="checkbox" id="limitbreaker2" onChange="updateLimitBreaker(2)"> &nbsp <button type="button" onClick="baseCaps2()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps2()">Show full class stats</button> 
-			</td></tr>
-
-			<tr><span id="caps2"><td class="table2">
+				Limit Breaker: <input type="checkbox" id="limitbreaker2" onChange="updateLimitBreaker(2)"> &nbsp <button type="button" onClick="baseCaps2()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps2()">Show full class stats</button><br /><br />
 				<table class="statstable" id="gen2caps">
 					<tr>
 						<th class="names">Name</th>
@@ -238,9 +227,51 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></span></tr>
-		</table>
+			</td></tr>
 
+			<tr><td class="table3">
+				<h2>Fixed growths level ups</h2>
+				Robin's asset: 
+				<select id="asset5" onChange="updateAsset(this.value)">
+					<option value="HP">HP</option>
+					<option value="Strength">Strength</option>
+					<option value="Magic">Magic</option>
+					<option value="Skill">Skill</option>
+					<option value="Speed">Speed</option>
+					<option value="Luck">Luck</option>
+					<option value="Defense">Defense</option>
+					<option value="Resistance">Resistance</option>
+				</select><br /><br />
+				Robin's flaw:&nbsp
+				<select id="flaw5" onChange="updateFlaw(this.value)">
+					<option value="HP">HP</option>
+					<option value="Strength">Strength</option>
+					<option value="Magic">Magic</option>
+					<option value="Skill">Skill</option>
+					<option value="Speed">Speed</option>
+					<option value="Luck">Luck</option>
+					<option value="Defense">Defense</option>
+					<option value="Resistance">Resistance</option>
+				</select><br /><br />
+				Donnel's Aptitude: <input type="checkbox" id="aptitude3" onChange="updateAptitude(3)"> &nbsp
+				Character: <select id="charfixed" onChange="updateCharFixed()"></select> &nbsp
+				Class: <select id="classfixed" onChange="updateClassFixed()"></select><br /><br />
+				<table class="statstable" id="fixedgrowths">
+					<tr>
+						<th class="levels">Level</th>
+						<th>HP</th>
+						<th>Str</th>
+						<th>Mag</th>
+						<th>Skl</th>
+						<th>Spd</th>
+						<th>Lck</th>
+						<th>Def</th>
+						<th>Res</th>
+					</tr>
+				</table>
+			</td></tr>
+
+		</table>
 		<script src="data.js"></script>
 	</body>
 </html>

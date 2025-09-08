@@ -17,22 +17,23 @@ td.intro{
 	border-right-width: 50px;
 	line-height: 27px;
 }
-td.options, td.table1, td.table2{
+td.calculator, td.table1, td.table2, td.table3{
 	width: 800px;
 	border: 12px solid #583D66;
 	border-left-width: 50px;
 	border-right-width: 50px;
+	padding-top: 5px;
+	padding-bottom: 20px;
+	line-height: 14px;
 }
 td.table1{
-	height: 1674px;
+	height: 1837px;
 }
 td.table2{
-	height: 662px;
+	height: 828px;
 }
-td.options{
-	padding-top: 0px;
-	padding-bottom: 18px;
-	line-height: 14px;
+td.table3{
+	height: 897px
 }
 th, td{
 	border: 2px solid;
@@ -54,6 +55,9 @@ th.classes{
 }
 th.parents{
 	width: 86px;
+}
+th.levels{
+	width: 92px;
 }
 table#main{
 	margin-left: auto; 

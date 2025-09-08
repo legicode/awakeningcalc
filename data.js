@@ -74,22 +74,6 @@ const genders = new Map([
 	["Nah", 		"F"]
 ]);
 
-let asset1 = document.getElementById("asset1");
-let flaw1 = document.getElementById("flaw1");
-let aptitude = document.getElementById("aptitude1");
-
-let asset2 = document.getElementById("asset2");
-let flaw2 = document.getElementById("flaw2");
-let aptitude2 = document.getElementById("aptitude2");
-
-let asset3 = document.getElementById("asset3");
-let flaw3 = document.getElementById("flaw3");
-let limitbreaker1 = document.getElementById("limitbreaker1");
-
-let asset4 = document.getElementById("asset4");
-let flaw4 = document.getElementById("flaw4");
-let limitbreaker2 = document.getElementById("limitbreaker2");
-
 const assetgrowths = new Map([
 	["HP", 			[30, 0, 0, 0, 0, 0, 5, 5]],
 	["Strength",	[0, 15, 0, 5, 0, 0, 5, 0]],
@@ -451,10 +435,10 @@ function makeKidClassList(kid, parent){
 		parent = parent.replaceAll("'", "")
 	}
 	let classes;
-	if(![...kidGrowths.keys()].includes(parent)){
+	if (![...kidGrowths.keys()].includes(parent)){
 		classes = classPools.get(kid).concat(classPools.get(parent).slice(0, -3));
 	}
-	else{
+	else {
 		classes = classPools.get(kid).concat(kidClasses.get(parent).slice(0, -3));
 	}
 	if (parent == "Robin"){
@@ -586,6 +570,14 @@ function updateAssetFlaw(){
 			updateKidClassCaps(characters[i]);
 		}
 	}
+	if (["Robin", "Morgan", "Marc"].includes(charfixed.value)){
+		updateClassFixed();
+	}
+	if ([...kidGrowths.keys()].includes(charfixed.value)){
+		if (this[charfixed.value.toLowerCase()+"growthsparent"].value == "Robin"){
+			updateClassFixed();
+ 		}
+	}
 }
 
 function updateAsset(asset){
@@ -593,6 +585,7 @@ function updateAsset(asset){
 	asset2.selectedIndex = statsfull.indexOf(asset);
 	asset3.selectedIndex = statsfull.indexOf(asset);
 	asset4.selectedIndex = statsfull.indexOf(asset);
+	asset5.selectedIndex = statsfull.indexOf(asset);
 	updateAssetFlaw();
 }
 
@@ -601,12 +594,14 @@ function updateFlaw(flaw){
 	flaw2.selectedIndex = statsfull.indexOf(flaw);
 	flaw3.selectedIndex = statsfull.indexOf(flaw);
 	flaw4.selectedIndex = statsfull.indexOf(flaw);
+	flaw5.selectedIndex = statsfull.indexOf(flaw);
 	updateAssetFlaw();
 }
 
 function updateAptitude(box){
 	aptitude1.checked = this["aptitude"+box].checked;
 	aptitude2.checked = this["aptitude"+box].checked;
+	aptitude3.checked = this["aptitude"+box].checked;
 	updateClassGrowths("Donnel");
 	for (let i = 36; i < 50; i++){
 		if (this[characters[i].toLowerCase()+"growthsparent"].value == "Donnel"){
@@ -614,6 +609,14 @@ function updateAptitude(box){
 				this[characters[i].toLowerCase()+stats[j]+"growth"].innerHTML = Math.floor((charGrowths.get(characters[i])[j] + charGrowths.get(defaultParents.get(characters[i]))[j] + charGrowths.get(this[characters[i].toLowerCase()+"growthsparent"].value)[j]) / 3) + aptitude1.checked*20 + classGrowths.get(this[characters[i].toLowerCase()+"ClassGrowths"].value)[j];
 			}
 		}
+	}
+	if (charfixed.value == "Donnel"){
+		updateClassFixed();
+	}
+	if ([...kidGrowths.keys()].includes(charfixed.value)){
+		if (this[charfixed.value.toLowerCase()+"growthsparent"].value == "Donnel"){
+			updateClassFixed();
+ 		}
 	}
 }
 
@@ -651,7 +654,7 @@ function updateParentGrowths(char){
 		this[char.toLowerCase()+"ClassGrowths"].options[i] = new Option(classList[i]);
 	}
 	if (classList.includes(currentClass)){
-		this[char.toLowerCase()+"ClassGrowths"].selectedIndex = classList.indexOf(currentClass);
+		this[char.toLowerCase()+"ClassGrowths"].value = currentClass;
 	}
 	updateKidClassGrowths(char);
 	if (morgangrowthsparent.value == char){
@@ -659,6 +662,13 @@ function updateParentGrowths(char){
 	}
 	if (marcgrowthsparent.value == char){
 		updateParentGrowths("Marc");
+	}
+	if (charfixed.value == char){
+		fixedClass = classfixed.value;
+		updateCharFixed();
+		if (classList.includes(fixedClass)){
+			classfixed.value = fixedClass;
+		}
 	}
 }
 
@@ -673,7 +683,7 @@ function updateParentCaps(char){
 		this[char.toLowerCase()+"ClassCaps"].options[i] = new Option(classList[i]);
 	}
 	if (classList.includes(currentClass)){
-		this[char.toLowerCase()+"ClassCaps"].selectedIndex = classList.indexOf(currentClass);
+		this[char.toLowerCase()+"ClassCaps"].value = currentClass;
 	}
 	else {
 		if (["Lucina", "Brady", "Kjelle", "Gerome", "Marc", "Laurent"].includes(char)){
@@ -764,7 +774,7 @@ function updateKidClassCaps(char){
 			this[char.toLowerCase()+stats[i]+"cap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + kidCaps.get(char)[i] + limitbreaker1.checked*10;
 		}
 	}
-	else{
+	else {
 		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
@@ -882,6 +892,84 @@ function classCaps2(){
 	}
 }
 
+function updateCharFixed(){
+	char = charfixed.value;
+	if (char.includes("'")) {
+		char = char.replaceAll("'", "")
+	}
+	while (classfixed.options.length > 0) {                
+		classfixed.remove(0);
+	}
+	let classList;
+	if (![...kidClasses.keys()].includes(char)){
+		classList = classPools.get(char);
+	}
+	else {
+		classList = kidClasses.get(char);
+	}
+	for (let i = 0; i < classList.length-1; i++){
+		classfixed.options[i] = new Option(classList[i]);
+	}
+	if (["Frederick", "Libra", "Anna", "Sayri", "Basilio", "Flavia", "Gangrel", "Emmeryn", "Yenfay", "Aversa", "Priam"].includes(char)){
+		classfixed.selectedIndex = 1;
+	}
+	updateClassFixed();
+}
+
+function updateClassFixed() {
+	char = charfixed.value;
+	if (char.includes("'")) {
+		char = char.replaceAll("'", "")
+	}
+	if (![...kidGrowths.keys()].includes(char)){
+		for (let i = 0; i < 19; i++){
+			for (let j = 0; j < 8; j++){
+				let stat;
+				if (charfixed.value == "Robin"){
+					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100);
+				}
+				else if (charfixed.value == "Donnel"){
+					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+				}
+				else {
+					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
+				}
+				if (stat == 0){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "";
+				}
+				if (stat == 1){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = stat;
+				}
+				if (stat > 1){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "<b>"+stat+"</b>";
+				}
+			}
+		}
+	}
+	else {
+		for (let i = 0; i < 19; i++){
+			for (let j = 0; j < 8; j++){
+				let stat;
+				if (this[char.toLowerCase()+"growthsparent"].value == "Donnel"){
+					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+				}
+				else {
+					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+				}
+				if (stat == 0){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "";
+				}
+				if (stat == 1){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = stat;
+				}
+				if (stat > 1){
+					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "<b>"+stat+"</b>";
+				}
+			}
+		}
+	}
+}
+
 function updateHit(){
 	trueHitRate = ((displayedHit.selectedIndex * (2 * displayedHit.selectedIndex + 1) - (Math.abs(displayedHit.selectedIndex - 50.5) / (displayedHit.selectedIndex - 50.5) + 1) * ((displayedHit.selectedIndex - 50) * (2 * displayedHit.selectedIndex - 99))) / 100).toString() + "%";
 	spaces = 1.75*(6 - trueHitRate.length);
@@ -904,22 +992,22 @@ function updateProcs(){
 	let ignisChance = 0;
 	let vengeanceChance = 0;
 	let remainingChance = 100;
-	if(lethality.checked){
+	if (lethality.checked){
 		lethalityChance = (Math.floor(skillstat.selectedIndex / 4) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= lethalityChance;
 		procChances += "Lethality: <b>" + Math.round(lethalityChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(aether.checked){
+	if (aether.checked){
 		aetherChance = (Math.floor(skillstat.selectedIndex / 2) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= aetherChance;
 		procChances += "Aether: <b>" + Math.round(aetherChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(astra.checked){
+	if (astra.checked){
 		astraChance = (Math.floor(skillstat.selectedIndex / 2) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= astraChance;
 		procChances += "Astra: <b>" + Math.round(astraChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(sol.checked){
+	if (sol.checked){
 		if (remainingChance > 0){
 			solChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
 			if (solChance > remainingChance){
@@ -929,7 +1017,7 @@ function updateProcs(){
 		}
 		procChances += "Sol: <b>" + Math.round(solChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(luna.checked){
+	if (luna.checked){
 		if (remainingChance > 0){
 			lunaChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
 			if (lunaChance > remainingChance){
@@ -939,7 +1027,7 @@ function updateProcs(){
 		}
 		procChances += "Luna: <b>" + Math.round(lunaChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(ignis.checked){
+	if (ignis.checked){
 		if (remainingChance > 0){
 			ignisChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
 			if (ignisChance > remainingChance){
@@ -949,7 +1037,7 @@ function updateProcs(){
 		}
 		procChances += "Ignis: <b>" + Math.round(ignisChance * 100) / 100 + "%</b><br /><br />";
 	}
-	if(vengeance.checked){
+	if (vengeance.checked){
 		if (remainingChance > 0){
 			vengeanceChance = (skillstat.selectedIndex * 2 + rightfulking.checked*10) * remainingChance / 100;
 			if (vengeanceChance > remainingChance){
@@ -960,7 +1048,6 @@ function updateProcs(){
 		procChances += "Vengeance: <b>" + Math.round(vengeanceChance * 100) / 100 + "%</b><br /><br />";
 	}
 	procs.innerHTML = procChances+"No skill activation: <b>" + Math.round(remainingChance * 100) / 100 + "%</b>";
-
 }
 
 var displayedHit = document.getElementById("displayedHit");
@@ -996,6 +1083,44 @@ astra.checked = false;
 aether.checked = false;
 lethality.checked = false;
 updateProcs();
+
+let asset1 = document.getElementById("asset1");
+let flaw1 = document.getElementById("flaw1");
+let aptitude = document.getElementById("aptitude1");
+
+let asset2 = document.getElementById("asset2");
+let flaw2 = document.getElementById("flaw2");
+let aptitude2 = document.getElementById("aptitude2");
+
+let asset3 = document.getElementById("asset3");
+let flaw3 = document.getElementById("flaw3");
+let limitbreaker1 = document.getElementById("limitbreaker1");
+
+let asset4 = document.getElementById("asset4");
+let flaw4 = document.getElementById("flaw4");
+let limitbreaker2 = document.getElementById("limitbreaker2");
+
+let asset5 = document.getElementById("asset5");
+let flaw5 = document.getElementById("flaw5");
+let aptitude3 = document.getElementById("aptitude3");
+
+
+var charfixed = document.getElementById("charfixed");
+for (let i = 0; i < 50; i++) {
+	if (characters[i] == "Lonqu"){
+		charfixed.options[i] = new Option("Lon'qu");
+	}
+	else if (characters[i] == "Sayri"){
+		charfixed.options[i] = new Option("Say'ri");
+	}
+	else if (characters[i] == "Yenfay"){
+		charfixed.options[i] = new Option("Yen'fay");
+	}
+	else {
+		charfixed.options[i] = new Option(characters[i]);
+	}
+}
+var classfixed = document.getElementById("classfixed");
 
 var gen1growths = document.getElementById("gen1growths");
 for (let i = 0; i < 36; i++){
@@ -1224,7 +1349,6 @@ for (let i = 0; i < 36; i++) {
 	updateClassCaps(characters[i]);
 }
 
-
 var gen2caps = document.getElementById("gen2caps");
 for (let i = 36; i < 50; i++){
 	var row = gen2caps.insertRow(i-35);
@@ -1352,6 +1476,30 @@ for (let i = 36; i < 50; i++) {
 	updateKidClassCaps(characters[i]);
 }
 
+var fixedgrowths = document.getElementById("fixedgrowths");
+for (let i = 0; i < 19; i++){
+	var row = fixedgrowths.insertRow(i+1);
+	let level = row.insertCell(0);
+	let hp = row.insertCell(1);
+	let str = row.insertCell(2);
+	let mag = row.insertCell(3);
+	let skl = row.insertCell(4);
+	let spd = row.insertCell(5);
+	let lck = row.insertCell(6);
+	let def = row.insertCell(7);
+	let res = row.insertCell(8);
+	level.innerHTML = (i+1).toString() + " → " + (i+2).toString();
+	hp.innerHTML = "<span id=\"level"+(i+2).toString()+"HPgrowth\"></span>";
+	str.innerHTML = "<span id=\"level"+(i+2).toString()+"STRgrowth\"></span>";
+	mag.innerHTML = "<span id=\"level"+(i+2).toString()+"MAGgrowth\"></span>";
+	skl.innerHTML = "<span id=\"level"+(i+2).toString()+"SKLgrowth\"></span>";
+	spd.innerHTML = "<span id=\"level"+(i+2).toString()+"SPDgrowth\"></span>";
+	lck.innerHTML = "<span id=\"level"+(i+2).toString()+"LCKgrowth\"></span>";
+	def.innerHTML = "<span id=\"level"+(i+2).toString()+"DEFgrowth\"></span>";
+	res.innerHTML = "<span id=\"level"+(i+2).toString()+"RESgrowth\"></span>";
+}
+
+updateCharFixed();
 updateAsset("Speed");
 updateFlaw("Luck");
 aptitude1.checked = true;

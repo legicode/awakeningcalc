@@ -13,8 +13,8 @@
 				<a href="https://gamebanana.com/mods/424187">Unofficial Gay Awakening run by Manakete_Smoocher and UnassumingVenusaur</a><br />
 				<a href="https://gamebanana.com/mods/365214">Gender-lock Removal Project version B by LJ_Reflet</a> <i>(additions compatible with vanilla)</i><br />
 				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br />
-				<a href="https://github.com/chrom-sevy/Fire-Emblem-Awakening-USA-Patches/blob/main/detgrowth/code.s">Fixed growths by Sohn</a><br />
-				All character exclusive classes are made inheritable to their kids.<br /><br />
+				<a href="https://github.com/chrom-sevy/Fire-Emblem-Awakening-USA-Patches/blob/main/detgrowth/code.s">Fixed growths by Sohn</a> <i>(fully accurate to the mod, helps visualize average stat gains otherwise)</i><br />
+				All character exclusive classes are also treated as inheritable to their kids here.<br /><br />
 				<a href="https://legicode.github.io/thabescalc/">Click here for the Thabes Overwritten stat calculator.</a><br /><br />
 				Developed by <a href="https://bsky.app/profile/homestar.bsky.social">legi</a>. Thanks for checking this out!
 			</td></tr>
@@ -135,6 +135,48 @@
 				</table>
 			</td></tr>
 
+			<tr><td class="table3">
+				<h2>Fixed growths level ups</h2>
+				Robin's asset: 
+				<select id="asset5" onChange="updateAsset(this.value)">
+					<option value="HP">HP</option>
+					<option value="Strength">Strength</option>
+					<option value="Magic">Magic</option>
+					<option value="Skill">Skill</option>
+					<option value="Speed">Speed</option>
+					<option value="Luck">Luck</option>
+					<option value="Defense">Defense</option>
+					<option value="Resistance">Resistance</option>
+				</select><br /><br />
+				Robin's flaw:&nbsp
+				<select id="flaw5" onChange="updateFlaw(this.value)">
+					<option value="HP">HP</option>
+					<option value="Strength">Strength</option>
+					<option value="Magic">Magic</option>
+					<option value="Skill">Skill</option>
+					<option value="Speed">Speed</option>
+					<option value="Luck">Luck</option>
+					<option value="Defense">Defense</option>
+					<option value="Resistance">Resistance</option>
+				</select><br /><br />
+				Donnel's Aptitude: <input type="checkbox" id="aptitude3" onChange="updateAptitude(3)"> &nbsp
+				Character: <select id="charfixed" onChange="updateCharFixed()"></select> &nbsp
+				Class: <select id="classfixed" onChange="updateClassFixed()"></select><br /><br />
+				<table class="statstable" id="fixedgrowths">
+					<tr>
+						<th class="levels">Level</th>
+						<th>HP</th>
+						<th>Str</th>
+						<th>Mag</th>
+						<th>Skl</th>
+						<th>Spd</th>
+						<th>Lck</th>
+						<th>Def</th>
+						<th>Res</th>
+					</tr>
+				</table>
+			</td></tr>
+
 			<tr><td class="table1">
 				<h2>Stat caps (gen 1)</h2>
 				Robin's asset: 
@@ -218,48 +260,6 @@
 						<th class="names">Name</th>
 						<th class="parents">Parent</th>
 						<th class="classes">Class</th>
-						<th>HP</th>
-						<th>Str</th>
-						<th>Mag</th>
-						<th>Skl</th>
-						<th>Spd</th>
-						<th>Lck</th>
-						<th>Def</th>
-						<th>Res</th>
-					</tr>
-				</table>
-			</td></tr>
-
-			<tr><td class="table3">
-				<h2>Fixed growths level ups</h2>
-				Robin's asset: 
-				<select id="asset5" onChange="updateAsset(this.value)">
-					<option value="HP">HP</option>
-					<option value="Strength">Strength</option>
-					<option value="Magic">Magic</option>
-					<option value="Skill">Skill</option>
-					<option value="Speed">Speed</option>
-					<option value="Luck">Luck</option>
-					<option value="Defense">Defense</option>
-					<option value="Resistance">Resistance</option>
-				</select><br /><br />
-				Robin's flaw:&nbsp
-				<select id="flaw5" onChange="updateFlaw(this.value)">
-					<option value="HP">HP</option>
-					<option value="Strength">Strength</option>
-					<option value="Magic">Magic</option>
-					<option value="Skill">Skill</option>
-					<option value="Speed">Speed</option>
-					<option value="Luck">Luck</option>
-					<option value="Defense">Defense</option>
-					<option value="Resistance">Resistance</option>
-				</select><br /><br />
-				Donnel's Aptitude: <input type="checkbox" id="aptitude3" onChange="updateAptitude(3)"> &nbsp
-				Character: <select id="charfixed" onChange="updateCharFixed()"></select> &nbsp
-				Class: <select id="classfixed" onChange="updateClassFixed()"></select><br /><br />
-				<table class="statstable" id="fixedgrowths">
-					<tr>
-						<th class="levels">Level</th>
 						<th>HP</th>
 						<th>Str</th>
 						<th>Mag</th>

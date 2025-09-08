@@ -954,7 +954,7 @@ function updateClassFixed() {
 					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
 				}
 				else {
-					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
 				}
 				if (stat == 0){
 					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "";

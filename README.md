@@ -1,1 +1,1 @@
-Calculating Fire Emblem Awakening character stats with support for modded gameplay options.
+Character stats and gameplay calculator for Fire Emblem Awakening with support for common modded options.

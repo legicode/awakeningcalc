@@ -926,13 +926,13 @@ function updateClassFixed() {
 			for (let j = 0; j < 8; j++){
 				let stat;
 				if (charfixed.value == "Robin"){
-					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100);
+					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100);
 				}
 				else if (charfixed.value == "Donnel"){
-					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
 				}
 				else {
-					stat = Math.floor(0.5 + (i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.floor(0.5 + i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
+					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
 				}
 				if (stat == 0){
 					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "";
@@ -951,10 +951,10 @@ function updateClassFixed() {
 			for (let j = 0; j < 8; j++){
 				let stat;
 				if (this[char.toLowerCase()+"growthsparent"].value == "Donnel"){
-					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
+					stat = Math.round((i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.round(i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
 				}
 				else {
-					stat = Math.floor(0.5 + (i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.floor(0.5 + i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
+					stat = Math.round((i+1) * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100) - Math.round(i * (kidGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j]) / 100);
 				}
 				if (stat == 0){
 					this["level"+(i+2).toString()+stats[j]+"growth"].innerHTML = "";

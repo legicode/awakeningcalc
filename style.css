@@ -1,12 +1,12 @@
 body{
 	font-family: sans-serif;
 	font-size: 16px;
-	background-color: #7F614C; /*#7C5D8C*/
+	background-color: #7F614C;
 	color: black;
 }
 table{
 	border-collapse: collapse;
-	background-color: #E5DACE; /*#BEA3CC*/
+	background-color: #E5DACE;
 }
 td.intro{
 	text-align: left;
@@ -15,6 +15,7 @@ td.intro{
 	border: 12px solid #583D66;
 	border-left-width: 50px;
 	border-right-width: 50px;
+	line-height: 27px;
 }
 td.options, td.table1, td.table2{
 	width: 800px;
@@ -31,6 +32,7 @@ td.table2{
 td.options{
 	padding-top: 0px;
 	padding-bottom: 18px;
+	line-height: 14px;
 }
 th, td{
 	border: 2px solid;
@@ -50,6 +52,9 @@ th.names{
 th.classes{
 	width: 120px;
 }
+th.parents{
+	width: 86px;
+}
 table#main{
 	margin-left: auto; 
 	margin-right: auto;
@@ -58,5 +63,10 @@ table#main{
 table.statstable{
 	margin-left: auto; 
 	margin-right: auto;
-
+}
+a:link{
+  color: #440066;
+}
+a:visited{
+  color: #440066;
 }

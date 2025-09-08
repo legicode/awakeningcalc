@@ -9,9 +9,34 @@
 	<body>
 		<table id="main">
 			<tr><td class="intro">
-				Stat growths and caps calculator for modded Fire Emblem Awakening. Supports gay pairing offspring, gender locked class removal, and twin Morgans. <br /><br />
-				Developed by legi. More features coming soon.
+				Stat growths and caps calculator for modded Fire Emblem Awakening. Mods implemented:<br />
+				<a href="https://gamebanana.com/mods/424187">Unofficial Gay Awakening run by Manakete_Smoocher and UnassumingVenusaur</a><br />
+				<a href="https://gamebanana.com/mods/365214">Gender-lock Removal Project version B by LJ_Reflet</a> <i>(additions compatible with vanilla)</i><br />
+				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br /><br />
+				<a href="https://legicode.github.io/thabescalc/">Click here for the Thabes Overwritten stat calculator.</a><br /><br />
+				Developed by legi. More features coming soon!
 			</td></tr>
+
+			<tr><td class="options">
+				<h2>True Hit calculator</h2>
+				Displayed hit rate: 
+				<select id="displayedHit" onChange="updateHit()"></select> &nbsp&nbsp
+				True hit rate: <b><span id="trueHit"></span></b><br/>
+			</td></tr>
+
+			<tr><td class="options">
+				<h2>Skill activation calculator</h2>
+				Skill stat: <select id="skillstat" onChange="updateProcs()"></select>  &nbsp Rightful King: <input type="checkbox" id="rightfulking" onChange="updateProcs()"><br /><br />
+				Vengeance: <input type="checkbox" id="vengeance" onChange="updateProcs()"> &nbsp
+				Ignis: <input type="checkbox" id="ignis" onChange="updateProcs()"> &nbsp 
+				Luna: <input type="checkbox" id="luna" onChange="updateProcs()"> &nbsp 
+				Sol: <input type="checkbox" id="sol" onChange="updateProcs()"> &nbsp 
+				Astra: <input type="checkbox" id="astra" onChange="updateProcs()"> &nbsp 
+				Aether: <input type="checkbox" id="aether" onChange="updateProcs()"> &nbsp 
+				Lethality: <input type="checkbox" id="lethality" onChange="updateProcs()"><br /><br />
+				<span id="procs"></span>
+			</td></tr>
+
 			<tr><td class="options">
 				<h2>Stat Growths (Gen 1)</h2>
 				Robin's asset: 
@@ -39,6 +64,7 @@
 				Donnel's Aptitude: <input type="checkbox" id="aptitude1" onChange="updateAptitude(1)"> &nbsp 
 				<button type="button" onClick="baseGrowths1()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths1()">Show full class stats</button> 
 			</td></tr>
+
 			<tr><td class="table1">
 				<table class="statstable" id="gen1growths">
 					<tr>
@@ -95,11 +121,11 @@
 				Donnel's Aptitude: <input type="checkbox" id="aptitude2" onChange="updateAptitude(2)"> &nbsp <button type="button" onClick="baseGrowths2()">Show base growths</button> &nbsp <button type="button" onClick="classGrowths2()">Show full class stats</button> 
 			</td></tr>
 
-			<tr><td class="table2">
+			<tr><span id="growths2"><td class="table2">
 				<table class="statstable" id="gen2growths">
 					<tr>
 						<th class="names">Name</th>
-						<th>Parent</th>
+						<th class="parents">Parent</th>
 						<th class="classes">Class</th>
 						<th>HP</th>
 						<th>Str</th>
@@ -111,7 +137,8 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></tr>
+			</td></span></tr>
+
 			<tr><td class="options">
 				<h2>Stat Caps (Gen 1)</h2>
 				Robin's asset: 
@@ -138,7 +165,8 @@
 				</select><br /><br />
 				Limit Breaker: <input type="checkbox" id="limitbreaker1" onChange="updateLimitBreaker(1)"> &nbsp <button type="button" onClick="baseCaps1()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps1()">Show full class stats</button> 
 			</td></tr>
-			<tr><td class="table1">
+
+			<tr><span id="caps1"><td class="table1">
 				<table class="statstable" id="gen1caps">
 					<tr>
 						<th class="names">Name</th>
@@ -165,7 +193,7 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></tr>
+			</td></span></tr>
 
 			<tr><td class="options">
 				<h2>Stat Caps (Gen 2)</h2>
@@ -194,11 +222,11 @@
 				Limit Breaker: <input type="checkbox" id="limitbreaker2" onChange="updateLimitBreaker(2)"> &nbsp <button type="button" onClick="baseCaps2()">Show base modifiers</button> &nbsp <button type="button" onClick="classCaps2()">Show full class stats</button> 
 			</td></tr>
 
-			<tr><td class="table2">
+			<tr><span id="caps2"><td class="table2">
 				<table class="statstable" id="gen2caps">
 					<tr>
 						<th class="names">Name</th>
-						<th>Parent</th>
+						<th class="parents">Parent</th>
 						<th class="classes">Class</th>
 						<th>HP</th>
 						<th>Str</th>
@@ -210,7 +238,7 @@
 						<th>Res</th>
 					</tr>
 				</table>
-			</td></tr>
+			</td></span></tr>
 		</table>
 
 		<script src="data.js"></script>

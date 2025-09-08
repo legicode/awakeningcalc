@@ -1086,7 +1086,7 @@ updateProcs();
 
 let asset1 = document.getElementById("asset1");
 let flaw1 = document.getElementById("flaw1");
-let aptitude = document.getElementById("aptitude1");
+let aptitude1 = document.getElementById("aptitude1");
 
 let asset2 = document.getElementById("asset2");
 let flaw2 = document.getElementById("flaw2");

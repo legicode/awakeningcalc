@@ -22,12 +22,15 @@ td.calculator, td.table1, td.table2, td.table3{
 	border: 12px solid #583D66;
 	border-left-width: 50px;
 	border-right-width: 50px;
-	padding-top: 5px;
+	padding-top: 0px;
 	padding-bottom: 20px;
 	line-height: 14px;
 }
+td.calculator{
+	padding-top: 5px;
+}
 td.table1{
-	height: 1837px;
+	height: 2013px;
 }
 td.table2{
 	height: 828px;

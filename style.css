@@ -30,13 +30,13 @@ td.calculator{
 	padding-top: 5px;
 }
 td.table1{
-	height: 1837px;
+	/*height: 1837px;*/
 }
 td.table2{
-	height: 828px;
+	/*height: 828px;*/
 }
 td.table3{
-	height: 897px
+	/*height: 897px*/
 }
 th, td{
 	border: 2px solid;
@@ -76,4 +76,5 @@ a:link{
 }
 a:visited{
   color: #440066;
+
 }

@@ -971,9 +971,9 @@ function updateClassFixed() {
 }
 
 function updateHit(){
-	trueHitRate = ((displayedHit.selectedIndex * (2 * displayedHit.selectedIndex + 1) - (Math.abs(displayedHit.selectedIndex - 50.5) / (displayedHit.selectedIndex - 50.5) + 1) * ((displayedHit.selectedIndex - 50) * (2 * displayedHit.selectedIndex - 99))) / 100).toString() + "%";
+	trueHitRate = ((displayedHit.value * (2 * displayedHit.value + 1) - (Math.abs(displayedHit.value - 50.5) / (displayedHit.value - 50.5) + 1) * ((displayedHit.value - 50) * (2 * displayedHit.value - 99))) / 100).toString() + "%";
 	spaces = 1.75*(6 - trueHitRate.length);
-	if (displayedHit.selectedIndex == 100){
+	if (displayedHit.value == 100){
 		spaces -= 1;
 	}
 	for (let i = 0; i < spaces; i++){
@@ -993,23 +993,23 @@ function updateProcs(){
 	let vengeanceChance = 0;
 	let remainingChance = 100;
 	if (lethality.checked){
-		lethalityChance = (Math.floor(skillstat.selectedIndex / 4) + rightfulking.checked*10) * remainingChance / 100;
+		lethalityChance = (Math.floor(skillstat.value / 4) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= lethalityChance;
 		procChances += "Lethality: <b>" + Math.round(lethalityChance * 100) / 100 + "%</b><br /><br />";
 	}
 	if (aether.checked){
-		aetherChance = (Math.floor(skillstat.selectedIndex / 2) + rightfulking.checked*10) * remainingChance / 100;
+		aetherChance = (Math.floor(skillstat.value / 2) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= aetherChance;
 		procChances += "Aether: <b>" + Math.round(aetherChance * 100) / 100 + "%</b><br /><br />";
 	}
 	if (astra.checked){
-		astraChance = (Math.floor(skillstat.selectedIndex / 2) + rightfulking.checked*10) * remainingChance / 100;
+		astraChance = (Math.floor(skillstat.value / 2) + rightfulking.checked*10) * remainingChance / 100;
 		remainingChance -= astraChance;
 		procChances += "Astra: <b>" + Math.round(astraChance * 100) / 100 + "%</b><br /><br />";
 	}
 	if (sol.checked){
 		if (remainingChance > 0){
-			solChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
+			solChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
 			if (solChance > remainingChance){
 				solChance = remainingChance;
 			}
@@ -1019,7 +1019,7 @@ function updateProcs(){
 	}
 	if (luna.checked){
 		if (remainingChance > 0){
-			lunaChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
+			lunaChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
 			if (lunaChance > remainingChance){
 				lunaChance = remainingChance;
 			}
@@ -1029,7 +1029,7 @@ function updateProcs(){
 	}
 	if (ignis.checked){
 		if (remainingChance > 0){
-			ignisChance = (skillstat.selectedIndex + rightfulking.checked*10) * remainingChance / 100;
+			ignisChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
 			if (ignisChance > remainingChance){
 				ignisChance = remainingChance;
 			}
@@ -1039,7 +1039,7 @@ function updateProcs(){
 	}
 	if (vengeance.checked){
 		if (remainingChance > 0){
-			vengeanceChance = (skillstat.selectedIndex * 2 + rightfulking.checked*10) * remainingChance / 100;
+			vengeanceChance = (skillstat.value * 2 + rightfulking.checked*10) * remainingChance / 100;
 			if (vengeanceChance > remainingChance){
 				vengeanceChance = remainingChance;
 			}
@@ -1052,10 +1052,10 @@ function updateProcs(){
 
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
-for (let i = 100; i >= 0; i--){
-	displayedHit.options[i] = new Option(i);
+for (let i = 0; i <= 100; i++){
+	displayedHit.options[i] = new Option(100-i);
 }
-displayedHit.selectedIndex = 75;
+displayedHit.selectedIndex = 25;
 updateHit();
 
 var skillstat = document.getElementById("skillstat");
@@ -1069,11 +1069,11 @@ var aether = document.getElementById("aether");
 var lethality = document.getElementById("lethality");
 var procs = document.getElementById("procs");
 
-for (let i = 99; i >= 0; i--){
-	skillstat.options[i] = new Option(i);
+for (let i = 0; i < 100; i++){
+	skillstat.options[i] = new Option(99-i);
 }
 
-skillstat.selectedIndex = 50;
+skillstat.selectedIndex = 49;
 rightfulking.checked = false;
 vengeance.checked = false;
 ignis.checked = false;
@@ -1505,6 +1505,4 @@ updateFlaw("Luck");
 aptitude1.checked = true;
 updateAptitude(1);
 limitbreaker1.checked = false;
-
 updateLimitBreaker(1);
-

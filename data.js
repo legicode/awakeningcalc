@@ -1052,7 +1052,7 @@ function updateProcs(){
 
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
-for (let i = 0; i <= 100; i++){
+for (let i = 100; i >= 0; i++){
 	displayedHit.options[i] = new Option(i);
 }
 displayedHit.selectedIndex = 75;
@@ -1069,7 +1069,7 @@ var aether = document.getElementById("aether");
 var lethality = document.getElementById("lethality");
 var procs = document.getElementById("procs");
 
-for (let i = 0; i < 100; i++){
+for (let i = 99; i >= 0; i--){
 	skillstat.options[i] = new Option(i);
 }
 
@@ -1505,4 +1505,5 @@ updateFlaw("Luck");
 aptitude1.checked = true;
 updateAptitude(1);
 limitbreaker1.checked = false;
+
 updateLimitBreaker(1);

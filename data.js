@@ -1052,7 +1052,7 @@ function updateProcs(){
 
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
-for (let i = 100; i >= 0; i++){
+for (let i = 100; i >= 0; i--){
 	displayedHit.options[i] = new Option(i);
 }
 displayedHit.selectedIndex = 75;
@@ -1507,3 +1507,4 @@ updateAptitude(1);
 limitbreaker1.checked = false;
 
 updateLimitBreaker(1);
+

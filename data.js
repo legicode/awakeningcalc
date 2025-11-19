@@ -471,10 +471,20 @@ function makeKidClassList(kid, parent){
 
 	if (genders.get(parent) == "M" && genders.get(kid) == "F"){
 		if (classPools.get(parent).includes("Fighter") && !classPools.get(kid).includes("Pegasus Knight")){
-			classes.push("Pegasus Knight", "Falcon Knight", "Dark Flier");
+			if (parent == "Vaike"){
+				classes.push("Mercenary", "Hero", "Bow Knight");
+			}
+			else {
+				classes.push("Pegasus Knight", "Falcon Knight", "Dark Flier");
+			}
 		}
 		if (classPools.get(parent).includes("Barbarian") && !classPools.get(kid).includes("Troubador")){
-			classes.push("Troubador", "Valkyrie", "War Cleric");
+			if (parent == "Vaike"){
+				classes.push("Knight", "General", "Great Knight");
+			}
+			else {
+				classes.push("Troubador", "Valkyrie", "War Cleric");
+			}
 		}
 	}
 	if (genders.get(parent) == "F" && genders.get(kid) == "M"){
@@ -1505,4 +1515,5 @@ updateFlaw("Luck");
 aptitude1.checked = true;
 updateAptitude(1);
 limitbreaker1.checked = false;
+
 updateLimitBreaker(1);

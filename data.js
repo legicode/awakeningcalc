@@ -477,29 +477,17 @@ function makeKidClassList(kid, parent){
 		}
 		else if (classPools.get(parent).includes("Fighter") && parent == "Vaike"){
 			if (!classPools.get(kid).includes("Mercenary")){
-				classes.push("Mercenary");
-			}
-			if (!classPools.get(kid).includes("Hero")){
-				classes.push("Hero");
-			}
-			if (!classPools.get(kid).includes("Bow Knight")){
-				classes.push("Bow Knight");
+				classes.push("Mercenary", "Hero", "Bow Knight");
 			}
 		}
 		if (classPools.get(parent).includes("Barbarian") && parent != "Vaike"){
 			if (!classPools.get(kid).includes("Troubador")){
-				classes.push("Troubador", "Valkyrie");
-			}
-			if (!classPools.get(kid).includes("War Cleric")){
-				classes.push("War Cleric");
+				classes.push("Troubador", "Valkyrie", "War Cleric");
 			}
 		}
 		else if (classPools.get(parent).includes("Barbarian") && parent == "Vaike"){
 			if (!classPools.get(kid).includes("Knight")){
-				classes.push("Knight", "General");
-			}
-			if (!classPools.get(kid).includes("Great Knight")){
-				classes.push("Great Knight");
+				classes.push("Knight", "General", "Great Knight");
 			}
 		}
 	}
@@ -1533,4 +1521,5 @@ updateAptitude(1);
 limitbreaker1.checked = false;
 
 updateLimitBreaker(1);
+
 

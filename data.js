@@ -1023,7 +1023,7 @@ function updateProcs(){
 	}
 	if (sol.checked){
 		if (remainingChance > 0){
-			solChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
+			solChance = (skillstat.value * 1 + rightfulking.checked*10) * remainingChance / 100;
 			if (solChance > remainingChance){
 				solChance = remainingChance;
 			}
@@ -1033,7 +1033,7 @@ function updateProcs(){
 	}
 	if (luna.checked){
 		if (remainingChance > 0){
-			lunaChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
+			lunaChance = (skillstat.value * 1 + rightfulking.checked*10) * remainingChance / 100;
 			if (lunaChance > remainingChance){
 				lunaChance = remainingChance;
 			}
@@ -1043,7 +1043,7 @@ function updateProcs(){
 	}
 	if (ignis.checked){
 		if (remainingChance > 0){
-			ignisChance = (skillstat.value + rightfulking.checked*10) * remainingChance / 100;
+			ignisChance = (skillstat.value * 1 + rightfulking.checked*10) * remainingChance / 100;
 			if (ignisChance > remainingChance){
 				ignisChance = remainingChance;
 			}
@@ -1519,7 +1519,4 @@ updateFlaw("Luck");
 aptitude1.checked = true;
 updateAptitude(1);
 limitbreaker1.checked = false;
-
 updateLimitBreaker(1);
-
-

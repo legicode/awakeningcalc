@@ -373,7 +373,7 @@ const classPools = new Map([
 	["Marc", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", 
 					"Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", 
 					"Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Priest", "War Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer"]],
-	["Yarne", 		["Taguel (M)", "Thief", "Assassin", "Trickster", "Barbarian", "Berserker", "Warrior"]],
+	["Yarne", 		["Taguel (M)", "Thief", "Assassin", "Trickster", "Barbarian", "Berserker", "Warrior", "Wyvern Rider", "Wyvern Lord", "Griffon Rider"]],
 	["Laurent", 	["Mage", "Dark Knight", "Sage", "Dark Mage", "Sorcerer", "Barbarian", "Warrior", "Berserker", "Troubador", "War Monk", "Valkyrie"]],
 	["Noire", 		["Archer", "Sniper", "Bow Knight", "Dark Mage", "Sorcerer", "Dark Knight", "Knight", "General", "Great Knight"]],
 	["Nah", 		["Manakete", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight"]],
@@ -470,33 +470,71 @@ function makeKidClassList(kid, parent){
 	}
 
 	if (genders.get(parent) == "M" && genders.get(kid) == "F"){
-		if (classPools.get(parent).includes("Fighter") && parent != "Vaike"){
-			if (!classPools.get(kid).includes("Pegasus Knight")){
-				classes.push("Pegasus Knight", "Falcon Knight", "Dark Flier");
-			}
-		}
-		else if (classPools.get(parent).includes("Fighter") && parent == "Vaike"){
+		if (classPools.get(parent).includes("Fighter") && parent == "Vaike"){
 			if (!classPools.get(kid).includes("Mercenary")){
 				classes.push("Mercenary", "Hero", "Bow Knight");
 			}
 		}
-		if (classPools.get(parent).includes("Barbarian") && parent != "Vaike"){
-			if (!classPools.get(kid).includes("Troubador")){
-				classes.push("Troubador", "Valkyrie", "War Cleric");
+		else if (classPools.get(parent).includes("Fighter") && parent != "Vaike"){
+			if (!classPools.get(kid).includes("Pegasus Knight")){
+				classes.push("Pegasus Knight", "Falcon Knight", "Dark Flier");
 			}
 		}
-		else if (classPools.get(parent).includes("Barbarian") && parent == "Vaike"){
+		if (classPools.get(parent).includes("Barbarian") && parent == "Vaike"){
 			if (!classPools.get(kid).includes("Knight")){
 				classes.push("Knight", "General", "Great Knight");
 			}
 		}
+		else if (classPools.get(parent).includes("Barbarian") && parent != "Vaike"){
+			if (!classPools.get(kid).includes("Troubador")){
+				classes.push("Troubador", "Valkyrie", "War Cleric");
+			}
+		}
 	}
 	if (genders.get(parent) == "F" && genders.get(kid) == "M"){
-		if (classPools.get(parent).includes("Pegasus Knight") && !classPools.get(kid).includes("Fighter")){
-			classes.push("Fighter", "Warrior", "Hero");
+		if (classPools.get(parent).includes("Pegasus Knight") && parent == "Lissa"){
+			if (!classPools.get(kid).includes("Myrmidon")){
+				classes.push("Myrmidon", "Swordmaster", "Assassin");
+			}
 		}
-		if (classPools.get(parent).includes("Troubador") && !classPools.get(kid).includes("Barbarian")){
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent == "Maribelle"){
+			if (!classPools.get(kid).includes("Cavalier")){
+				classes.push("Cavalier", "Paladin", "Great Knight");
+			}
+		}
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent == "Olivia"){
+			if (!classPools.get(kid).includes("Barbarian")){
+				classes.push("Barbarian", "Berserker", "Warrior");
+			}
+		}
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent != "Lissa" && parent != "Maribelle" && parent != "Olivia"){
+			if (!classPools.get(kid).includes("Fighter")){
+				classes.push("Fighter", "Warrior", "Hero");
+			}
+		}
+		if (classPools.get(parent).includes("Troubador") && parent == "Maribelle"){
+			if (!classPools.get(kid).includes("Priest")){
+				classes.push("Priest", "Sage", "War Monk");
+			}
+		}
+		else if (classPools.get(parent).includes("Troubador") && parent == "Cherche"){
+			if (!classPools.get(kid).includes("Fighter")){
+				classes.push("Fighter", "Warrior", "Hero");
+			}
+		}
+		else if (classPools.get(parent).includes("Troubador") && parent != "Maribelle" && parent != "Cherche"){
+			if (!classPools.get(kid).includes("Barbarian")){
+				classes.push("Barbarian", "Berserker", "Warrior");
+			}
+		}
+		if (!classPools.get(kid).includes("Mercenary") && parent == "Olivia"){
+			classes.push("Mercenary", "Hero", "Bow Knight");
+		}
+		if (!classPools.get(kid).includes("Barbarian") && parent == "Panne"){
 			classes.push("Barbarian", "Berserker", "Warrior");
+		}
+		if (!classPools.get(kid).includes("Fighter") && parent == "Nowi"){
+			classes.push("Fighter", "Warrior", "Hero");
 		}
 	}
 

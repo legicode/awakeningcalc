@@ -15,7 +15,8 @@
 				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br />
 				<a href="https://github.com/chrom-sevy/Fire-Emblem-Awakening-USA-Patches/blob/main/detgrowth/code.s">Fixed growths by Sohn</a> <i>(fully accurate to the mod, helps visualize average stat gains otherwise)</i><br />
 				All character exclusive classes are also treated as inheritable to their kids here.<br /><br />
-				<a href="https://legicode.github.io/thabescalc/">Click here for the Thabes Overwritten stat calculator.</a>
+				<a href="https://legicode.github.io/thabescalc/">Click here for the Thabes Overwritten stat calculator.</a><br /><br />
+				Developed by <a href="https://bsky.app/profile/homestar.bsky.social">legi</a>. Feel free to message suggestions or ideas. (GBA games likely next.)
 			</td></tr>
 
 			<tr><td class="calculator">
@@ -27,7 +28,7 @@
 
 			<tr><td class="calculator">
 				<h2>Skill activation calculator</h2>
-				Skill stat: <select id="skillstat" onChange="updateProcs()"></select>  &nbsp Rightful King: <input type="checkbox" id="rightfulking" onChange="updateProcs()"><br /><br />
+				Skill stat: <select id="skillstat" onChange="updateProcs()"></select> &nbsp Rightful King: <input type="checkbox" id="rightfulking" onChange="updateProcs()"><br /><br />
 				Vengeance: <input type="checkbox" id="vengeance" onChange="updateProcs()"> &nbsp
 				Ignis: <input type="checkbox" id="ignis" onChange="updateProcs()"> &nbsp 
 				Luna: <input type="checkbox" id="luna" onChange="updateProcs()"> &nbsp 
@@ -130,6 +131,35 @@
 						<th>Lck</th>
 						<th>Def</th>
 						<th>Res</th>
+					</tr>
+				</table>
+			</td></tr>
+
+			<tr><td class="calculator">
+				<h2>Class change calculator</h2>
+				Old class: <select id="oldclass" onChange="updateClassChange()"></select> &nbsp New class: <select id="newclass" onChange="updateClassChange()"></select> <br /><br />
+				<table class="statstable">
+					<tr>
+						<th>HP</th>
+						<th>Str</th>
+						<th>Mag</th>
+						<th>Skl</th>
+						<th>Spd</th>
+						<th>Lck</th>
+						<th>Def</th>
+						<th>Res</th>
+						<th>Mov</th>
+					</tr>
+					<tr>
+						<td id="HPchange"></td>
+						<td id="STRchange"></td>
+						<td id="MAGchange"></td>
+						<td id="SKLchange"></td>
+						<td id="SPDchange"></td>
+						<td id="LCKchange"></td>
+						<td id="DEFchange"></td>
+						<td id="RESchange"></td>
+						<td id="MOVchange"></td>
 					</tr>
 				</table>
 			</td></tr>
@@ -274,5 +304,4 @@
 		</table>
 		<script src="data.js"></script>
 	</body>
-
 </html>

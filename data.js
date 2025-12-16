@@ -1,4 +1,4 @@
-const stats = ["HP", "STR", "MAG", "SKL", "SPD", "LCK", "DEF", "RES"];
+const stats = ["HP", "STR", "MAG", "SKL", "SPD", "LCK", "DEF", "RES", "MOV"];
 const statsfull = ["HP", "Strength", "Magic", "Skill", "Speed", "Luck", "Defense", "Resistance"];
 
 const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", "Gaius", "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", 
@@ -319,6 +319,61 @@ const classCaps = new Map([
 	["Groom",			[40, 40, 39, 42, 42, 45, 41, 40]],
 	["Base stats",		[ 0,  0,  0,  0,  0,  0,  0,  0]],
 ]);
+
+const classBases = new Map([
+	["Tactician",		[16, 4, 3, 5, 5, 0, 5, 3, 5]],
+	["Grandmaster",		[20, 7, 6, 7, 7, 0, 7, 5, 6]],
+	["Lord (M)",		[18, 6, 0, 5, 7, 0, 7, 0, 5]],
+	["Great Lord (M)",	[23,10, 0, 7, 9, 0,10, 3, 6]],
+	["Lord (F)",		[16, 5, 1, 6, 8, 0, 6, 1, 5]],
+	["Great Lord (F)",	[20, 8, 1, 9,11, 0, 8, 4, 6]],
+	["Cavalier",		[18, 6, 0, 5, 6, 0, 7, 0, 7]],
+	["Paladin",			[25, 9, 1, 7, 8, 0,10, 6, 8]],
+	["Knight",			[18, 8, 0, 4, 2, 0,11, 0, 4]],
+	["Great Knight",	[26,11, 0, 6, 5, 0,14, 1, 7]],
+	["General",			[28,12, 0, 7, 4, 0,15, 3, 5]],
+	["Barbarian",		[22, 7, 0, 3, 7, 0, 3, 0, 5]],
+	["Berserker",		[30,13, 0, 5,11, 0, 5, 1, 6]],
+	["Fighter",			[20, 8, 0, 5, 5, 0, 4, 0, 5]],
+	["Warrior",			[28,12, 0, 8, 7, 0, 7, 3, 6]],
+	["Mercenary",		[18, 5, 0, 8, 7, 0, 5, 0, 5]],
+	["Hero",			[22, 8, 1,11,10, 0, 8, 3, 6]],
+	["Archer",			[16, 5, 0, 8, 6, 0, 5, 0, 5]],
+	["Bow Knight",		[24, 8, 0,10,10, 0, 6, 2, 8]],
+	["Sniper",			[20, 7, 1,12, 9, 0,10, 3, 6]],
+	["Myrmidon",		[16, 4, 1, 8,10, 0, 4, 1, 5]],
+	["Swordmaster",		[20, 7, 2,11,13, 0, 6, 4, 6]],
+	["Thief",			[16, 3, 0, 6, 8, 0, 2, 0, 5]],
+	["Assassin",		[21, 8, 0,13,12, 0, 5, 1, 6]],
+	["Trickster",		[19, 4, 4,10,11, 0, 3, 5, 6]],
+	["Pegasus Knight",	[16, 4, 2, 7, 8, 0, 4, 6, 7]],
+	["Falcon Knight",	[20, 6, 3,10,11, 0, 6, 9, 8]],
+	["Dark Flier",		[19, 5, 6, 8,10, 0, 5, 9, 8]],
+	["Wyvern Rider",	[19, 7, 0, 6, 5, 0, 8, 0, 7]],
+	["Wyvern Lord",		[24,11, 0, 8, 7, 0,11, 3, 8]],
+	["Griffon Rider",	[22, 9, 0,10, 9, 0, 8, 3, 8]],
+	["Troubador",		[16, 0, 3, 2, 5, 0, 1, 5, 7]],
+	["Valkyrie",		[19, 0, 5, 4, 8, 0, 3, 8, 8]],
+	["Cleric/Priest",	[16, 0, 3, 2, 4, 0, 1, 6, 5]],
+	["War Cleric/Monk",	[24, 5, 5, 4, 6, 0, 6, 6, 6]],
+	["Mage",			[16, 0, 4, 3, 4, 0, 2, 3, 5]],
+	["Sage",			[25, 4, 5, 6, 5, 0, 9, 5, 8]],
+	["Dark Mage",		[18, 1, 3, 2, 3, 0, 4, 4, 5]],
+	["Dark Knight",		[25, 4, 5, 6, 5, 0, 9, 5, 8]],
+	["Sorcerer",		[23, 2, 6, 4, 4, 0, 7, 7, 6]],
+	["Villager",		[16, 1, 0, 1, 1, 0, 1, 0, 5]],
+	["Dancer",			[16, 1, 1, 5, 8, 0, 3, 1, 5]],
+	["Taguel",			[18, 2, 0, 4, 5, 0, 3, 2, 6]],
+	["Manakete",		[18, 2, 0, 1, 1, 0, 2, 2, 6]],
+	["Conqueror",		[24,10, 3, 9, 8, 0,12, 5, 8]],
+	["Dread Fighter",	[22, 8, 4, 7, 9, 0, 7,10, 6]],
+	["Bride/Groom",		[21, 7, 6,11,10, 0, 7, 6, 6]],
+	["Lodestar",		[21, 9, 1,10,10, 0, 8, 4, 6]],
+]);
+
+const classes =	["Tactician", "Grandmaster", "Lord (M)", "Great Lord (M)", "Lord (F)", "Great Lord (F)", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", 
+	"Mercenary", "Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", 
+	"Troubador", "Valkyrie", "Cleric/Priest", "War Cleric/Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride/Groom", "Lodestar"]
 
 const classPools = new Map([
 	["Robin", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", "Hero", "Archer", 
@@ -973,8 +1028,36 @@ function updateClassFixed() {
 	if (char.includes("'")) {
 		char = char.replaceAll("'", "")
 	}
+	if (["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length < 30){
+		for (let i = 20; i < 30; i++){
+			var row = fixedgrowths.insertRow(i);
+			let level = row.insertCell(0);
+			let hp = row.insertCell(1);
+			let str = row.insertCell(2);
+			let mag = row.insertCell(3);
+			let skl = row.insertCell(4);
+			let spd = row.insertCell(5);
+			let lck = row.insertCell(6);
+			let def = row.insertCell(7);
+			let res = row.insertCell(8);
+			level.innerHTML = (i).toString() + " → " + (i+1).toString();
+			hp.innerHTML = "<span id=\"level"+(i+1).toString()+"HPgrowth\"></span>";
+			str.innerHTML = "<span id=\"level"+(i+1).toString()+"STRgrowth\"></span>";
+			mag.innerHTML = "<span id=\"level"+(i+1).toString()+"MAGgrowth\"></span>";
+			skl.innerHTML = "<span id=\"level"+(i+1).toString()+"SKLgrowth\"></span>";
+			spd.innerHTML = "<span id=\"level"+(i+1).toString()+"SPDgrowth\"></span>";
+			lck.innerHTML = "<span id=\"level"+(i+1).toString()+"LCKgrowth\"></span>";
+			def.innerHTML = "<span id=\"level"+(i+1).toString()+"DEFgrowth\"></span>";
+			res.innerHTML = "<span id=\"level"+(i+1).toString()+"RESgrowth\"></span>";
+		}
+	}
+	else if (!["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length > 20){
+		for (let i = 20; i < 30; i++){
+			var row = fixedgrowths.deleteRow(20);
+		}
+	}
 	if (![...kidGrowths.keys()].includes(char)){
-		for (let i = 0; i < 19; i++){
+		for (let i = 0; i < fixedgrowths.rows.length - 1; i++){
 			for (let j = 0; j < 8; j++){
 				let stat;
 				if (charfixed.value == "Robin"){
@@ -999,7 +1082,7 @@ function updateClassFixed() {
 		}
 	}
 	else {
-		for (let i = 0; i < 19; i++){
+		for (let i = 0; i < fixedgrowths.rows.length - 1; i++){
 			for (let j = 0; j < 8; j++){
 				let stat;
 				if (this[char.toLowerCase()+"growthsparent"].value == "Donnel"){
@@ -1102,6 +1185,12 @@ function updateProcs(){
 	procs.innerHTML = procChances+"No skill activation: <b>" + Math.round(remainingChance * 100) / 100 + "%</b>";
 }
 
+function updateClassChange(){
+	for (let i = 0; i < 9; i++){
+		this[stats[i]+"change"].innerHTML = classBases.get(newclass.value)[i] - classBases.get(oldclass.value)[i]
+	}
+}
+
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
 for (let i = 0; i <= 100; i++){
@@ -1135,6 +1224,25 @@ astra.checked = false;
 aether.checked = false;
 lethality.checked = false;
 updateProcs();
+
+var oldclass = document.getElementById("oldclass");
+var newclass = document.getElementById("newclass");
+var HPchange = document.getElementById("HPchange");
+var STRchange = document.getElementById("STRchange");
+var MAGchange = document.getElementById("MAGchange");
+var SKLchange = document.getElementById("SKLchange");
+var SPDchange = document.getElementById("SPDchange");
+var LCKchange = document.getElementById("LCKchange");
+var DEFchange = document.getElementById("DEFchange");
+var RESchange = document.getElementById("RESchange");
+var MOVchange = document.getElementById("MOVchange");
+
+for (let i = 0; i < classes.length; i++){
+	oldclass.options[i] = new Option(classes[i]);
+	newclass.options[i] = new Option(classes[i]);
+}
+newclass.selectedIndex = 1;
+updateClassChange();
 
 let asset1 = document.getElementById("asset1");
 let flaw1 = document.getElementById("flaw1");

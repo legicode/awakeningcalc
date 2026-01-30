@@ -1276,13 +1276,13 @@ var veteranEXP = document.getElementById("veteranEXP");
 var bossEXP = document.getElementById("bossEXP");
 var bonusEXP = document.getElementById("bonusEXP");
 var exp = document.getElementById("exp");
-for (let i = 0; i < 75; i++){
-	internalLevel.options[i] = new Option(75-i);
+for (let i = 0; i < 80; i++){
+	internalLevel.options[i] = new Option(80-i);
 }
 for (let i = 0; i < 40; i++){
 	enemyLevel.options[i] = new Option(40-i);
 }
-internalLevel.selectedIndex = 55;
+internalLevel.selectedIndex = 60;
 enemyLevel.selectedIndex = 20;
 killEXP.checked = true;
 veteranEXP.checked = false;

@@ -1199,6 +1199,12 @@ function updateProcs(){
 function updateEXP(){
 	let expGain = 0;
 	let levelDifference = enemyLevel.value - internalLevel.value;
+	if (bonusEXP.selectedIndex == 4){
+		bossEXP.checked = true;
+	}
+	else if (bonusEXP.selectedIndex == 2){
+		bossEXP.checked = false;
+	}
 	let bonus = 20 * bossEXP.checked;
 	if (bonusEXP.selectedIndex == 1 || bonusEXP.selectedIndex == 4){
 		bonus += 20;

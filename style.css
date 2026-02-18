@@ -8,20 +8,26 @@ table{
 	border-collapse: collapse;
 	background-color: #E5DACE;
 }
+td.header, td.subheader, td.intro, td.calculator, td.table1, td.table2, td.table3{
+	border: 12px solid #583D66;
+	border-left-width: 50px;
+	border-right-width: 50px;
+}
+td.header{
+	border-top-width: 16px;
+}
+td.header, td.subheader{
+	padding: 8px;
+	line-height: 24px;
+}
 td.intro{
 	text-align: left;
 	font-size: 18px;
 	padding: 25px;
-	border: 12px solid #583D66;
-	border-left-width: 50px;
-	border-right-width: 50px;
 	line-height: 27px;
 }
 td.calculator, td.table1, td.table2, td.table3{
 	width: 800px;
-	border: 12px solid #583D66;
-	border-left-width: 50px;
-	border-right-width: 50px;
 	padding-top: 0px;
 	padding-bottom: 20px;
 	line-height: 14px;
@@ -30,13 +36,13 @@ td.calculator{
 	padding-top: 5px;
 }
 td.table1{
-	/*height: 1837px;*/
+	height: 1837px;
 }
 td.table2{
-	/*height: 828px;*/
+	height: 828px;
 }
 td.table3{
-	/*height: 897px*/
+	height: 897px
 }
 th, td{
 	border: 2px solid;
@@ -71,10 +77,6 @@ table.statstable{
 	margin-left: auto; 
 	margin-right: auto;
 }
-a:link{
+a:link, a:visited{
   color: #440066;
-}
-a:visited{
-  color: #440066;
-
 }

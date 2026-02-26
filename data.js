@@ -1932,8 +1932,10 @@ for (let i = 36; i < 50; i++){
 kidSelect = document.getElementById("kidSelect");
 kidBaseClass = document.getElementById("kidBaseClass");
 baseParent = document.getElementById("baseParent");
+altParent = document.getElementById("altParent");
 baseParentClass = document.getElementById("baseParentClass");
 altParentClass = document.getElementById("altParentClass");
+altParent.innerHTML = "Parent";
 
 for(let i = 0; i < [...kidGrowths.keys()].length; i++){
 	kidSelect[i] = new Option([...kidGrowths.keys()][i]);

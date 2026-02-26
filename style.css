@@ -65,6 +65,15 @@ th.names{
 th.classes{
 	width: 120px;
 }
+th.charmenu{
+	width: 77px;
+}
+th.classmenu{
+	width: 126px;
+}
+th.statmenu{
+	width: 45px;
+}
 th.parents{
 	width: 86px;
 }

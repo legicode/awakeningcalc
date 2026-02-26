@@ -267,6 +267,8 @@ const classGrowths = new Map([
 
 const classCaps = new Map([
 	["Lord",			[60, 25, 20, 26, 28, 30, 25, 25]],
+	["Lord (M)",		[60, 25, 20, 26, 28, 30, 25, 25]],
+	["Lord (F)",		[60, 25, 20, 26, 28, 30, 25, 25]],
 	["Great Lord (M)",	[80, 43, 30, 40, 41, 45, 42, 40]],
 	["Great Lord (F)",	[80, 40, 30, 42, 44, 45, 40, 40]],
 	["Tactician",		[60, 25, 25, 25, 25, 30, 25, 25]],
@@ -368,6 +370,8 @@ const classBases = new Map([
 	["Villager",		[16, 1, 0, 1, 1, 0, 1, 0, 5]],
 	["Dancer",			[16, 1, 1, 5, 8, 0, 3, 1, 5]],
 	["Taguel",			[18, 2, 0, 4, 5, 0, 3, 2, 6]],
+	["Taguel (M)",		[18, 2, 0, 4, 5, 0, 3, 2, 6]],
+	["Taguel (F)",		[18, 2, 0, 4, 5, 0, 3, 2, 6]],
 	["Manakete",		[18, 2, 0, 1, 1, 0, 2, 2, 6]],
 	["Conqueror",		[24,10, 3, 9, 8, 0,12, 5, 8]],
 	["Dread Fighter",	[22, 8, 4, 7, 9, 0, 7,10, 6]],
@@ -708,6 +712,9 @@ function updateAssetFlaw(){
 			updateClassFixed();
  		}
 	}
+	if (kidSelect.value == "Morgan" || kidSelect.value == "Marc"){
+		updateKidBaseStats();
+	}
 }
 
 function updateAsset(asset){
@@ -765,12 +772,14 @@ function syncParentGrowths(char){
 	this[char.toLowerCase()+"capsparent"].selectedIndex = this[char.toLowerCase()+"growthsparent"].selectedIndex;
 	updateParentGrowths(char);
 	updateParentCaps(char);
+	updateKidBaseStats();
 }
 
 function syncParentCaps(char){
 	this[char.toLowerCase()+"growthsparent"].selectedIndex = parent = this[char.toLowerCase()+"capsparent"].selectedIndex;
 	updateParentGrowths(char);
 	updateParentCaps(char);
+	updateKidBaseStats();
 }
 
 function updateParentGrowths(char){
@@ -801,7 +810,7 @@ function updateParentGrowths(char){
 		}
 	}
 
-	if (parent == "donnel"){
+	if (parent == "Donnel"){
 		for (let i = 0; i < 8; i++){
 			this[char.toLowerCase()+stats[i]+"growth"].innerHTML = kidGrowths.get(char)[i] + classGrowths.get(this[char.toLowerCase()+"ClassGrowths"].value)[i] + aptitude1.checked*20;
 		}
@@ -1348,7 +1357,114 @@ function updateKidBaseStats(){
 }
 
 function updateKidBaseStat(stat){
-	this["kidBase"+stats[stat]].innerHTML = Math.floor((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3) + classBases.get(kidBaseClass.value)[stat];
+	kidClass = kidBaseClass.value;
+	if (kidClass == "Taguel"){
+		kidClass += " (" + genders.get(kidSelect.value) + ")";
+	}
+	baseClass = classPools.get(kidSelect.value)[0];
+	if (kidSelect.value == "Morgan"){
+		if (["Lissa", "Libra", "Brady", "Emmeryn"].includes(morgangrowthsparent.value)){
+			baseClass = "Cleric";
+		}
+		else if (["Frederick", "Sully", "Stahl"].includes(morgangrowthsparent.value)){
+			baseClass = "Cavalier";
+		}
+		else if (["Virion", "Noire"].includes(morgangrowthsparent.value)){
+			baseClass = "Archer";
+		}
+		else if (["Miriel", "Ricken", "Laurent"].includes(morgangrowthsparent.value)){
+			baseClass = "Mage";
+		}
+		else if (["Sumia", "Cordelia", "Cynthia", "Aversa"].includes(morgangrowthsparent.value)){
+			baseClass = "Pegasus Knight";
+		}
+		else if (["Kellam", "Kjelle"].includes(morgangrowthsparent.value)){
+			baseClass = "Knight";
+		}
+		else if (["Lon'qu", "Say'ri", "Owain", "Yen'fay"].includes(morgangrowthsparent.value)){
+			baseClass = "Myrmidon";
+		}
+		else if (morgangrowthsparent.value == "Maribelle"){
+			baseClass = "Troubador";
+		}
+		else if (["Panne", "Yarne"].includes(morgangrowthsparent.value)){
+			baseClass = "Taguel";
+		}
+		else if (["Gaius", "Anna", "Gangrel"].includes(morgangrowthsparent.value)){
+			baseClass = "Thief";
+		}
+		else if (["Gregor", "Flavia", "Inigo", "Severa", "Priam"].includes(morgangrowthsparent.value)){
+			baseClass = "Mercenary";
+		}
+		else if (["Nowi", "Tiki", "Nah"].includes(morgangrowthsparent.value)){
+			baseClass = "Manakete";
+		}
+		else if (["Tharja", "Henry"].includes(morgangrowthsparent.value)){
+			baseClass = "Dark Mage";
+		}
+		else if (["Cherche", "Gerome"].includes(morgangrowthsparent.value)){
+			baseClass = "Wyvern Rider";
+		}
+	}
+	else if (kidSelect.value == "Marc"){
+		if (["Lissa", "Libra", "Brady", "Emmeryn"].includes(marcgrowthsparent.value)){
+			baseClass = "Priest";
+		}
+		else if (["Frederick", "Sully", "Stahl"].includes(marcgrowthsparent.value)){
+			baseClass = "Cavalier";
+		}
+		else if (["Virion", "Noire"].includes(marcgrowthsparent.value)){
+			baseClass = "Archer";
+		}
+		else if (["Vaike", "Basilio"].includes(marcgrowthsparent.value)){
+			baseClass = "Fighter";
+		}
+		else if (["Miriel", "Ricken", "Laurent"].includes(marcgrowthsparent.value)){
+			baseClass = "Mage";
+		}
+		else if (["Kellam", "Kjelle"].includes(marcgrowthsparent.value)){
+			baseClass = "Knight";
+		}
+		else if (morgangrowthsparent.value == "Donnel"){
+			baseClass = "Villager";
+		}
+		else if (["Lon'qu", "Say'ri", "Owain", "Yen'fay"].includes(marcgrowthsparent.value)){
+			baseClass = "Myrmidon";
+		}
+		else if (["Panne", "Yarne"].includes(marcgrowthsparent.value)){
+			baseClass = "Taguel";
+		}
+		else if (["Gaius", "Anna", "Gangrel"].includes(marcgrowthsparent.value)){
+			baseClass = "Thief";
+		}
+		else if (["Gregor", "Flavia", "Inigo", "Severa", "Priam"].includes(marcgrowthsparent.value)){
+			baseClass = "Mercenary";
+		}
+		else if (["Nowi", "Tiki", "Nah"].includes(marcgrowthsparent.value)){
+			baseClass = "Manakete";
+		}
+		else if (["Tharja", "Henry"].includes(marcgrowthsparent.value)){
+			baseClass = "Dark Mage";
+		}
+		else if (["Cherche", "Gerome"].includes(marcgrowthsparent.value)){
+			baseClass = "Wyvern Rider";
+		}
+	}
+	if (baseClass == "Lord"){
+		baseClass += " (" + genders.get(kidSelect.value) + ")";
+	}
+	statGrowth = Math.floor((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3);
+	if (statGrowth > classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]){
+		statGrowth = classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]
+	}
+	statTotal = statGrowth + classBases.get(kidBaseClass.value)[stat];
+	if (statTotal >= classCaps.get(kidClass)[stat] + kidCaps.get(kidSelect.value)[stat]){
+		statTotal = classCaps.get(kidClass)[stat] + kidCaps.get(kidSelect.value)[stat];
+		this["kidBase"+stats[stat]].innerHTML = "<b> " + statTotal + "</b>";
+	}
+	else{
+		this["kidBase"+stats[stat]].innerHTML = statTotal;
+	}
 }
 
 var displayedHit = document.getElementById("displayedHit");

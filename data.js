@@ -1451,7 +1451,7 @@ function updateKidBaseStat(stat){
 	if (baseClass == "Lord"){
 		baseClass += " (" + genders.get(kidSelect.value) + ")";
 	}
-	statGrowth = Math.floor((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3);
+	statGrowth = Math.round((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3);
 	if (statGrowth > classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]){
 		statGrowth = classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]
 	}

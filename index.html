@@ -187,6 +187,60 @@
 				</table>
 			</td></tr>
 
+			<tr><td class="calculator">
+				<h2>Gen 2 base stats calculator</h2>
+				<table class="statstable">
+					<tr>
+						<th class="names">Character</th>
+						<th class="classes">Class</th>
+						<th>HP</th>
+						<th>Str</th>
+						<th>Mag</th>
+						<th>Skl</th>
+						<th>Spd</th>
+						<th>Lck</th>
+						<th>Def</th>
+						<th>Res</th>
+					</tr>
+					<tr>
+						<td><select id="kidSelect" onChange="updateKidBases()"></select></td>
+						<td><select id="kidBaseClass" onChange="updateKidBaseStats()"></select></td>
+						<td id="kidBaseHP"></td>
+						<td id="kidBaseSTR"></td>
+						<td id="kidBaseMAG"></td>
+						<td id="kidBaseSKL"></td>
+						<td id="kidBaseSPD"></td>
+						<td id="kidBaseLCK"></td>
+						<td id="kidBaseDEF"></td>
+						<td id="kidBaseRES"></td>
+					</tr>
+					<tr>
+						<td id="baseParent"></td>
+						<td><select id="baseParentClass" onChange="updateKidBaseStats()"></select></td>
+						<td><select id="baseParentHP" onChange="updateKidBaseStat(0)"></select></td>
+						<td><select id="baseParentSTR" onChange="updateKidBaseStat(1)"></select></td>
+						<td><select id="baseParentMAG" onChange="updateKidBaseStat(2)"></select></td>
+						<td><select id="baseParentSKL" onChange="updateKidBaseStat(3)"></select></td>
+						<td><select id="baseParentSPD" onChange="updateKidBaseStat(4)"></select></td>
+						<td><select id="baseParentLCK" onChange="updateKidBaseStat(5)"></select></td>
+						<td><select id="baseParentDEF" onChange="updateKidBaseStat(6)"></select></td>
+						<td><select id="baseParentRES" onChange="updateKidBaseStat(7)"></select></td>
+					</tr>
+					<tr>
+						<td>Parent</td>
+						<td><select id="altParentClass" onChange="updateKidBaseStats()"></select></td>
+						<td><select id="altParentHP" onChange="updateKidBaseStat(0)"></select></td>
+						<td><select id="altParentSTR" onChange="updateKidBaseStat(1)"></select></td>
+						<td><select id="altParentMAG" onChange="updateKidBaseStat(2)"></select></td>
+						<td><select id="altParentSKL" onChange="updateKidBaseStat(3)"></select></td>
+						<td><select id="altParentSPD" onChange="updateKidBaseStat(4)"></select></td>
+						<td><select id="altParentLCK" onChange="updateKidBaseStat(5)"></select></td>
+						<td><select id="altParentDEF" onChange="updateKidBaseStat(6)"></select></td>
+						<td><select id="altParentRES" onChange="updateKidBaseStat(7)"></select></td>
+					</tr>
+				</table>
+			</td></tr>
+
 			<tr><td class="table3">
 				<h2>Fixed / "average" level ups</h2>
 				Robin's asset: 

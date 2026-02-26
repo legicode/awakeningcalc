@@ -355,7 +355,11 @@ const classBases = new Map([
 	["Troubador",		[16, 0, 3, 2, 5, 0, 1, 5, 7]],
 	["Valkyrie",		[19, 0, 5, 4, 8, 0, 3, 8, 8]],
 	["Cleric/Priest",	[16, 0, 3, 2, 4, 0, 1, 6, 5]],
+	["Cleric",			[16, 0, 3, 2, 4, 0, 1, 6, 5]],
+	["Priest",			[16, 0, 3, 2, 4, 0, 1, 6, 5]],
 	["War Cleric/Monk",	[24, 5, 5, 4, 6, 0, 6, 6, 6]],
+	["War Cleric",		[24, 5, 5, 4, 6, 0, 6, 6, 6]],
+	["War Monk",		[24, 5, 5, 4, 6, 0, 6, 6, 6]],
 	["Mage",			[16, 0, 4, 3, 4, 0, 2, 3, 5]],
 	["Sage",			[25, 4, 5, 6, 5, 0, 9, 5, 8]],
 	["Dark Mage",		[18, 1, 3, 2, 3, 0, 4, 4, 5]],
@@ -368,6 +372,8 @@ const classBases = new Map([
 	["Conqueror",		[24,10, 3, 9, 8, 0,12, 5, 8]],
 	["Dread Fighter",	[22, 8, 4, 7, 9, 0, 7,10, 6]],
 	["Bride/Groom",		[21, 7, 6,11,10, 0, 7, 6, 6]],
+	["Bride",			[21, 7, 6,11,10, 0, 7, 6, 6]],
+	["Groom",			[21, 7, 6,11,10, 0, 7, 6, 6]],
 	["Lodestar",		[21, 9, 1,10,10, 0, 8, 4, 6]]
 ]);
 
@@ -432,6 +438,23 @@ const classPools = new Map([
 	["Laurent", 	["Mage", "Dark Knight", "Sage", "Dark Mage", "Sorcerer", "Barbarian", "Warrior", "Berserker", "Troubador", "War Monk", "Valkyrie"]],
 	["Noire", 		["Archer", "Sniper", "Bow Knight", "Dark Mage", "Sorcerer", "Dark Knight", "Knight", "General", "Great Knight"]],
 	["Nah", 		["Manakete", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight"]],
+]);
+
+const kidBases = new Map([
+	["Lucina", 		[12, 5, 1, 8, 4, 13, 3, 3]],
+	["Owain", 		[10, 4, 4, 5, 6,  9, 6, 5]],
+	["Inigo", 		[11, 5, 2, 4, 9, 12, 4, 4]],
+	["Brady", 		[ 9, 6, 5, 4, 2, 10, 7, 4]],
+	["Kjelle", 		[10, 6, 2, 6, 5, 11, 3, 3]],
+	["Cynthia", 	[ 7, 5, 2, 4,10, 17, 6, 6]],
+	["Severa", 		[ 8, 6, 1, 7, 6,  6, 6, 5]],
+	["Gerome", 		[13, 8, 0, 4, 8,  5, 5, 1]],
+	["Morgan", 		[10, 9, 6, 8, 7,  6, 7, 3]],
+	["Marc", 		[10, 9, 6, 8, 7,  6, 7, 3]],
+	["Yarne", 		[16, 9, 1, 4, 4, 13, 6, 1]],
+	["Laurent", 	[10, 3, 7, 7, 4, 11, 4, 6]],
+	["Noire", 		[ 8, 5, 3, 4, 7, 10, 4, 6]],
+	["Nah", 		[ 5, 3, 3, 5, 6,  8, 3, 3]]
 ]);
 
 var kidGrowths = new Map([
@@ -730,10 +753,10 @@ function updateAptitude(box){
 function updateLimitBreaker(box){
 	limitbreaker1.checked = this["limitbreaker"+box].checked;
 	limitbreaker2.checked = this["limitbreaker"+box].checked;
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		updateClassCaps(characters[i]);
 	}
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		updateKidClassCaps(characters[i]);
 	}
 }
@@ -752,12 +775,12 @@ function syncParentCaps(char){
 
 function updateParentGrowths(char){
 	let currentClass = this[char.toLowerCase()+"ClassGrowths"].value;
-	while (this[char.toLowerCase()+"ClassGrowths"].options.length > 0) {                
+	while (this[char.toLowerCase()+"ClassGrowths"].options.length > 0){                
 		this[char.toLowerCase()+"ClassGrowths"].remove(0);
 	}
 	let classList = makeKidClassList(char, this[char.toLowerCase()+"growthsparent"].value);
 	kidClasses.set(char, classList);
-	for (let i = 0; i < classList.length; i++) {
+	for (let i = 0; i < classList.length; i++){
 		this[char.toLowerCase()+"ClassGrowths"].options[i] = new Option(classList[i]);
 	}
 	if (classList.includes(currentClass)){
@@ -792,12 +815,12 @@ function updateParentGrowths(char){
 
 function updateParentCaps(char){
 	let currentClass = this[char.toLowerCase()+"ClassCaps"].value;
-	while (this[char.toLowerCase()+"ClassCaps"].options.length > 0) {                
+	while (this[char.toLowerCase()+"ClassCaps"].options.length > 0){                
 		this[char.toLowerCase()+"ClassCaps"].remove(0);
 	}
 	let classList = makeKidClassList(char, this[char.toLowerCase()+"capsparent"].value);
 	kidClasses.set(char, classList);
-	for (let i = 0; i < classList.length; i++) {
+	for (let i = 0; i < classList.length; i++){
 		this[char.toLowerCase()+"ClassCaps"].options[i] = new Option(classList[i]);
 	}
 	if (classList.includes(currentClass)){
@@ -844,12 +867,12 @@ function updateKidClassGrowths(char){
 	if (parent.includes("'")){
 		parent = parent.replaceAll("'", "")
 	}
-	if ((char == "Morgan" || char == "Marc") && [...kidGrowths.keys()].includes(parent)){
+	if (["Morgan", "Marc"].includes(char) && [...kidGrowths.keys()].includes(parent)){
 		for (let i = 0; i < 8; i++){
 			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get("Robin")[i] + kidGrowths.get(parent)[i] + assetgrowths.get(asset1.value)[i] + flawgrowths.get(flaw1.value)[i]) / 3);
 		}
 	}
-	else if (char == "Morgan" || char == "Marc" || parent == "Robin"){
+	else if (["Morgan", "Marc"].includes(char) || parent == "Robin"){
 		for (let i = 0; i < 8; i++){
 			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get(defaultParents.get(char))[i] + charGrowths.get(parent)[i] + assetgrowths.get(asset1.value)[i] + flawgrowths.get(flaw1.value)[i]) / 3);
 		}
@@ -876,7 +899,7 @@ function updateKidClassCaps(char){
 	if (parent.includes("'")){
 		parent = parent.replaceAll("'", "")
 	}
-	if ((char == "Morgan" || char == "Marc") && [...kidCaps.keys()].includes(parent)){
+	if (["Morgan", "Marc"].includes(char) && [...kidCaps.keys()].includes(parent)){
 		kidCaps.get(char)[0] = charCaps.get("Robin")[0] + kidCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
@@ -884,7 +907,7 @@ function updateKidClassCaps(char){
 			this[char.toLowerCase()+stats[i]+"cap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + kidCaps.get(char)[i] + limitbreaker1.checked*10;
 		}
 	}
-	else if (char == "Morgan" || char == "Marc" || parent == "Robin"){
+	else if (["Morgan", "Marc"].includes(char) || parent == "Robin"){
 		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
@@ -903,14 +926,14 @@ function updateKidClassCaps(char){
 }
 
 function baseGrowths1(){
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
 		updateClassGrowths(characters[i]);
 	}
 }
 
 function classGrowths1(){
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = 0;
 	}
 	frederickClassGrowths.selectedIndex = 1;
@@ -924,34 +947,34 @@ function classGrowths1(){
 	yenfayClassGrowths.selectedIndex = 1;
 	aversaClassGrowths.selectedIndex = 1;
 	priamClassGrowths.selectedIndex = 1;
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		updateClassGrowths(characters[i]);
 	}
 }
 
 function baseGrowths2(){
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
 		updateKidClassGrowths(characters[i]);
 	}
 }
 
 function classGrowths2(){
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = 0;
 		updateKidClassGrowths(characters[i]);
 	}
 }
 
 function baseCaps1(){
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
 		updateClassCaps(characters[i]);
 	}
 }
 
 function classCaps1(){
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
 	}
 	donnelClassCaps.selectedIndex = 0;
@@ -960,20 +983,20 @@ function classCaps1(){
 	oliviaClassCaps.selectedIndex = 0;
 	tikiClassCaps.selectedIndex = 0;
 	walhartClassCaps.selectedIndex = 0;
-	for (let i = 0; i < 36; i++) {
+	for (let i = 0; i < 36; i++){
 		updateClassCaps(characters[i]);
 	}
 }
 
 function baseCaps2(){
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
 		updateKidClassCaps(characters[i]);
 	}
 }
 
 function classCaps2(){
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		if (["Lucina", "Brady", "Kjelle", "Gerome", "Marc", "Laurent"].includes(characters[i])){
 			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
 		}
@@ -1005,17 +1028,17 @@ function classCaps2(){
 			}
 		}
 	}
-	for (let i = 36; i < 50; i++) {
+	for (let i = 36; i < 50; i++){
 		updateKidClassCaps(characters[i]);
 	}
 }
 
 function updateCharFixed(){
 	char = charfixed.value;
-	if (char.includes("'")) {
+	if (char.includes("'")){
 		char = char.replaceAll("'", "")
 	}
-	while (classfixed.options.length > 0) {                
+	while (classfixed.options.length > 0){                
 		classfixed.remove(0);
 	}
 	let classList;
@@ -1034,9 +1057,9 @@ function updateCharFixed(){
 	updateClassFixed();
 }
 
-function updateClassFixed() {
+function updateClassFixed(){
 	char = charfixed.value;
-	if (char.includes("'")) {
+	if (char.includes("'")){
 		char = char.replaceAll("'", "")
 	}
 	if (["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length < 30){
@@ -1237,6 +1260,97 @@ function updateClassChange(){
 	}
 }
 
+function updateKidBases(){
+	while (kidBaseClass.options.length > 0){
+		kidBaseClass.remove(0);
+	}
+	for (let i = 0; i < classes.length - 1; i++){
+		kidBaseClass.options[i] = new Option(classes[i]);
+	}
+	if (genders.get(kidSelect.value) == "M"){
+		kidBaseClass.remove(4);
+		kidBaseClass.remove(4);
+		kidBaseClass.options[31] = new Option("Priest");
+		kidBaseClass.options[32] = new Option("War Monk");
+		kidBaseClass.options[44] = new Option("Groom");
+	}
+	if (genders.get(kidSelect.value) == "F"){
+		kidBaseClass.remove(2);
+		kidBaseClass.remove(2);
+		kidBaseClass.options[31] = new Option("Cleric");
+		kidBaseClass.options[32] = new Option("War Cleric");
+		kidBaseClass.options[44] = new Option("Bride");
+	}
+	if (kidSelect.value == "Lucina"){
+		kidBaseClass.selectedIndex = 2;
+	}
+	else if (kidSelect.value == "Owain"){
+		kidBaseClass.remove(2);
+		kidBaseClass.remove(2);
+		kidBaseClass.selectedIndex = 16;
+	}
+	else if (kidSelect.value == "Inigo" || kidSelect.value == "Severa"){
+		kidBaseClass.selectedIndex = 13;
+	}
+	else if (kidSelect.value == "Brady"){
+		kidBaseClass.selectedIndex = 31;
+	}
+	else if (kidSelect.value == "Kjelle"){
+		kidBaseClass.selectedIndex = 6;
+	}
+	else if (kidSelect.value == "Cynthia"){
+		kidBaseClass.selectedIndex = 23;
+	}
+	else if (kidSelect.value == "Gerome"){
+		kidBaseClass.selectedIndex = 26;
+	}
+	else if (kidSelect.value == "Yarne"){
+		kidBaseClass.selectedIndex = 40;
+	}
+	else if (kidSelect.value == "Laurent"){
+		kidBaseClass.selectedIndex = 33;
+	}
+	else if (kidSelect.value == "Noire"){
+		kidBaseClass.selectedIndex = 15;
+	}
+	else if (kidSelect.value == "Nah"){
+		kidBaseClass.selectedIndex = 41;
+	}
+	baseParent.innerHTML = defaultParents.get(kidSelect.value);
+	while (baseParentClass.options.length > 0){
+		baseParentClass.remove(0);
+	}
+	for (let i = 0; i < classPools.get(baseParent.innerHTML).length - 1; i++){
+		if (classPools.get(baseParent.innerHTML)[i] == "Lord"){
+			baseParentClass.options[i] = new Option("Lord (M)");
+		}
+		else if (classPools.get(baseParent.innerHTML)[i] == "Taguel (F)"){
+			baseParentClass.options[i] = new Option("Taguel");
+		}
+		else{
+			baseParentClass.options[i] = new Option(classPools.get(baseParent.innerHTML)[i]);
+		}
+	}
+	if (!["Panne", "Nowi", "Olivia"].includes(baseParent.innerHTML)){
+		baseParentClass.selectedIndex = 1;
+	}
+	for (let i = 0; i < classes.length - 1; i++){
+		altParentClass.options[i] = new Option(classes[i]);
+	}
+	altParentClass.selectedIndex = 1;
+	updateKidBaseStats();
+}
+
+function updateKidBaseStats(){
+	for (let i = 0; i < 8; i++){
+		updateKidBaseStat(i);
+	}
+}
+
+function updateKidBaseStat(stat){
+	this["kidBase"+stats[stat]].innerHTML = Math.floor((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3) + classBases.get(kidBaseClass.value)[stat];
+}
+
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
 for (let i = 0; i <= 100; i++){
@@ -1331,7 +1445,7 @@ let aptitude3 = document.getElementById("aptitude3");
 
 
 var charfixed = document.getElementById("charfixed");
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 50; i++){
 	if (characters[i] == "Lonqu"){
 		charfixed.options[i] = new Option("Lon'qu");
 	}
@@ -1383,10 +1497,10 @@ for (let i = 0; i < 36; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
-for (let i = 0; i < 36; i++) {
+for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassGrowths"] = document.getElementById(char+"ClassGrowths");
-	for (let j = 0; j < classPools.get(characters[i]).length; j++) {
+	for (let j = 0; j < classPools.get(characters[i]).length; j++){
 		this[char+"ClassGrowths"].options[j] = new Option(classPools.get(characters[i])[j]);
 	}
 }
@@ -1403,7 +1517,7 @@ yenfayClassGrowths.selectedIndex = 1;
 aversaClassGrowths.selectedIndex = 1;
 priamClassGrowths.selectedIndex = 1;
 
-for (let i = 0; i < 36; i++) {
+for (let i = 0; i < 36; i++){
 	updateClassGrowths(characters[i]);
 }
 
@@ -1434,10 +1548,10 @@ for (let i = 36; i < 50; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
-for (let i = 36; i < 50; i++) {
+for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"growthsparent"] = document.getElementById(char+"growthsparent");
-	for (let j = 0; j < 30; j++) {
+	for (let j = 0; j < 30; j++){
 		if (characters[j] == "Lonqu"){
 			this[char+"growthsparent"].options[j] = new Option("Lon'qu");
 		}
@@ -1449,7 +1563,7 @@ for (let i = 36; i < 50; i++) {
 		}
 	}
 	if (char == "morgan" || char == "marc"){
-		for (let j = 30; j < 36; j++) {
+		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"growthsparent"].options[j] = new Option("Yen'fay");	
 			}
@@ -1459,7 +1573,7 @@ for (let i = 36; i < 50; i++) {
 		}
 	}
 	else {
-		for (let j = 33; j < 36; j++) {
+		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"growthsparent"].options[j-3] = new Option("Yen'fay");	
 			}
@@ -1513,7 +1627,7 @@ noiregrowthsparent.selectedIndex = 24;
 nahgrowthsparent.remove(19);
 nahgrowthsparent.selectedIndex = 11;
 
-for (let i = 36; i < 50; i++) {
+for (let i = 36; i < 50; i++){
 	updateParentGrowths(characters[i]);
 }
 
@@ -1553,10 +1667,10 @@ for (let i = 0; i < 36; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
-for (let i = 0; i < 36; i++) {
+for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassCaps"] = document.getElementById(char+"ClassCaps");
-	for (let j = 0; j < classPools.get(characters[i]).length; j++) {
+	for (let j = 0; j < classPools.get(characters[i]).length; j++){
 		this[char+"ClassCaps"].options[j] = new Option(classPools.get(characters[i])[j]);
 	}
 	this[char+"ClassCaps"].selectedIndex = 1;
@@ -1570,7 +1684,7 @@ oliviaClassCaps.selectedIndex = 0;
 tikiClassCaps.selectedIndex = 0;
 walhartClassCaps.selectedIndex = 0;
 
-for (let i = 0; i < 36; i++) {
+for (let i = 0; i < 36; i++){
 	updateClassCaps(characters[i]);
 }
 
@@ -1601,10 +1715,10 @@ for (let i = 36; i < 50; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
-for (let i = 36; i < 50; i++) {
+for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"capsparent"] = document.getElementById(char+"capsparent");
-	for (let j = 0; j < 30; j++) {
+	for (let j = 0; j < 30; j++){
 		if (characters[j] == "Lonqu"){
 			this[char+"capsparent"].options[j] = new Option("Lon'qu");
 		}
@@ -1616,7 +1730,7 @@ for (let i = 36; i < 50; i++) {
 		}
 	}
 	if (char == "morgan" || char == "marc"){
-		for (let j = 30; j < 36; j++) {
+		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"capsparent"].options[j] = new Option("Yen'fay");	
 			}
@@ -1626,7 +1740,7 @@ for (let i = 36; i < 50; i++) {
 		}
 	}
 	else {
-		for (let j = 33; j < 36; j++) {
+		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"capsparent"].options[j-3] = new Option("Yen'fay");	
 			}
@@ -1680,7 +1794,7 @@ noirecapsparent.selectedIndex = 24;
 nahcapsparent.remove(19);
 nahcapsparent.selectedIndex = 11;
 
-for (let i = 36; i < 50; i++) {
+for (let i = 36; i < 50; i++){
 	updateParentCaps(characters[i]);
 }
 
@@ -1697,8 +1811,39 @@ marcClassCaps.selectedIndex = 1;
 laurentClassCaps.selectedIndex = 1;
 noireClassCaps.selectedIndex = 4;;
 
-for (let i = 36; i < 50; i++) {
+for (let i = 36; i < 50; i++){
 	updateKidClassCaps(characters[i]);
+}
+
+kidSelect = document.getElementById("kidSelect");
+kidBaseClass = document.getElementById("kidBaseClass");
+baseParent = document.getElementById("baseParent");
+baseParentClass = document.getElementById("baseParentClass");
+altParentClass = document.getElementById("altParentClass");
+
+for(let i = 0; i < [...kidGrowths.keys()].length; i++){
+	kidSelect[i] = new Option([...kidGrowths.keys()][i]);
+}
+
+for (let i = 0; i < 8; i++){
+	this["baseParent"+stats[i]] = document.getElementById("baseParent"+stats[i]);
+	this["altParent"+stats[i]] = document.getElementById("altParent"+stats[i]);
+	if (i == 0){
+		for (let j = 0; j < 80; j++){
+			this["baseParentHP"][j] = new Option(80-j);
+			this["altParentHP"][j] = new Option(80-j);
+		}
+		this["baseParentHP"].selectedIndex = 40;
+		this["altParentHP"].selectedIndex = 40;
+	}
+	else {
+		for (let j = 0; j <= 70; j++){
+			this["baseParent"+stats[i]][j] = new Option(70-j);
+			this["altParent"+stats[i]][j] = new Option(70-j);
+		}
+		this["baseParent"+stats[i]].selectedIndex = 50;
+		this["altParent"+stats[i]].selectedIndex = 50;
+	}
 }
 
 var fixedgrowths = document.getElementById("fixedgrowths");
@@ -1731,3 +1876,4 @@ aptitude1.checked = true;
 updateAptitude(1);
 limitbreaker1.checked = false;
 updateLimitBreaker(1);
+updateKidBases();

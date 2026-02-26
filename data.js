@@ -712,9 +712,7 @@ function updateAssetFlaw(){
 			updateClassFixed();
  		}
 	}
-	if (kidSelect.value == "Morgan" || kidSelect.value == "Marc"){
-		updateKidBaseStats();
-	}
+	updateKidBaseStats();
 }
 
 function updateAsset(asset){

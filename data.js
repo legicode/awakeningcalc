@@ -1,9 +1,8 @@
 const stats = ["HP", "STR", "MAG", "SKL", "SPD", "LCK", "DEF", "RES", "MOV"];
 const statsfull = ["HP", "Strength", "Magic", "Skill", "Speed", "Luck", "Defense", "Resistance"];
 
-const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", "Gaius", "Cordelia", 
-					"Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", "Cherche", "Henry", "Sayri", "Tiki", "Basilio", "Flavia", "Gangrel", "Walhart", "Emmeryn", "Yenfay", "Aversa", "Priam", 
-					"Mustafa", "Phila", "Raimi", "Pheros", "Lucina", "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome", "Morgan", "Marc", "Yarne", "Laurent", "Noire", "Nah"];
+const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", "Gaius", "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", 
+	"Cherche", "Henry", "Sayri", "Tiki", "Basilio", "Flavia", "Gangrel", "Walhart", "Emmeryn", "Yenfay", "Aversa", "Priam", "Lucina", "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome", "Morgan", "Marc", "Yarne", "Laurent", "Noire", "Nah"];
 
 const defaultParents = new Map([
 	["Lucina", 		"Chrom"],
@@ -59,10 +58,6 @@ const genders = new Map([
 	["Yenfay", 		"M"],
 	["Aversa", 		"F"],
 	["Priam", 		"M"],
-	["Mustafa", 	"M"],
-	["Phila", 		"F"],
-	["Raimi", 		"F"],
-	["Pheros", 		"F"],
 	["Lucina", 		"F"],
 	["Owain", 		"M"],
 	["Inigo", 		"M"],
@@ -137,7 +132,7 @@ const charGrowths = new Map([
 	["Kellam", 		[50, 40, 15, 40, 35, 35, 55, 30]],
 	["Donnel", 		[50, 45, 15, 40, 45, 80, 35, 15]],
 	["Lonqu", 		[40, 35, 20, 50, 50, 55, 25, 20]],
-	["Ricken", 		[50, 30, 35, 30, 30, 65, 30, 25]],
+	["Ricken", 		[50, 20, 35, 30, 30, 65, 30, 25]],
 	["Maribelle", 	[30, 20, 40, 40, 30, 80, 10, 40]],
 	["Panne", 		[60, 45, 15, 50, 55, 40, 40, 15]],
 	["Gaius", 		[50, 45, 15, 45, 45, 35, 25, 15]],
@@ -160,10 +155,6 @@ const charGrowths = new Map([
 	["Yenfay", 		[60, 45, 10, 45, 50, 60, 30, 20]],
 	["Aversa", 		[45, 25, 45, 35, 40, 65, 30, 30]],
 	["Priam", 		[80, 60, 10, 40, 30, 50, 40, 10]],
-	["Mustafa", 	[80, 55, 10, 50, 45, 50, 50, 25]],
-	["Phila", 		[40, 40, 30, 45, 35, 45, 40, 30]],
-	["Raimi", 		[50, 45, 15, 45, 15, 35, 55, 40]],
-	["Pheros", 		[40, 20, 50, 30, 40, 60, 20, 30]],
 	["Lucina", 		[45, 35, 20, 45, 45, 80, 25, 25]],
 	["Owain", 		[45, 40, 30, 45, 35, 50, 30, 30]],
 	["Inigo", 		[50, 35, 15, 35, 45, 65, 30, 20]],
@@ -216,21 +207,15 @@ const charCaps = new Map([
 	["Emmeryn", 	[0, -2,  3,  0,  1,  0, -2,  1]],
 	["Yenfay", 		[0,  1, -2,  2,  4,  0, -1, -2]],
 	["Aversa", 		[0, -1,  3,  1,  1, -2,  0,  0]],
-	["Priam", 		[0,  3, -2,  1,  0,  0,  2, -2]],
-	["Mustafa", 	[0,  3, -2,  1,  0,  0,  2, -2]],
-	["Phila", 		[0,  0,  0,  2,  1, -1,  0,  0]],
-	["Raimi", 		[0,  1,  0,  1, -2, -2,  3,  0]],
-	["Pheros", 		[0, -1,  1,  1,  1, -1,  0,  1]]
+	["Priam", 		[0,  3, -2,  1,  0,  0,  2, -2]]
 ]);
 
 const classGrowths = new Map([
 	["Lord",			[40, 20,  0, 20, 20, 0, 10,  5]],
 	["Great Lord (M)",	[40, 20,  0, 20, 20, 0, 10,  5]],
 	["Great Lord (F)",	[40, 20,  0, 20, 20, 0, 10,  5]],
-	["Saint Lord",		[40, 15, 15, 20, 20, 0, 10, 10]],
 	["Tactician",		[40, 15, 15, 15, 15, 0, 10, 10]],
 	["Grandmaster",		[40, 15, 15, 15, 15, 0, 10, 10]],
-	["Mastermind",		[40, 15, 15, 15, 15, 0, 10, 10]],
 	["Cavalier",		[45, 20,  0, 20, 20, 0, 10,  5]],
 	["Paladin",			[45, 20,  0, 20, 20, 0, 10, 10]],
 	["Knight",			[50, 25,  0, 15, 10, 0, 15,  5]],
@@ -249,7 +234,7 @@ const classGrowths = new Map([
 	["Swordmaster",		[40, 20,  0, 25, 25, 0,  5, 10]],
 	["Thief",			[35, 15,  5, 25, 25, 0,  5,  5]],
 	["Assassin",		[40, 20,  0, 30, 25, 0,  5,  5]],
-	["Trickster",		[35, 10, 25, 25, 20, 0,  5, 10]],
+	["Trickster",		[35, 10, 15, 25, 20, 0,  5, 10]],
 	["Pegasus Knight",	[40, 15,  5, 25, 25, 0,  5, 10]],
 	["Falcon Knight",	[40, 15, 10, 25, 25, 0,  5, 10]],
 	["Dark Flier",		[40, 10, 15, 20, 20, 0,  5, 10]],
@@ -264,18 +249,14 @@ const classGrowths = new Map([
 	["War Monk",		[45, 15, 15, 10, 15, 0, 10, 10]],
 	["Mage",			[35,  0, 20, 20, 20, 0,  5, 10]],
 	["Sage",			[35,  0, 20, 20, 20, 0,  5, 10]],
-	["Mage Knight",		[50, 15, 15, 20, 20, 0, 10,  5]],
 	["Dark Mage",		[50,  5, 15, 15, 15, 0, 10, 10]],
 	["Dark Knight",		[50, 15, 15, 15, 15, 0, 10,  5]],
 	["Sorcerer",		[45,  0, 20, 15, 15, 0, 10, 10]],
 	["Villager",		[35, 10,  0,  5,  5, 0, 10,  5]],
-	["Soldier",			[40, 20,  0, 20, 20, 0, 10, 10]],
 	["Dancer",			[35,  5,  0, 25, 25, 0,  5,  5]],
-	["Prima",			[35, 10,  0, 25, 25, 0, 10, 10]],
-	["Taguel",			[45, 20, 10, 20, 20, 0, 15,  5]],
-	["Leporin",			[45, 20, 10, 20, 20, 0, 15,  5]],
-	["Manakete",		[50, 20, 15, 20, 20, 0, 15, 15]],
-	["Mamkute",			[50, 20, 15, 20, 20, 0, 15, 15]],
+	["Taguel (F)",		[40, 15,  0, 20, 20, 0, 10,  5]],
+	["Taguel (M)",		[45, 20,  0, 15, 15, 0, 15,  5]],
+	["Manakete",		[50, 20,  5, 20, 20, 0, 15, 15]],
 	["Conqueror",		[50, 20,  5, 15, 15, 0, 10, 10]],
 	["Lodestar",		[40, 20,  0, 20, 20, 0, 10,  5]],
 	["Dread Fighter",	[40, 20, 10, 20, 20, 0, 10, 10]],
@@ -288,15 +269,13 @@ const classCaps = new Map([
 	["Lord",			[60, 25, 20, 26, 28, 30, 25, 25]],
 	["Great Lord (M)",	[80, 43, 30, 40, 41, 45, 42, 40]],
 	["Great Lord (F)",	[80, 40, 30, 42, 44, 45, 40, 40]],
-	["Saint Lord",		[80, 41, 42, 40, 41, 45, 42, 40]],
 	["Tactician",		[60, 25, 25, 25, 25, 30, 25, 25]],
 	["Grandmaster",		[80, 40, 40, 40, 40, 45, 40, 40]],
-	["Mastermind",		[80, 40, 40, 40, 40, 45, 40, 40]],
 	["Cavalier",		[60, 26, 20, 25, 25, 30, 26, 26]],
 	["Paladin",			[80, 42, 30, 40, 40, 45, 42, 42]],
 	["Knight",			[60, 30, 20, 26, 23, 30, 30, 22]],
 	["Great Knight",	[80, 48, 20, 34, 37, 45, 48, 30]],
-	["General",			[80, 52, 30, 43, 37, 45, 52, 37]],
+	["General",			[80, 50, 30, 41, 35, 45, 50, 35]],
 	["Barbarian",		[60, 30, 20, 23, 27, 30, 22, 20]],
 	["Berserker",		[80, 50, 30, 35, 44, 45, 34, 30]],
 	["Fighter",			[60, 29, 20, 26, 25, 30, 25, 23]],
@@ -304,10 +283,10 @@ const classCaps = new Map([
 	["Mercenary",		[60, 26, 20, 28, 26, 30, 25, 23]],
 	["Hero",			[80, 42, 30, 46, 42, 45, 40, 36]],
 	["Archer",			[60, 26, 20, 29, 25, 30, 25, 21]],
-	["Bow Knight",		[80, 40, 30, 43, 47, 45, 35, 30]],
+	["Bow Knight",		[80, 40, 30, 43, 41, 45, 35, 30]],
 	["Sniper",			[80, 41, 30, 48, 40, 45, 40, 31]],
 	["Myrmidon",		[60, 24, 22, 27, 28, 40, 22, 24]],
-	["Swordmaster",		[80, 39, 34, 44, 46, 45, 34, 38]],
+	["Swordmaster",		[80, 38, 34, 44, 46, 45, 33, 38]],
 	["Thief",			[60, 22, 20, 30, 28, 30, 21, 20]],
 	["Assassin",		[80, 40, 30, 48, 46, 45, 31, 30]],
 	["Trickster",		[80, 35, 38, 45, 43, 45, 30, 40]],
@@ -316,7 +295,7 @@ const classCaps = new Map([
 	["Dark Flier",		[80, 36, 42, 41, 42, 45, 32, 41]],
 	["Wyvern Rider",	[60, 28, 20, 24, 24, 30, 28, 20]],
 	["Wyvern Lord",		[80, 46, 30, 38, 38, 45, 46, 30]],
-	["Griffon Rider",	[80, 40, 30, 43, 41, 45, 40, 32]],
+	["Griffon Rider",	[80, 40, 30, 43, 41, 45, 40, 30]],
 	["Troubador",		[60, 20, 26, 24, 26, 30, 20, 28]],
 	["Valkyrie",		[80, 30, 42, 38, 43, 45, 30, 45]],
 	["Cleric",			[60, 22, 25, 24, 25, 30, 22, 27]],
@@ -325,18 +304,14 @@ const classCaps = new Map([
 	["War Monk",		[80, 40, 40, 38, 41, 45, 38, 43]],
 	["Mage",			[60, 20, 28, 27, 26, 30, 21, 25]],
 	["Sage",			[80, 30, 46, 43, 42, 45, 31, 40]],
-	["Mage Knight",		[80, 38, 41, 41, 41, 45, 42, 38]],
 	["Dark Mage",		[60, 20, 27, 25, 25, 30, 25, 27]],
-	["Dark Knight",		[80, 38, 41, 41, 41, 45, 42, 38]],
+	["Dark Knight",		[80, 38, 41, 40, 40, 45, 42, 38]],
 	["Sorcerer",		[80, 30, 44, 38, 40, 45, 41, 44]],
 	["Villager",		[60, 20, 20, 20, 20, 30, 20, 20]],
-	["Soldier",			[80, 45, 30, 40, 40, 45, 42, 35]],
-	["Dancer",			[60, 25, 20, 30, 30, 30, 25, 25]],
-	["Prima",			[80, 35, 30, 40, 40, 45, 35, 35]],
-	["Taguel",			[55, 25, 20, 30, 30, 35, 25, 20]],
-	["Leporin",			[80, 37, 32, 40, 41, 45, 35, 30]],
+	["Dancer",			[80, 30, 30, 40, 40, 45, 30, 30]],
+	["Taguel (F)",		[80, 35, 30, 40, 40, 45, 35, 30]],
+	["Taguel (M)",		[80, 35, 30, 40, 40, 45, 35, 30]],
 	["Manakete",		[80, 40, 35, 35, 35, 45, 40, 40]],
-	["Mamkute",			[80, 42, 37, 35, 36, 45, 40, 40]],
 	["Conqueror",		[80, 45, 25, 40, 40, 45, 45, 35]],
 	["Lodestar",		[80, 41, 30, 43, 43, 45, 41, 41]],
 	["Dread Fighter",	[80, 42, 38, 40, 41, 45, 39, 43]],
@@ -348,12 +323,10 @@ const classCaps = new Map([
 const classBases = new Map([
 	["Tactician",		[16, 4, 3, 5, 5, 0, 5, 3, 5]],
 	["Grandmaster",		[20, 7, 6, 7, 7, 0, 7, 5, 6]],
-	["Mastermind",		[20, 7, 6, 7, 7, 0, 7, 5, 6]],
 	["Lord (M)",		[18, 6, 0, 5, 7, 0, 7, 0, 5]],
-	["Lord (F)",		[16, 5, 1, 6, 8, 0, 6, 1, 5]],
 	["Great Lord (M)",	[23,10, 0, 7, 9, 0,10, 3, 6]],
+	["Lord (F)",		[16, 5, 1, 6, 8, 0, 6, 1, 5]],
 	["Great Lord (F)",	[20, 8, 1, 9,11, 0, 8, 4, 6]],
-	["Saint Lord",		[23, 5, 5, 7, 9, 0, 7, 6, 6]],
 	["Cavalier",		[18, 6, 0, 5, 6, 0, 7, 0, 7]],
 	["Paladin",			[25, 9, 1, 7, 8, 0,10, 6, 8]],
 	["Knight",			[18, 8, 0, 4, 2, 0,11, 0, 4]],
@@ -392,14 +365,10 @@ const classBases = new Map([
 	["Dark Mage",		[18, 1, 3, 2, 3, 0, 4, 4, 5]],
 	["Dark Knight",		[25, 4, 5, 6, 5, 0, 9, 5, 8]],
 	["Sorcerer",		[23, 2, 6, 4, 4, 0, 7, 7, 6]],
-	["Villager",		[16, 4, 0, 1, 4, 0, 4, 0, 5]],
-	["Soldier",			[23,10, 0, 7, 9, 0, 9, 7, 5]],
+	["Villager",		[16, 1, 0, 1, 1, 0, 1, 0, 5]],
 	["Dancer",			[16, 1, 1, 5, 8, 0, 3, 1, 5]],
-	["Prima",			[21, 3, 2, 8,11, 4, 5, 3, 5]],
-	["Taguel",			[18, 3, 2, 4, 5, 0, 3, 2, 6]],
-	["Leporin",			[18, 5, 3, 6, 7, 2, 6, 4, 6]],
-	["Manakete",		[18, 2, 2, 1, 1, 0, 2, 2, 6]],
-	["Mamkute",			[18, 4, 3, 3, 3, 2, 4, 4, 6]],
+	["Taguel",			[18, 2, 0, 4, 5, 0, 3, 2, 6]],
+	["Manakete",		[18, 2, 0, 1, 1, 0, 2, 2, 6]],
 	["Conqueror",		[24,10, 3, 9, 8, 0,12, 5, 8]],
 	["Dread Fighter",	[22, 8, 4, 7, 9, 0, 7,10, 6]],
 	["Bride/Groom",		[21, 7, 6,11,10, 0, 7, 6, 6]],
@@ -408,72 +377,67 @@ const classBases = new Map([
 	["Lodestar",		[21, 9, 1,10,10, 0, 8, 4, 6]]
 ]);
 
-const classes =	["Tactician", "Grandmaster", "Mastermind", "Lord (M)", "Lord (F)", "Great Lord (M)", "Great Lord (F)", "Saint Lord", "Cavalier", "Paladin", "Knight", "Great Knight", 
-	"General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", "Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", 
-	"Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Cleric/Priest", "War Cleric/Monk", "Mage", "Sage", 
-	"Dark Mage", "Dark Knight", "Sorcerer", "Villager", "Soldier", "Dancer", "Prima", "Taguel", "Leporin", "Manakete", "Mamkute", "Conqueror", "Dread Fighter", "Bride/Groom", "Lodestar"]
+const classes =	["Tactician", "Grandmaster", "Lord (M)", "Great Lord (M)", "Lord (F)", "Great Lord (F)", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", 
+	"Mercenary", "Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", 
+	"Troubador", "Valkyrie", "Cleric/Priest", "War Cleric/Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride/Groom", "Lodestar"]
 
 const classPools = new Map([
-	["Robin", 		["Tactician", "Grandmaster", "Mastermind", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", "Hero", "Archer", 
-					"Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", 
-					"Troubador", "Valkyrie", "Priest", "War Monk", "Mage", "Mage Knight", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Dread Fighter", "Groom", "Bride", "Base stats"]],
-	["Chrom", 		["Lord", "Great Lord (M)", "Saint Lord", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
-	["Lissa", 		["Cleric", "War Cleric", "Sage", "Falcon Knight", "Dark Flier", "Dark Mage", "Sorcerer", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
+	["Robin", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", "Hero", "Archer", 
+					"Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", 
+					"Griffon Rider", "Troubador", "Valkyrie", "Priest", "War Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Dread Fighter", "Groom", "Bride", "Base stats"]],
+	["Chrom", 		["Lord", "Great Lord (M)", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
+	["Lissa", 		["Cleric", "War Cleric", "Sage", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dread Fighter", "Bride", "Base stats"]],
 	["Frederick", 	["Cavalier", "Great Knight", "Paladin", "Knight", "General", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Groom", "Base stats"]],
 	["Sully", 		["Cavalier", "Paladin", "Great Knight", "Myrmidon", "Swordmaster", "Assassin", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
-	["Virion", 		["Archer", "Sniper", "Bow Knight", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Myrmidon", "Assassin", "Swordmaster", "Dread Fighter", "Groom", "Base stats"]],
+	["Virion", 		["Archer", "Sniper", "Bow Knight", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Groom", "Base stats"]],
 	["Stahl", 		["Cavalier", "Paladin", "Great Knight", "Myrmidon", "Swordmaster", "Assassin", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
 	["Vaike", 		["Fighter", "Warrior", "Hero", "Barbarian", "Berserker", "Thief", "Assassin", "Trickster", "Dread Fighter", "Groom", "Base stats"]],
 	["Miriel", 		["Mage", "Sage", "Dark Knight", "Dark Mage", "Sorcerer", "Troubador", "Valkyrie", "War Cleric", "Dread Fighter", "Bride", "Base stats"]],
 	["Sumia", 		["Pegasus Knight", "Dark Flier", "Falcon Knight", "Cleric", "War Cleric", "Sage", "Knight", "Great Knight", "General", "Dread Fighter", "Bride", "Base stats"]],
 	["Kellam", 		["Knight", "General", "Great Knight", "Thief", "Assassin", "Trickster", "Priest", "War Monk", "Sage", "Dread Fighter", "Groom", "Base stats"]],
-	["Donnel", 		["Villager", "Soldier", "Paladin", "Mercenary", "Hero", "Bow Knight", "Barbarian", "Warrior", "Berserker", "Dread Fighter", "Groom", "Base stats"]],
+	["Donnel", 		["Villager", "Mercenary", "Hero", "Bow Knight", "Fighter", "Warrior", "Dread Fighter", "Groom", "Base stats"]],
 	["Lonqu", 		["Myrmidon", "Swordmaster", "Assassin", "Thief", "Trickster", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Groom", "Base stats"]],
-	["Ricken", 		["Mage", "Sage", "Mage Knight", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
-	["Maribelle", 	["Troubador", "Valkyrie", "War Cleric", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Mage", "Sage", "Mage Knight", "Dread Fighter", "Bride", "Base stats"]],
-	["Panne", 		["Taguel", "Leporin", "Thief", "Assassin", "Trickster", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
+	["Ricken", 		["Mage", "Sage", "Dark Knight", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
+	["Maribelle", 	["Troubador", "Valkyrie", "War Cleric", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
+	["Panne", 		["Taguel (F)", "Thief", "Assassin", "Trickster", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
 	["Gaius", 		["Thief", "Assassin", "Trickster", "Myrmidon", "Swordmaster", "Fighter", "Hero", "Warrior", "Dread Fighter", "Groom", "Base stats"]],
 	["Cordelia", 	["Pegasus Knight", "Falcon Knight", "Dark Flier", "Mercenary", "Hero", "Bow Knight", "Dark Mage", "Sorcerer", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
 	["Gregor", 		["Mercenary", "Hero", "Bow Knight", "Myrmidon", "Swordmaster", "Assassin", "Barbarian", "Berserker", "Warrior", "Dread Fighter", "Groom", "Base stats"]],
-	["Nowi", 		["Manakete", "Mamkute", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Mage Knight", "Dread Fighter", "Bride", "Base stats"]],
-	["Libra", 		["Priest", "War Monk", "Sage", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dark Mage", "Sorcerer", "Dread Fighter", "Groom", "Base stats"]],
+	["Nowi", 		["Manakete", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
+	["Libra", 		["Priest", "War Monk", "Sage", "Mage", "Dark Knight", "Dark Mage", "Sorcerer", "Dread Fighter", "Groom", "Base stats"]],
 	["Tharja", 		["Dark Mage", "Sorcerer", "Dark Knight", "Archer", "Sniper", "Bow Knight", "Knight", "General", "Great Knight", "Dread Fighter", "Bride", "Base stats"]],
-	["Anna", 		["Thief", "Trickster", "Assassin", "Archer", "Bow Knight", "Sniper", "Mage", "Sage", "Mage Knight", "Dread Fighter", "Bride", "Base stats"]],
-	["Olivia", 		["Dancer", "Prima", "Myrmidon", "Swordmaster", "Assassin", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dread Fighter", "Bride", "Base stats"]],
-	["Cherche", 	["Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Cleric", "War Cleric", "Sage", "Fighter", "Warrior", "Hero", "Dread Fighter", "Bride", "Base stats"]],
+	["Anna", 		["Thief", "Trickster", "Assassin", "Archer", "Bow Knight", "Sniper", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
+	["Olivia", 		["Dancer", "Myrmidon", "Swordmaster", "Assassin", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dread Fighter", "Bride", "Base stats"]],
+	["Cherche", 	["Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Cleric", "War Cleric", "Sage", "Troubador", "Valkyrie", "Dread Fighter", "Bride", "Base stats"]],
 	["Henry", 		["Dark Mage", "Sorcerer", "Dark Knight", "Thief", "Trickster", "Assassin", "Barbarian", "Berserker", "Warrior", "Dread Fighter", "Groom", "Base stats"]],
 	["Sayri", 		["Myrmidon", "Swordmaster", "Assassin", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
-	["Tiki", 		["Manakete", "Mamkute", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Mage Knight", "Dread Fighter", "Bride", "Base stats"]],
+	["Tiki", 		["Manakete", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Bride", "Base stats"]],
 	["Basilio", 	["Fighter", "Warrior", "Hero", "Barbarian", "Berserker", "Knight", "General", "Great Knight", "Dread Fighter", "Groom", "Base stats"]],
 	["Flavia", 		["Mercenary", "Hero", "Bow Knight", "Thief", "Assassin", "Trickster", "Knight", "General", "Great Knight", "Dread Fighter", "Bride", "Base stats"]],
 	["Gangrel", 	["Thief", "Trickster", "Assassin", "Barbarian", "Berserker", "Warrior", "Dark Mage", "Dark Knight", "Sorcerer", "Dread Fighter", "Groom", "Base stats"]],
 	["Walhart", 	["Conqueror", "Knight", "Great Knight", "General", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Groom", "Base stats"]],
-	["Emmeryn", 	["Mage", "Sage", "Dark Knight", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dread Fighter", "Bride", "Base stats"]],
+	["Emmeryn", 	["Cleric", "Sage", "War Cleric", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dread Fighter", "Bride", "Base stats"]],
 	["Yenfay", 		["Myrmidon", "Swordmaster", "Assassin", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
 	["Aversa", 		["Pegasus Knight", "Dark Flier", "Falcon Knight", "Dark Mage", "Sorcerer", "Dark Knight", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
 	["Priam", 		["Mercenary", "Hero", "Bow Knight", "Myrmidon", "Swordmaster", "Assassin", "Fighter", "Warrior", "Dread Fighter", "Groom", "Base stats"]],
-	["Mustafa", 	["Barbarian", "Berserker", "Warrior", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Villager", "Soldier", "Dread Fighter", "Groom", "Base stats"]],
-	["Phila", 		["Pegasus Knight", "Falcon Knight", "Dark Flier", "Cavalier", "Paladin", "Great Knight", "Mage", "Sage", "Mage Knight", "Dread Fighter", "Bride", "Base stats"]],
-	["Raimi", 		["Knight", "General", "Great Knight", "Mercenary", "Hero", "Bow Knight", "Archer", "Sniper", "Dread Fighter", "Bride", "Base stats"]],
-	["Pheros", 		["Troubador", "Valkyrie", "War Cleric", "Dark Mage", "Dark Knight", "Sorcerer", "Thief", "Trickster", "Assassin", "Dread Fighter", "Bride", "Base stats"]],
-	["Lucina", 		["Lord", "Great Lord (F)", "Saint Lord", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper"]],
-	["Owain", 		["Myrmidon", "Swordmaster", "Assassin", "Priest", "War Monk", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
-	["Inigo", 		["Mercenary", "Hero", "Bow Knight", "Myrmidon", "Swordmaster", "Assassin", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
-	["Brady", 		["Priest", "Sage", "War Monk", "Mage", "Mage Knight", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
+	["Lucina", 		["Lord", "Great Lord (F)", "Cavalier", "Paladin", "Great Knight", "Archer", "Bow Knight", "Sniper"]],
+	["Owain", 		["Myrmidon", "Swordmaster", "Assassin", "Priest", "War Monk", "Sage", "Barbarian", "Berserker", "Warrior", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
+	["Inigo", 		["Mercenary", "Hero", "Bow Knight", "Myrmidon", "Swordmaster", "Assassin", "Barbarian", "Berserker", "Warrior", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
+	["Brady", 		["Priest", "Sage", "War Monk", "Mage", "Dark Knight", "Cavalier", "Paladin", "Great Knight", "Troubador", "Valkyrie", "Pegasus Knight", "Falcon Knight", "Dark Flier"]],
 	["Kjelle", 		["Knight", "General", "Great Knight", "Cavalier", "Paladin", "Myrmidon", "Swordmaster", "Assassin", "Wyvern Rider", "Wyvern Lord", "Griffon Rider"]],
 	["Cynthia", 	["Pegasus Knight", "Falcon Knight", "Dark Flier", "Cleric", "War Cleric", "Sage", "Knight", "Great Knight", "General"]],
 	["Severa", 		["Mercenary", "Hero", "Bow Knight", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Dark Mage", "Dark Knight", "Sorcerer"]],
-	["Gerome", 		["Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Priest", "War Monk", "Sage", "Troubador", "Valkyrie"]],
-	["Morgan", 		["Tactician", "Grandmaster", "Mastermind", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", 
-					"Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", 
-					"Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Cleric", "War Cleric", "Mage", "Sage", "Mage Knight", "Dark Mage", "Dark Knight", "Sorcerer"]],
-	["Marc", 		["Tactician", "Grandmaster", "Mastermind", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", 
-					"Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", 
-					"Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Priest", "War Monk", "Mage", "Sage", "Mage Knight", "Dark Mage", "Dark Knight", "Sorcerer"]],
-	["Yarne", 		["Taguel", "Leporin", "Thief", "Assassin", "Trickster", "Wyvern Rider", "Wyvern Lord", "Griffon Rider"]],
-	["Laurent", 	["Mage", "Mage Knight", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Troubador", "Valkyrie", "War Monk"]],
+	["Gerome", 		["Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Fighter", "Warrior", "Hero", "Priest", "War Monk", "Sage", "Troubador", "Valkyrie"]],
+	["Morgan", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", 
+					"Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", 
+					"Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Cleric", "War Cleric", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer"]],
+	["Marc", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", 
+					"Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", 
+					"Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Troubador", "Valkyrie", "Priest", "War Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer"]],
+	["Yarne", 		["Taguel (M)", "Thief", "Assassin", "Trickster", "Barbarian", "Berserker", "Warrior", "Wyvern Rider", "Wyvern Lord", "Griffon Rider"]],
+	["Laurent", 	["Mage", "Dark Knight", "Sage", "Dark Mage", "Sorcerer", "Barbarian", "Warrior", "Berserker", "Troubador", "War Monk", "Valkyrie"]],
 	["Noire", 		["Archer", "Sniper", "Bow Knight", "Dark Mage", "Sorcerer", "Dark Knight", "Knight", "General", "Great Knight"]],
-	["Nah", 		["Manakete", "Mamkute", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Mage Knight"]]
+	["Nah", 		["Manakete", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight"]],
 ]);
 
 const kidBases = new Map([
@@ -549,10 +513,10 @@ function makeKidClassList(kid, parent){
 		parent = parent.replaceAll("'", "")
 	}
 	let classes;
-	if(![...kidGrowths.keys()].includes(parent)){
+	if (![...kidGrowths.keys()].includes(parent)){
 		classes = classPools.get(kid).concat(classPools.get(parent).slice(0, -3));
 	}
-	else{
+	else {
 		classes = classPools.get(kid).concat(kidClasses.get(parent).slice(0, -3));
 	}
 	if (parent == "Robin"){
@@ -576,6 +540,81 @@ function makeKidClassList(kid, parent){
 	if (genders.get(kid) == "M" && classes.includes("Great Lord (F)")){
 		classes[classes.indexOf("Great Lord (F)")] = "Great Lord (M)";
 	}
+	if (genders.get(kid) == "M" && classes.includes("Taguel (F)")){
+		classes[classes.indexOf("Taguel (F)")] = "Taguel (M)";
+	}
+	if (genders.get(kid) == "F" && classes.includes("Taguel (M)")){
+		classes[classes.indexOf("Taguel (N)")] = "Taguel (F)";
+	}
+
+	if (genders.get(parent) == "M" && genders.get(kid) == "F"){
+		if (classPools.get(parent).includes("Fighter") && parent == "Vaike"){
+			if (!classPools.get(kid).includes("Mercenary")){
+				classes.push("Mercenary", "Hero", "Bow Knight");
+			}
+		}
+		else if (classPools.get(parent).includes("Fighter") && parent != "Vaike"){
+			if (!classPools.get(kid).includes("Pegasus Knight")){
+				classes.push("Pegasus Knight", "Falcon Knight", "Dark Flier");
+			}
+		}
+		if (classPools.get(parent).includes("Barbarian") && parent == "Vaike"){
+			if (!classPools.get(kid).includes("Knight")){
+				classes.push("Knight", "General", "Great Knight");
+			}
+		}
+		else if (classPools.get(parent).includes("Barbarian") && parent != "Vaike"){
+			if (!classPools.get(kid).includes("Troubador")){
+				classes.push("Troubador", "Valkyrie", "War Cleric");
+			}
+		}
+	}
+	if (genders.get(parent) == "F" && genders.get(kid) == "M"){
+		if (classPools.get(parent).includes("Pegasus Knight") && parent == "Lissa"){
+			if (!classPools.get(kid).includes("Myrmidon")){
+				classes.push("Myrmidon", "Swordmaster", "Assassin");
+			}
+		}
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent == "Maribelle"){
+			if (!classPools.get(kid).includes("Cavalier")){
+				classes.push("Cavalier", "Paladin", "Great Knight");
+			}
+		}
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent == "Olivia"){
+			if (!classPools.get(kid).includes("Barbarian")){
+				classes.push("Barbarian", "Berserker", "Warrior");
+			}
+		}
+		else if (classPools.get(parent).includes("Pegasus Knight") && parent != "Lissa" && parent != "Maribelle" && parent != "Olivia"){
+			if (!classPools.get(kid).includes("Fighter")){
+				classes.push("Fighter", "Warrior", "Hero");
+			}
+		}
+		if (classPools.get(parent).includes("Troubador") && parent == "Maribelle"){
+			if (!classPools.get(kid).includes("Priest")){
+				classes.push("Priest", "Sage", "War Monk");
+			}
+		}
+		else if (classPools.get(parent).includes("Troubador") && parent == "Cherche"){
+			if (!classPools.get(kid).includes("Fighter")){
+				classes.push("Fighter", "Warrior", "Hero");
+			}
+		}
+		else if (classPools.get(parent).includes("Troubador") && parent != "Maribelle" && parent != "Cherche"){
+			if (!classPools.get(kid).includes("Barbarian")){
+				classes.push("Barbarian", "Berserker", "Warrior");
+			}
+		}
+		if (!classPools.get(kid).includes("Mercenary") && parent == "Olivia"){
+			classes.push("Mercenary", "Hero", "Bow Knight");
+		}
+		if (!classPools.get(kid).includes("Barbarian") && parent == "Panne"){
+			classes.push("Barbarian", "Berserker", "Warrior");
+		}
+		if (!classPools.get(kid).includes("Fighter") && parent == "Nowi"){
+			classes.push("Fighter", "Warrior", "Hero");
+		}
+	}
 
 	let classSet = new Set(classes)
 	classes = Array.from(classSet)
@@ -584,27 +623,22 @@ function makeKidClassList(kid, parent){
 		classes.push(classes.splice(classes.indexOf("Lord"), 1)[0]);
 		classes.push(classes.splice(classes.indexOf("Great Lord (M)"), 1)[0]);
 		classes.push(classes.splice(classes.indexOf("Great Lord (F)"), 1)[0]);
-		classes.push(classes.splice(classes.indexOf("Saint Lord"), 1)[0]);
 	}
 	if (parent == "Donnel"){
 		classes.push(classes.splice(classes.indexOf("Villager"), 1)[0]);
-		classes.push(classes.splice(classes.indexOf("Soldier"), 1)[0]);
 	}
 	if (parent == "Olivia"){
 		classes.push(classes.splice(classes.indexOf("Dancer"), 1)[0]);
-		classes.push(classes.splice(classes.indexOf("Prima"), 1)[0]);
 	}
 	if (kid == "Inigo"){
 		classes.push("Dancer");
-		classes.push("Prima");
 	}
 	if (parent == "Nowi" || parent == "Tiki"){
 		classes.push(classes.splice(classes.indexOf("Manakete"), 1)[0]);
-		classes.push(classes.splice(classes.indexOf("Mamkute"), 1)[0]);
 	}
 	if (parent == "Panne"){
-		classes.push(classes.splice(classes.indexOf("Taguel"), 1)[0]);
-		classes.push(classes.splice(classes.indexOf("Leporin"), 1)[0]);
+		classes.push(classes.splice(classes.indexOf("Taguel (F)"), 1)[0]);
+		classes.push(classes.splice(classes.indexOf("Taguel (M)"), 1)[0]);
 	}
 	if (parent == "Walhart"){
 		classes.push(classes.splice(classes.indexOf("Conqueror"), 1)[0]);
@@ -648,7 +682,7 @@ function updateClassCaps(char){
 	else {
 		this[char.toLowerCase()+stats[0]+"cap"].innerHTML=charCaps.get(char)[0]+classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0];
 		for (let i = 1; i < 8; i++){
-			this[char.toLowerCase()+stats[i]+"cap"].innerHTML=charCaps.get(char)[i]+classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + 1 + limitbreaker1.checked * 10;
+			this[char.toLowerCase()+stats[i]+"cap"].innerHTML=charCaps.get(char)[i]+classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + limitbreaker1.checked * 10;
 		}
 	}
 }
@@ -660,7 +694,7 @@ function updateAssetFlaw(){
 	updateKidClassCaps("Morgan");
 	updateKidClassGrowths("Marc");
 	updateKidClassCaps("Marc");
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		if (this[characters[i].toLowerCase()+"growthsparent"].value == "Robin"){
 			updateKidClassGrowths(characters[i]);
 			updateKidClassCaps(characters[i]);
@@ -699,7 +733,7 @@ function updateAptitude(box){
 	aptitude2.checked = this["aptitude"+box].checked;
 	aptitude3.checked = this["aptitude"+box].checked;
 	updateClassGrowths("Donnel");
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		if (this[characters[i].toLowerCase()+"growthsparent"].value == "Donnel"){
 			for (let j = 0; j < 8; j++){
 				this[characters[i].toLowerCase()+stats[j]+"growth"].innerHTML = Math.floor((charGrowths.get(characters[i])[j] + charGrowths.get(defaultParents.get(characters[i]))[j] + charGrowths.get(this[characters[i].toLowerCase()+"growthsparent"].value)[j]) / 3) + aptitude1.checked*20 + classGrowths.get(this[characters[i].toLowerCase()+"ClassGrowths"].value)[j];
@@ -719,10 +753,10 @@ function updateAptitude(box){
 function updateLimitBreaker(box){
 	limitbreaker1.checked = this["limitbreaker"+box].checked;
 	limitbreaker2.checked = this["limitbreaker"+box].checked;
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		updateClassCaps(characters[i]);
 	}
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		updateKidClassCaps(characters[i]);
 	}
 }
@@ -766,14 +800,25 @@ function updateParentGrowths(char){
 			classfixed.value = fixedClass;
 		}
 	}
+
+	if (parent == "donnel"){
+		for (let i = 0; i < 8; i++){
+			this[char.toLowerCase()+stats[i]+"growth"].innerHTML = kidGrowths.get(char)[i] + classGrowths.get(this[char.toLowerCase()+"ClassGrowths"].value)[i] + aptitude1.checked*20;
+		}
+	}
+	else {
+		for (let i = 0; i < 8; i++){
+			this[char.toLowerCase()+stats[i]+"growth"].innerHTML = kidGrowths.get(char)[i] + classGrowths.get(this[char.toLowerCase()+"ClassGrowths"].value)[i];
+		}
+	}
 }
 
 function updateParentCaps(char){
 	let currentClass = this[char.toLowerCase()+"ClassCaps"].value;
-	while (this[char.toLowerCase()+"ClassCaps"].options.length > 0){
+	while (this[char.toLowerCase()+"ClassCaps"].options.length > 0){                
 		this[char.toLowerCase()+"ClassCaps"].remove(0);
 	}
-	let classList = makeKidClassList(char, this[char.toLowerCase()+"capsparent"].value)
+	let classList = makeKidClassList(char, this[char.toLowerCase()+"capsparent"].value);
 	kidClasses.set(char, classList);
 	for (let i = 0; i < classList.length; i++){
 		this[char.toLowerCase()+"ClassCaps"].options[i] = new Option(classList[i]);
@@ -782,17 +827,14 @@ function updateParentCaps(char){
 		this[char.toLowerCase()+"ClassCaps"].value = currentClass;
 	}
 	else {
-		if (["Lucina", "Brady", "Kjelle", "Gerome", "Yarne", "Laurent", "Nah"].includes(char)){
+		if (["Lucina", "Brady", "Kjelle", "Gerome", "Marc", "Laurent"].includes(char)){
 			this[char.toLowerCase()+"ClassCaps"].selectedIndex = 1;
 		}
 		else if (["Inigo", "Severa", "Noire"].includes(char)){
 			this[char.toLowerCase()+"ClassCaps"].selectedIndex = 4;
 		}
 		else if (char == "Morgan"){
-			this[char.toLowerCase()+"ClassCaps"].selectedIndex = 24;
-		}
-		else if (char == "Marc"){
-			this[char.toLowerCase()+"ClassCaps"].selectedIndex = 2;
+			this[char.toLowerCase()+"ClassCaps"].selectedIndex = 23;
 		}
 		else if (char == "Cynthia"){
 			if (classList.includes("Hero")){
@@ -873,7 +915,7 @@ function updateKidClassCaps(char){
 			this[char.toLowerCase()+stats[i]+"cap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + kidCaps.get(char)[i] + limitbreaker1.checked*10;
 		}
 	}
-	else{
+	else {
 		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
@@ -884,16 +926,17 @@ function updateKidClassCaps(char){
 }
 
 function baseGrowths1(){
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
 		updateClassGrowths(characters[i]);
 	}
 }
 
 function classGrowths1(){
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = 0;
 	}
+	frederickClassGrowths.selectedIndex = 1;
 	libraClassGrowths.selectedIndex = 1;
 	annaClassGrowths.selectedIndex = 1;
 	sayriClassGrowths.selectedIndex = 1;
@@ -904,54 +947,57 @@ function classGrowths1(){
 	yenfayClassGrowths.selectedIndex = 1;
 	aversaClassGrowths.selectedIndex = 1;
 	priamClassGrowths.selectedIndex = 1;
-	mustafaClassGrowths.selectedIndex = 1;
-	philaClassGrowths.selectedIndex = 1;
-	pherosClassGrowths.selectedIndex = 1;
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		updateClassGrowths(characters[i]);
 	}
 }
 
 function baseGrowths2(){
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
 		updateKidClassGrowths(characters[i]);
 	}
 }
 
 function classGrowths2(){
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = 0;
 		updateKidClassGrowths(characters[i]);
 	}
 }
 
 function baseCaps1(){
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
 		updateClassCaps(characters[i]);
 	}
 }
 
 function classCaps1(){
-	for (let i = 0; i < 40; i++){
+	for (let i = 0; i < 36; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
+	}
+	donnelClassCaps.selectedIndex = 0;
+	panneClassCaps.selectedIndex = 0;
+	nowiClassCaps.selectedIndex = 0;
+	oliviaClassCaps.selectedIndex = 0;
+	tikiClassCaps.selectedIndex = 0;
+	walhartClassCaps.selectedIndex = 0;
+	for (let i = 0; i < 36; i++){
 		updateClassCaps(characters[i]);
 	}
-	walhartClassCaps.selectedIndex = 0;
-	updateClassCaps("Walhart");
 }
 
 function baseCaps2(){
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
 		updateKidClassCaps(characters[i]);
 	}
 }
 
 function classCaps2(){
-	for (let i = 40; i < 54; i++){
-		if (["Lucina", "Brady", "Kjelle", "Gerome", "Yarne", "Laurent", "Nah"].includes(characters[i])){
+	for (let i = 36; i < 50; i++){
+		if (["Lucina", "Brady", "Kjelle", "Gerome", "Marc", "Laurent"].includes(characters[i])){
 			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
 		}
 		else if (["Inigo", "Severa", "Noire"].includes(characters[i])){
@@ -961,10 +1007,7 @@ function classCaps2(){
 			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 0;
 		}
 		else if (characters[i] == "Morgan"){
-			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 24;
-		}
-		else if (characters[i] == "Marc"){
-			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 2;
+			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 23;
 		}
 		else if (characters[i] == "Cynthia"){
 			let classList = makeKidClassList("Cynthia", cynthiacapsparent.value);
@@ -985,7 +1028,7 @@ function classCaps2(){
 			}
 		}
 	}
-	for (let i = 40; i < 54; i++){
+	for (let i = 36; i < 50; i++){
 		updateKidClassCaps(characters[i]);
 	}
 }
@@ -1008,7 +1051,7 @@ function updateCharFixed(){
 	for (let i = 0; i < classList.length-1; i++){
 		classfixed.options[i] = new Option(classList[i]);
 	}
-	if (["Libra", "Anna", "Sayri", "Basilio", "Flavia", "Gangrel", "Emmeryn", "Yenfay", "Aversa", "Priam", "Mustafa", "Phila", "Pheros"].includes(char)){
+	if (["Frederick", "Libra", "Anna", "Sayri", "Basilio", "Flavia", "Gangrel", "Emmeryn", "Yenfay", "Aversa", "Priam"].includes(char)){
 		classfixed.selectedIndex = 1;
 	}
 	updateClassFixed();
@@ -1019,7 +1062,7 @@ function updateClassFixed(){
 	if (char.includes("'")){
 		char = char.replaceAll("'", "")
 	}
-	if (["Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length < 30){
+	if (["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length < 30){
 		for (let i = 20; i < 30; i++){
 			var row = fixedgrowths.insertRow(i);
 			let level = row.insertCell(0);
@@ -1042,7 +1085,7 @@ function updateClassFixed(){
 			res.innerHTML = "<span id=\"level"+(i+1).toString()+"RESgrowth\"></span>";
 		}
 	}
-	else if (!["Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length > 20){
+	else if (!["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length > 20){
 		for (let i = 20; i < 30; i++){
 			var row = fixedgrowths.deleteRow(20);
 		}
@@ -1165,7 +1208,7 @@ function updateProcs(){
 	}
 	if (vengeance.checked){
 		if (remainingChance > 0){
-			vengeanceChance = (skillstat.value * 1.5 + rightfulking.checked*10) * remainingChance / 100;
+			vengeanceChance = (skillstat.value * 2 + rightfulking.checked*10) * remainingChance / 100;
 			if (vengeanceChance > remainingChance){
 				vengeanceChance = remainingChance;
 			}
@@ -1226,53 +1269,52 @@ function updateKidBases(){
 	}
 	if (genders.get(kidSelect.value) == "M"){
 		kidBaseClass.remove(4);
-		kidBaseClass.remove(5);
-		kidBaseClass.options[33] = new Option("Priest");
-		kidBaseClass.options[34] = new Option("War Monk");
-		kidBaseClass.options[50] = new Option("Groom");
+		kidBaseClass.remove(4);
+		kidBaseClass.options[31] = new Option("Priest");
+		kidBaseClass.options[32] = new Option("War Monk");
+		kidBaseClass.options[44] = new Option("Groom");
 	}
 	if (genders.get(kidSelect.value) == "F"){
-		kidBaseClass.remove(3);
-		kidBaseClass.remove(4);
-		kidBaseClass.options[33] = new Option("Cleric");
-		kidBaseClass.options[34] = new Option("War Cleric");
-		kidBaseClass.options[50] = new Option("Bride");
+		kidBaseClass.remove(2);
+		kidBaseClass.remove(2);
+		kidBaseClass.options[31] = new Option("Cleric");
+		kidBaseClass.options[32] = new Option("War Cleric");
+		kidBaseClass.options[44] = new Option("Bride");
 	}
 	if (kidSelect.value == "Lucina"){
-		kidBaseClass.selectedIndex = 3;
+		kidBaseClass.selectedIndex = 2;
 	}
 	else if (kidSelect.value == "Owain"){
-		kidBaseClass.remove(3);
-		kidBaseClass.remove(3);
-		kidBaseClass.remove(3);
-		kidBaseClass.selectedIndex = 17;
+		kidBaseClass.remove(2);
+		kidBaseClass.remove(2);
+		kidBaseClass.selectedIndex = 16;
 	}
 	else if (kidSelect.value == "Inigo" || kidSelect.value == "Severa"){
-		kidBaseClass.selectedIndex = 15;
+		kidBaseClass.selectedIndex = 13;
 	}
 	else if (kidSelect.value == "Brady"){
-		kidBaseClass.selectedIndex = 33;
+		kidBaseClass.selectedIndex = 31;
 	}
 	else if (kidSelect.value == "Kjelle"){
-		kidBaseClass.selectedIndex = 8;
+		kidBaseClass.selectedIndex = 6;
 	}
 	else if (kidSelect.value == "Cynthia"){
-		kidBaseClass.selectedIndex = 25;
+		kidBaseClass.selectedIndex = 23;
 	}
 	else if (kidSelect.value == "Gerome"){
-		kidBaseClass.selectedIndex = 28;
+		kidBaseClass.selectedIndex = 26;
 	}
 	else if (kidSelect.value == "Yarne"){
-		kidBaseClass.selectedIndex = 44;
+		kidBaseClass.selectedIndex = 40;
 	}
 	else if (kidSelect.value == "Laurent"){
-		kidBaseClass.selectedIndex = 35;
+		kidBaseClass.selectedIndex = 33;
 	}
 	else if (kidSelect.value == "Noire"){
-		kidBaseClass.selectedIndex = 17;
+		kidBaseClass.selectedIndex = 15;
 	}
 	else if (kidSelect.value == "Nah"){
-		kidBaseClass.selectedIndex = 46;
+		kidBaseClass.selectedIndex = 41;
 	}
 	baseParent.innerHTML = defaultParents.get(kidSelect.value);
 	while (baseParentClass.options.length > 0){
@@ -1282,11 +1324,16 @@ function updateKidBases(){
 		if (classPools.get(baseParent.innerHTML)[i] == "Lord"){
 			baseParentClass.options[i] = new Option("Lord (M)");
 		}
+		else if (classPools.get(baseParent.innerHTML)[i] == "Taguel (F)"){
+			baseParentClass.options[i] = new Option("Taguel");
+		}
 		else{
 			baseParentClass.options[i] = new Option(classPools.get(baseParent.innerHTML)[i]);
 		}
 	}
-	baseParentClass.selectedIndex = 1;
+	if (!["Panne", "Nowi", "Olivia"].includes(baseParent.innerHTML)){
+		baseParentClass.selectedIndex = 1;
+	}
 	for (let i = 0; i < classes.length - 1; i++){
 		altParentClass.options[i] = new Option(classes[i]);
 	}
@@ -1342,7 +1389,7 @@ var killEXP = document.getElementById("killEXP");
 var veteranEXP = document.getElementById("veteranEXP");
 var bossEXP = document.getElementById("bossEXP");
 var bonusEXP = document.getElementById("bonusEXP");
-var experience = document.getElementById("experience");
+var exp = document.getElementById("exp");
 for (let i = 0; i < 80; i++){
 	internalLevel.options[i] = new Option(80-i);
 }
@@ -1396,8 +1443,9 @@ let asset5 = document.getElementById("asset5");
 let flaw5 = document.getElementById("flaw5");
 let aptitude3 = document.getElementById("aptitude3");
 
+
 var charfixed = document.getElementById("charfixed");
-for (let i = 0; i < 54; i++){
+for (let i = 0; i < 50; i++){
 	if (characters[i] == "Lonqu"){
 		charfixed.options[i] = new Option("Lon'qu");
 	}
@@ -1414,7 +1462,7 @@ for (let i = 0; i < 54; i++){
 var classfixed = document.getElementById("classfixed");
 
 var gen1growths = document.getElementById("gen1growths");
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	var row = gen1growths.insertRow(i+1);
 	let name = row.insertCell(0);
 	let classSelect = row.insertCell(1);
@@ -1449,7 +1497,7 @@ for (let i = 0; i < 40; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassGrowths"] = document.getElementById(char+"ClassGrowths");
 	for (let j = 0; j < classPools.get(characters[i]).length; j++){
@@ -1457,6 +1505,7 @@ for (let i = 0; i < 40; i++){
 	}
 }
 
+frederickClassGrowths.selectedIndex = 1;
 libraClassGrowths.selectedIndex = 1;
 annaClassGrowths.selectedIndex = 1;
 sayriClassGrowths.selectedIndex = 1;
@@ -1467,17 +1516,14 @@ emmerynClassGrowths.selectedIndex = 1;
 yenfayClassGrowths.selectedIndex = 1;
 aversaClassGrowths.selectedIndex = 1;
 priamClassGrowths.selectedIndex = 1;
-mustafaClassGrowths.selectedIndex = 1;
-philaClassGrowths.selectedIndex = 1;
-pherosClassGrowths.selectedIndex = 1;
 
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	updateClassGrowths(characters[i]);
 }
 
 var gen2growths = document.getElementById("gen2growths");
-for (let i = 40; i < 54; i++){
-	var row = gen2growths.insertRow(i-39);
+for (let i = 36; i < 50; i++){
+	var row = gen2growths.insertRow(i-35);
 	let name = row.insertCell(0);
 	let parentSelect = row.insertCell(1);
 	let classSelect = row.insertCell(2);
@@ -1502,7 +1548,7 @@ for (let i = 40; i < 54; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
-for (let i = 40; i < 54; i++){
+for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"growthsparent"] = document.getElementById(char+"growthsparent");
 	for (let j = 0; j < 30; j++){
@@ -1517,7 +1563,7 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 	if (char == "morgan" || char == "marc"){
-		for (let j = 30; j < 40; j++){
+		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"growthsparent"].options[j] = new Option("Yen'fay");	
 			}
@@ -1527,7 +1573,7 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 	else {
-		for (let j = 33; j < 40; j++){
+		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"growthsparent"].options[j-3] = new Option("Yen'fay");	
 			}
@@ -1537,11 +1583,11 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 }
-for (let i = 40; i < 48; i++){
+for (let i = 36; i < 44; i++){
 	morgangrowthsparent.options[i] = new Option(characters[i]);
 	marcgrowthsparent.options[i] = new Option(characters[i]);
 }
-for (let i = 50; i < 54; i++){
+for (let i = 46; i < 50; i++){
 	morgangrowthsparent.options[i-2] = new Option(characters[i]);
 	marcgrowthsparent.options[i-2] = new Option(characters[i]);
 }
@@ -1550,55 +1596,43 @@ lucinagrowthsparent.remove(1);
 lucinagrowthsparent.remove(1);
 lucinagrowthsparent.remove(9);
 lucinagrowthsparent.remove(10);
-for (let i = 0; i < 13 ; i++){
+for (let i = 0; i < 9 ; i++){
 	lucinagrowthsparent.remove(20);
 }
 owaingrowthsparent.remove(1);
 owaingrowthsparent.remove(1);
-for (let i = 0; i < 7 ; i++){
+for (let i = 0; i < 6 ; i++){
 	owaingrowthsparent.remove(25);
 }
 owaingrowthsparent.selectedIndex = 14;
 inigogrowthsparent.remove(23);
-inigogrowthsparent.remove(32);
 inigogrowthsparent.selectedIndex = 14;
 bradygrowthsparent.remove(14);
-bradygrowthsparent.remove(32);
 bradygrowthsparent.selectedIndex = 22;
 kjellegrowthsparent.remove(4);
-kjellegrowthsparent.remove(32);
 kjellegrowthsparent.selectedIndex = 6;
 cynthiagrowthsparent.remove(9);
-cynthiagrowthsparent.remove(32);
 severagrowthsparent.remove(17);
-severagrowthsparent.remove(32);
 geromegrowthsparent.remove(24);
-geromegrowthsparent.remove(32);
 geromegrowthsparent.selectedIndex = 3;
 morgangrowthsparent.remove(0);
-morgangrowthsparent.remove(35);
 morgangrowthsparent.selectedIndex = 8;
 marcgrowthsparent.remove(0);
-marcgrowthsparent.remove(35);
 yarnegrowthsparent.remove(15);
-yarnegrowthsparent.remove(32);
 yarnegrowthsparent.selectedIndex = 12;
 laurentgrowthsparent.remove(8);
-laurentgrowthsparent.remove(32);
 laurentgrowthsparent.selectedIndex = 5;
 noiregrowthsparent.remove(21);
-noiregrowthsparent.remove(32);
 noiregrowthsparent.selectedIndex = 24;
 nahgrowthsparent.remove(19);
-nahgrowthsparent.remove(32);
 nahgrowthsparent.selectedIndex = 11;
 
-for (let i = 40; i < 54; i++){
+for (let i = 36; i < 50; i++){
 	updateParentGrowths(characters[i]);
 }
 
 var gen1caps = document.getElementById("gen1caps");
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	var row = gen1caps.insertRow(i+1);
 	let name = row.insertCell(0);
 	let classSelect = row.insertCell(1);
@@ -1633,7 +1667,7 @@ for (let i = 0; i < 40; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassCaps"] = document.getElementById(char+"ClassCaps");
 	for (let j = 0; j < classPools.get(characters[i]).length; j++){
@@ -1643,20 +1677,20 @@ for (let i = 0; i < 40; i++){
 	updateClassCaps(characters[i]);
 }
 
-donnelClassCaps.selectedIndex = 1;
+donnelClassCaps.selectedIndex = 2;
 panneClassCaps.selectedIndex = 0;
 nowiClassCaps.selectedIndex = 0;
 oliviaClassCaps.selectedIndex = 0;
 tikiClassCaps.selectedIndex = 0;
 walhartClassCaps.selectedIndex = 0;
 
-for (let i = 0; i < 40; i++){
+for (let i = 0; i < 36; i++){
 	updateClassCaps(characters[i]);
 }
 
 var gen2caps = document.getElementById("gen2caps");
-for (let i = 40; i < 54; i++){
-	var row = gen2caps.insertRow(i-39);
+for (let i = 36; i < 50; i++){
+	var row = gen2caps.insertRow(i-35);
 	let name = row.insertCell(0);
 	let parentSelect = row.insertCell(1);
 	let classSelect = row.insertCell(2);
@@ -1681,7 +1715,7 @@ for (let i = 40; i < 54; i++){
 	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
-for (let i = 40; i < 54; i++){
+for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"capsparent"] = document.getElementById(char+"capsparent");
 	for (let j = 0; j < 30; j++){
@@ -1696,7 +1730,7 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 	if (char == "morgan" || char == "marc"){
-		for (let j = 30; j < 40; j++){
+		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"capsparent"].options[j] = new Option("Yen'fay");	
 			}
@@ -1706,7 +1740,7 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 	else {
-		for (let j = 33; j < 40; j++){
+		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
 				this[char+"capsparent"].options[j-3] = new Option("Yen'fay");	
 			}
@@ -1716,11 +1750,11 @@ for (let i = 40; i < 54; i++){
 		}
 	}
 }
-for (let i = 40; i < 48; i++){
+for (let i = 36; i < 44; i++){
 	morgancapsparent.options[i] = new Option(characters[i]);
 	marccapsparent.options[i] = new Option(characters[i]);
 }
-for (let i = 50; i < 54; i++){
+for (let i = 46; i < 50; i++){
 	morgancapsparent.options[i-2] = new Option(characters[i]);
 	marccapsparent.options[i-2] = new Option(characters[i]);
 }
@@ -1729,69 +1763,55 @@ lucinacapsparent.remove(1);
 lucinacapsparent.remove(1);
 lucinacapsparent.remove(9);
 lucinacapsparent.remove(10);
-for (let i = 0; i < 13 ; i++){
+for (let i = 0; i < 9 ; i++){
 	lucinacapsparent.remove(20);
 }
 owaincapsparent.remove(1);
 owaincapsparent.remove(1);
-for (let i = 0; i < 7 ; i++){
+for (let i = 0; i < 6 ; i++){
 	owaincapsparent.remove(25);
 }
 owaincapsparent.selectedIndex = 14;
 inigocapsparent.remove(23);
-inigocapsparent.remove(32);
 inigocapsparent.selectedIndex = 14;
 bradycapsparent.remove(14);
-bradycapsparent.remove(32);
 bradycapsparent.selectedIndex = 22;
 kjellecapsparent.remove(4);
-kjellecapsparent.remove(32);
 kjellecapsparent.selectedIndex = 6;
 cynthiacapsparent.remove(9);
-cynthiacapsparent.remove(32);
 severacapsparent.remove(17);
-severacapsparent.remove(32);
 geromecapsparent.remove(24);
-geromecapsparent.remove(32);
 geromecapsparent.selectedIndex = 3;
 morgancapsparent.remove(0);
-morgancapsparent.remove(35);
 morgancapsparent.selectedIndex = 8;
 marccapsparent.remove(0);
-marccapsparent.remove(35);
 yarnecapsparent.remove(15);
-yarnecapsparent.remove(32);
 yarnecapsparent.selectedIndex = 12;
 laurentcapsparent.remove(8);
-laurentcapsparent.remove(32);
 laurentcapsparent.selectedIndex = 5;
 noirecapsparent.remove(21);
-noirecapsparent.remove(32);
 noirecapsparent.selectedIndex = 24;
 nahcapsparent.remove(19);
-nahcapsparent.remove(32);
 nahcapsparent.selectedIndex = 11;
 
-for (let i = 40; i < 54; i++){
+for (let i = 36; i < 50; i++){
 	updateParentCaps(characters[i]);
 }
 
 lucinaClassCaps.selectedIndex = 1;
-owainClassCaps.selectedIndex = 13;
+owainClassCaps.selectedIndex = 15;
 inigoClassCaps.selectedIndex = 4;
 bradyClassCaps.selectedIndex = 1;
 kjelleClassCaps.selectedIndex = 1;
-cynthiaClassCaps.selectedIndex = 19;
+cynthiaClassCaps.selectedIndex = 18;
 severaClassCaps.selectedIndex = 4;
 geromeClassCaps.selectedIndex = 1;
-morganClassCaps.selectedIndex = 24;
-marcClassCaps.selectedIndex = 2;
-yarneClassCaps.selectedIndex = 1;
+morganClassCaps.selectedIndex = 23;
+marcClassCaps.selectedIndex = 1;
 laurentClassCaps.selectedIndex = 1;
-noireClassCaps.selectedIndex = 4;
-nahClassCaps.selectedIndex = 1;
+noireClassCaps.selectedIndex = 4;;
 
-for (let i = 40; i < 54; i++){
+for (let i = 36; i < 50; i++){
 	updateKidClassCaps(characters[i]);
 }
 

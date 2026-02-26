@@ -334,7 +334,7 @@ const classBases = new Map([
 	["Knight",			[18, 8, 0, 4, 2, 0,11, 0, 4]],
 	["Great Knight",	[26,11, 0, 6, 5, 0,14, 1, 7]],
 	["General",			[28,12, 0, 7, 4, 0,15, 3, 5]],
-	["Barbarian",		[22, 7, 0, 3, 7, 0, 3, 0, 5]],
+	["Barbarian",		[22, 8, 0, 3, 8, 0, 3, 0, 5]],
 	["Berserker",		[30,13, 0, 5,11, 0, 5, 1, 6]],
 	["Fighter",			[20, 8, 0, 5, 5, 0, 4, 0, 5]],
 	["Warrior",			[28,12, 0, 8, 7, 0, 7, 3, 6]],
@@ -343,7 +343,7 @@ const classBases = new Map([
 	["Archer",			[16, 5, 0, 8, 6, 0, 5, 0, 5]],
 	["Bow Knight",		[24, 8, 0,10,10, 0, 6, 2, 8]],
 	["Sniper",			[20, 7, 1,12, 9, 0,10, 3, 6]],
-	["Myrmidon",		[16, 4, 1, 8,10, 0, 4, 1, 5]],
+	["Myrmidon",		[16, 4, 1, 9,10, 0, 4, 1, 5]],
 	["Swordmaster",		[20, 7, 2,11,13, 0, 6, 4, 6]],
 	["Thief",			[16, 3, 0, 6, 8, 0, 2, 0, 5]],
 	["Assassin",		[21, 8, 0,13,12, 0, 5, 1, 6]],
@@ -363,7 +363,7 @@ const classBases = new Map([
 	["War Cleric",		[24, 5, 5, 4, 6, 0, 6, 6, 6]],
 	["War Monk",		[24, 5, 5, 4, 6, 0, 6, 6, 6]],
 	["Mage",			[16, 0, 4, 3, 4, 0, 2, 3, 5]],
-	["Sage",			[25, 4, 5, 6, 5, 0, 9, 5, 8]],
+	["Sage",			[20, 1, 7, 5, 7, 0, 4, 5, 6]],
 	["Dark Mage",		[18, 1, 3, 2, 3, 0, 4, 4, 5]],
 	["Dark Knight",		[25, 4, 5, 6, 5, 0, 9, 5, 8]],
 	["Sorcerer",		[23, 2, 6, 4, 4, 0, 7, 7, 6]],
@@ -1451,7 +1451,7 @@ function updateKidBaseStat(stat){
 	if (baseClass == "Lord"){
 		baseClass += " (" + genders.get(kidSelect.value) + ")";
 	}
-	statGrowth = Math.round((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3);
+	statGrowth = Math.roundz((Math.max(this["baseParent"+stats[stat]].value - classBases.get(baseParentClass.value)[stat], 0) + Math.max(this["altParent"+stats[stat]].value - classBases.get(altParentClass.value)[stat], 0) + kidBases.get(kidSelect.value)[stat]) / 3);
 	if (statGrowth > classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]){
 		statGrowth = classCaps.get(baseClass)[stat] + kidCaps.get(kidSelect.value)[stat] - classBases.get(baseClass)[stat]
 	}

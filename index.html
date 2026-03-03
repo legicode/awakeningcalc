@@ -8,12 +8,18 @@
 
 	<body>
 		<table id="main">
-			<tr><td class="subheader">
+			<tr><td id="header">
+				<a href="https://legicode.github.io/pathofradiancecalc/">Path of Radiance</a> <b>|</b>
+				<b>Awakening data</b> <b>|</b>
+				<a href="https://legicode.github.io/awakeningaverages/">Awakening averages</a>
+			</td></tr>
+
+			<tr><td id="subheader">
 				<b>Awakening</b> <b>|</b> <a href="https://legicode.github.io/thabescalc/">Thabes Overwritten</a>
 			</td></tr>
 
-			<tr><td class="intro">
-				<b>Stat growths and caps calculator for modded Fire Emblem Awakening.</b> Mods supported:<br />
+			<tr><td id="intro">
+				<h3>Stat growths and caps calculator for modded Fire Emblem Awakening.</h3> Mods supported:<br />
 				<a href="https://gamebanana.com/mods/424187">Unofficial Gay Awakening run by Manakete_Smoocher and UnassumingVenusaur</a><br />
 				<a href="https://gamebanana.com/mods/365214">Gender-lock Removal Project (version B) by LJ_Reflet</a> <i>(additions compatible with vanilla)</i><br />
 				<a href="https://gamebanana.com/mods/425548">Twin Morgans by Heritor</a><br />
@@ -191,17 +197,16 @@
 				<h2>Gen 2 base stats calculator</h2>
 				<table class="statstable">
 					<tr>
-						<th class="charmenu">Character</th>
-						<th class="classmenu">Class</th>
-						<th class="statmenu">HP</th>
-						<th class="statmenu">Str</th>
-						<th class="statmenu">Mag</th>
-						<th class="statmenu">Skl</th>
-						<th class="statmenu">Spd</th>
-						<th class="statmenu">Lck</th>
-						<th class="statmenu">Def</th>
-						<th class="statmenu">Res</th>
-					</tr>
+						<th class="names">Character</th>
+						<th class="classes">Class</th>
+						<th>HP</th>
+						<th>Str</th>
+						<th>Mag</th>
+						<th>Skl</th>
+						<th>Spd</th>
+						<th>Lck</th>
+						<th>Def</th>
+						<th>Res</th>
 					</tr>
 					<tr>
 						<td><select id="kidSelect" onChange="updateKidBases()"></select></td>
@@ -377,6 +382,11 @@
 						<th>Res</th>
 					</tr>
 				</table>
+			</td></tr>
+			<tr><td id="footer">
+				<a href="https://legicode.github.io/pathofradiancecalc/">Path of Radiance</a> <b>|</b>
+				<b>Awakening data</b> <b>|</b>
+				<a href="https://legicode.github.io/awakeningaverages/">Awakening averages</a>
 			</td></tr>
 
 		</table>

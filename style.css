@@ -8,25 +8,26 @@ table{
 	border-collapse: collapse;
 	background-color: #E5DACE;
 }
-td.header, td.subheader, td.intro, td.calculator, td.table1, td.table2, td.table3{
+td.calculator, td.table1, td.table2, td.table3, td#header, td#subheader, td#footer, td#intro{
 	border: 12px solid #583D66;
 	border-left-width: 50px;
 	border-right-width: 50px;
 }
-td.header, td.subheader, td.footer{
+td#header, td#subheader, td#footer{
 	padding: 8px;
 	line-height: 24px;
 }
-td.header{
+td#header{
 	border-top-width: 16px;
 }
-td.footer{
+td#footer{
 	border-bottom-width: 16px;
 }
-td.intro{
+td#intro{
 	text-align: left;
 	font-size: 18px;
 	padding: 25px;
+	padding-top: 5px;
 	line-height: 27px;
 }
 td.calculator, td.table1, td.table2, td.table3{

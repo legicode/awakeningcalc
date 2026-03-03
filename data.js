@@ -1,8 +1,9 @@
 const stats = ["HP", "STR", "MAG", "SKL", "SPD", "LCK", "DEF", "RES", "MOV"];
 const statsfull = ["HP", "Strength", "Magic", "Skill", "Speed", "Luck", "Defense", "Resistance"];
 
-const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", "Gaius", "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", 
-	"Cherche", "Henry", "Sayri", "Tiki", "Basilio", "Flavia", "Gangrel", "Walhart", "Emmeryn", "Yenfay", "Aversa", "Priam", "Lucina", "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome", "Morgan", "Marc", "Yarne", "Laurent", "Noire", "Nah"];
+const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", 
+	"Gaius", "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", "Cherche", "Henry", "Sayri", "Tiki", "Basilio", "Flavia", "Gangrel", "Walhart", "Emmeryn", 
+	"Yenfay", "Aversa", "Priam", "Lucina", "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome", "Morgan", "Marc", "Yarne", "Laurent", "Noire", "Nah"];
 
 const defaultParents = new Map([
 	["Lucina", 		"Chrom"],
@@ -74,7 +75,7 @@ const genders = new Map([
 	["Nah", 		"F"]
 ]);
 
-const assetgrowths = new Map([
+const assetGrowths = new Map([
 	["HP", 			[30, 0, 0, 0, 0, 0, 5, 5]],
 	["Strength",	[0, 15, 0, 5, 0, 0, 5, 0]],
 	["Magic",		[0, 0, 15, 0, 5, 0, 0, 5]],
@@ -85,7 +86,7 @@ const assetgrowths = new Map([
 	["Resistance",	[0, 0, 5, 0, 5, 0, 0, 15]]
 ]);
 
-const flawgrowths = new Map([
+const flawGrowths = new Map([
 	["HP", 			[-20, 0, 0, 0, 0, 0, -5, -5]],
 	["Strength",	[0, -10, 0, -5, 0, 0, -5, 0]],
 	["Magic",		[0, 0, -10, 0, -5, 0, 0, -5]],
@@ -96,7 +97,7 @@ const flawgrowths = new Map([
 	["Resistance",	[0, 0, -5, 0, -5, 0, 0, -15]]
 ]);
 
-const assetcaps = new Map([
+const assetCaps = new Map([
 	["HP", 			[0, 1, 1, 0, 0, 2, 2, 2]],
 	["Strength",	[0, 4, 0, 2, 0, 0, 2, 0]],
 	["Magic",		[0, 0, 4, 0, 2, 0, 0, 2]],
@@ -107,7 +108,7 @@ const assetcaps = new Map([
 	["Resistance",	[0, 0, 2, 0, 2, 0, 0, 4]]
 ]);
 
-const flawcaps = new Map([
+const flawCaps = new Map([
 	["HP", 			[0,-1,-1, 0, 0, -1, -1, -1]],
 	["Strength",	[0, -3, 0, -1, 0, 0, -1, 0]],
 	["Magic",		[0, 0, -3, 0, -1, 0, 0, -1]],
@@ -211,11 +212,11 @@ const charCaps = new Map([
 ]);
 
 const classGrowths = new Map([
+	["Tactician",		[40, 15, 15, 15, 15, 0, 10, 10]],
+	["Grandmaster",		[40, 15, 15, 15, 15, 0, 10, 10]],
 	["Lord",			[40, 20,  0, 20, 20, 0, 10,  5]],
 	["Great Lord (M)",	[40, 20,  0, 20, 20, 0, 10,  5]],
 	["Great Lord (F)",	[40, 20,  0, 20, 20, 0, 10,  5]],
-	["Tactician",		[40, 15, 15, 15, 15, 0, 10, 10]],
-	["Grandmaster",		[40, 15, 15, 15, 15, 0, 10, 10]],
 	["Cavalier",		[45, 20,  0, 20, 20, 0, 10,  5]],
 	["Paladin",			[45, 20,  0, 20, 20, 0, 10, 10]],
 	["Knight",			[50, 25,  0, 15, 10, 0, 15,  5]],
@@ -266,13 +267,13 @@ const classGrowths = new Map([
 ]);
 
 const classCaps = new Map([
+	["Tactician",		[60, 25, 25, 25, 25, 30, 25, 25]],
+	["Grandmaster",		[80, 40, 40, 40, 40, 45, 40, 40]],
 	["Lord",			[60, 25, 20, 26, 28, 30, 25, 25]],
 	["Lord (M)",		[60, 25, 20, 26, 28, 30, 25, 25]],
 	["Lord (F)",		[60, 25, 20, 26, 28, 30, 25, 25]],
 	["Great Lord (M)",	[80, 43, 30, 40, 41, 45, 42, 40]],
 	["Great Lord (F)",	[80, 40, 30, 42, 44, 45, 40, 40]],
-	["Tactician",		[60, 25, 25, 25, 25, 30, 25, 25]],
-	["Grandmaster",		[80, 40, 40, 40, 40, 45, 40, 40]],
 	["Cavalier",		[60, 26, 20, 25, 25, 30, 26, 26]],
 	["Paladin",			[80, 42, 30, 40, 40, 45, 42, 42]],
 	["Knight",			[60, 30, 20, 26, 23, 30, 30, 22]],
@@ -383,7 +384,7 @@ const classBases = new Map([
 
 const classes =	["Tactician", "Grandmaster", "Lord (M)", "Great Lord (M)", "Lord (F)", "Great Lord (F)", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", 
 	"Mercenary", "Hero", "Archer", "Bow Knight", "Sniper", "Myrmidon", "Swordmaster", "Thief", "Assassin", "Trickster", "Pegasus Knight", "Falcon Knight", "Dark Flier", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", 
-	"Troubador", "Valkyrie", "Cleric/Priest", "War Cleric/Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride/Groom", "Lodestar"]
+	"Troubador", "Valkyrie", "Cleric/Priest", "War Cleric/Monk", "Mage", "Sage", "Dark Mage", "Dark Knight", "Sorcerer", "Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride/Groom", "Lodestar"];
 
 const classPools = new Map([
 	["Robin", 		["Tactician", "Grandmaster", "Cavalier", "Paladin", "Knight", "Great Knight", "General", "Barbarian", "Berserker", "Fighter", "Warrior", "Mercenary", "Hero", "Archer", 
@@ -548,7 +549,7 @@ function makeKidClassList(kid, parent){
 		classes[classes.indexOf("Taguel (F)")] = "Taguel (M)";
 	}
 	if (genders.get(kid) == "F" && classes.includes("Taguel (M)")){
-		classes[classes.indexOf("Taguel (N)")] = "Taguel (F)";
+		classes[classes.indexOf("Taguel (M)")] = "Taguel (F)";
 	}
 
 	if (genders.get(parent) == "M" && genders.get(kid) == "F"){
@@ -589,7 +590,7 @@ function makeKidClassList(kid, parent){
 				classes.push("Barbarian", "Berserker", "Warrior");
 			}
 		}
-		else if (classPools.get(parent).includes("Pegasus Knight") && parent != "Lissa" && parent != "Maribelle" && parent != "Olivia"){
+		else if (classPools.get(parent).includes("Pegasus Knight") && !["Lissa", "Maribelle", "Olivia"].includes(parent)){
 			if (!classPools.get(kid).includes("Fighter")){
 				classes.push("Fighter", "Warrior", "Hero");
 			}
@@ -604,7 +605,7 @@ function makeKidClassList(kid, parent){
 				classes.push("Fighter", "Warrior", "Hero");
 			}
 		}
-		else if (classPools.get(parent).includes("Troubador") && parent != "Maribelle" && parent != "Cherche"){
+		else if (classPools.get(parent).includes("Troubador") && !["Maribelle", "Cherche"].includes(parent)){
 			if (!classPools.get(kid).includes("Barbarian")){
 				classes.push("Barbarian", "Berserker", "Warrior");
 			}
@@ -620,8 +621,7 @@ function makeKidClassList(kid, parent){
 		}
 	}
 
-	let classSet = new Set(classes)
-	classes = Array.from(classSet)
+	classes = Array.from(new Set(classes))
 
 	if (parent == "Chrom"){
 		classes.push(classes.splice(classes.indexOf("Lord"), 1)[0]);
@@ -637,7 +637,7 @@ function makeKidClassList(kid, parent){
 	if (kid == "Inigo"){
 		classes.push("Dancer");
 	}
-	if (parent == "Nowi" || parent == "Tiki"){
+	if (["Nowi", "Tiki"].includes(parent)){
 		classes.push(classes.splice(classes.indexOf("Manakete"), 1)[0]);
 	}
 	if (parent == "Panne"){
@@ -661,7 +661,7 @@ function makeKidClassList(kid, parent){
 function updateClassGrowths(char){
 	if (char == "Robin"){
 		for (let i = 0; i < 8; i++){
-			this["robin"+stats[i]+"growth"].innerHTML = charGrowths.get("Robin")[i] + assetgrowths.get(asset1.value)[i] + flawgrowths.get(flaw1.value)[i] + classGrowths.get(robinClassGrowths.value)[i];
+			this["robin"+stats[i]+"growth"].innerHTML = charGrowths.get("Robin")[i] + assetGrowths.get(asset1.value)[i] + flawGrowths.get(flaw1.value)[i] + classGrowths.get(robinClassGrowths.value)[i];
 		}
 	}
 	else if (char == "Donnel"){
@@ -678,9 +678,9 @@ function updateClassGrowths(char){
 
 function updateClassCaps(char){
 	if (char == "Robin"){
-		this["robin"+stats[0]+"cap"].innerHTML = charCaps.get("Robin")[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0] + classCaps.get(robinClassCaps.value)[0];
+		this["robin"+stats[0]+"cap"].innerHTML = charCaps.get("Robin")[0] + assetCaps.get(asset1.value)[0] + flawCaps.get(flaw1.value)[0] + classCaps.get(robinClassCaps.value)[0];
 		for (let i = 1; i < 8; i++){
-			this["robin"+stats[i]+"cap"].innerHTML = charCaps.get("Robin")[i] + assetcaps.get(asset1.value)[i] + flawcaps.get(flaw1.value)[i] + classCaps.get(robinClassCaps.value)[i] + limitbreaker1.checked * 10;
+			this["robin"+stats[i]+"cap"].innerHTML = charCaps.get("Robin")[i] + assetCaps.get(asset1.value)[i] + flawCaps.get(flaw1.value)[i] + classCaps.get(robinClassCaps.value)[i] + limitbreaker1.checked * 10;
 		}
 	}
 	else {
@@ -782,7 +782,7 @@ function syncParentCaps(char){
 
 function updateParentGrowths(char){
 	let currentClass = this[char.toLowerCase()+"ClassGrowths"].value;
-	while (this[char.toLowerCase()+"ClassGrowths"].options.length > 0){                
+	while (this[char.toLowerCase()+"ClassGrowths"].length > 0){
 		this[char.toLowerCase()+"ClassGrowths"].remove(0);
 	}
 	let classList = makeKidClassList(char, this[char.toLowerCase()+"growthsparent"].value);
@@ -822,13 +822,13 @@ function updateParentGrowths(char){
 
 function updateParentCaps(char){
 	let currentClass = this[char.toLowerCase()+"ClassCaps"].value;
-	while (this[char.toLowerCase()+"ClassCaps"].options.length > 0){                
+	while (this[char.toLowerCase()+"ClassCaps"].length > 0){                
 		this[char.toLowerCase()+"ClassCaps"].remove(0);
 	}
 	let classList = makeKidClassList(char, this[char.toLowerCase()+"capsparent"].value);
 	kidClasses.set(char, classList);
 	for (let i = 0; i < classList.length; i++){
-		this[char.toLowerCase()+"ClassCaps"].options[i] = new Option(classList[i]);
+		this[char.toLowerCase()+"ClassCaps"][i] = new Option(classList[i]);
 	}
 	if (classList.includes(currentClass)){
 		this[char.toLowerCase()+"ClassCaps"].value = currentClass;
@@ -845,7 +845,7 @@ function updateParentCaps(char){
 		}
 		else if (char == "Cynthia"){
 			if (classList.includes("Hero")){
-				this[char.toLowerCase()+"ClassCaps"].selectedIndex = classList.indexOf("Hero");
+				this[char.toLowerCase()+"ClassCaps"].value = "Hero";
 			}
 			else {
 				this[char.toLowerCase()+"ClassCaps"].selectedIndex = 1;
@@ -853,7 +853,7 @@ function updateParentCaps(char){
 		}
 		else if (char == "Owain"){
 			if (classList.includes("Trickster")){
-				this[char.toLowerCase()+"ClassCaps"].selectedIndex = classList.indexOf("Trickster");
+				this[char.toLowerCase()+"ClassCaps"].value = "Trickster";
 			}
 			else {
 				this[char.toLowerCase()+"ClassCaps"].selectedIndex = 1;
@@ -876,12 +876,12 @@ function updateKidClassGrowths(char){
 	}
 	if (["Morgan", "Marc"].includes(char) && [...kidGrowths.keys()].includes(parent)){
 		for (let i = 0; i < 8; i++){
-			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get("Robin")[i] + kidGrowths.get(parent)[i] + assetgrowths.get(asset1.value)[i] + flawgrowths.get(flaw1.value)[i]) / 3);
+			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get("Robin")[i] + kidGrowths.get(parent)[i] + assetGrowths.get(asset1.value)[i] + flawGrowths.get(flaw1.value)[i]) / 3);
 		}
 	}
 	else if (["Morgan", "Marc"].includes(char) || parent == "Robin"){
 		for (let i = 0; i < 8; i++){
-			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get(defaultParents.get(char))[i] + charGrowths.get(parent)[i] + assetgrowths.get(asset1.value)[i] + flawgrowths.get(flaw1.value)[i]) / 3);
+			kidGrowths.get(char)[i] = Math.floor((charGrowths.get(char)[i] + charGrowths.get(defaultParents.get(char))[i] + charGrowths.get(parent)[i] + assetGrowths.get(asset1.value)[i] + flawGrowths.get(flaw1.value)[i]) / 3);
 		}
 	}
 	else {
@@ -907,23 +907,23 @@ function updateKidClassCaps(char){
 		parent = parent.replaceAll("'", "")
 	}
 	if (["Morgan", "Marc"].includes(char) && [...kidCaps.keys()].includes(parent)){
-		kidCaps.get(char)[0] = charCaps.get("Robin")[0] + kidCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
+		kidCaps.get(char)[0] = charCaps.get("Robin")[0] + kidCaps.get(parent)[0] + assetCaps.get(asset1.value)[0] + flawCaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
-			kidCaps.get(char)[i] = charCaps.get("Robin")[i] + kidCaps.get(parent)[i] + assetcaps.get(asset1.value)[i] + flawcaps.get(flaw1.value)[i];
+			kidCaps.get(char)[i] = charCaps.get("Robin")[i] + kidCaps.get(parent)[i] + assetCaps.get(asset1.value)[i] + flawCaps.get(flaw1.value)[i];
 			this[char.toLowerCase()+stats[i]+"cap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + kidCaps.get(char)[i] + limitbreaker1.checked*10;
 		}
 	}
 	else if (["Morgan", "Marc"].includes(char) || parent == "Robin"){
-		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
+		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetCaps.get(asset1.value)[0] + flawCaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
-			kidCaps.get(char)[i] = charCaps.get(defaultParents.get(char))[i] + charCaps.get(parent)[i] + assetcaps.get(asset1.value)[i] + flawcaps.get(flaw1.value)[i] + 1;
+			kidCaps.get(char)[i] = charCaps.get(defaultParents.get(char))[i] + charCaps.get(parent)[i] + assetCaps.get(asset1.value)[i] + flawCaps.get(flaw1.value)[i] + 1;
 			this[char.toLowerCase()+stats[i]+"cap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[i] + kidCaps.get(char)[i] + limitbreaker1.checked*10;
 		}
 	}
 	else {
-		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetcaps.get(asset1.value)[0] + flawcaps.get(flaw1.value)[0];
+		kidCaps.get(char)[0] = charCaps.get(defaultParents.get(char))[0] + charCaps.get(parent)[0] + assetCaps.get(asset1.value)[0] + flawCaps.get(flaw1.value)[0];
 		this[char.toLowerCase()+"HPcap"].innerHTML = classCaps.get(this[char.toLowerCase()+"ClassCaps"].value)[0] + kidCaps.get(char)[0];
 		for (let i = 1; i < 8; i++){
 			kidCaps.get(char)[i] = charCaps.get(defaultParents.get(char))[i] + charCaps.get(parent)[i] + 1;
@@ -934,7 +934,7 @@ function updateKidClassCaps(char){
 
 function baseGrowths1(){
 	for (let i = 0; i < 36; i++){
-		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
+		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].length - 1;
 		updateClassGrowths(characters[i]);
 	}
 }
@@ -961,7 +961,7 @@ function classGrowths1(){
 
 function baseGrowths2(){
 	for (let i = 36; i < 50; i++){
-		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].options.length - 1;
+		this[characters[i].toLowerCase()+"ClassGrowths"].selectedIndex = this[characters[i].toLowerCase()+"ClassGrowths"].length - 1;
 		updateKidClassGrowths(characters[i]);
 	}
 }
@@ -975,7 +975,7 @@ function classGrowths2(){
 
 function baseCaps1(){
 	for (let i = 0; i < 36; i++){
-		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
+		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].length - 1;
 		updateClassCaps(characters[i]);
 	}
 }
@@ -997,7 +997,7 @@ function classCaps1(){
 
 function baseCaps2(){
 	for (let i = 36; i < 50; i++){
-		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].options.length - 1;
+		this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = this[characters[i].toLowerCase()+"ClassCaps"].length - 1;
 		updateKidClassCaps(characters[i]);
 	}
 }
@@ -1019,7 +1019,7 @@ function classCaps2(){
 		else if (characters[i] == "Cynthia"){
 			let classList = makeKidClassList("Cynthia", cynthiacapsparent.value);
 			if (classList.includes("Hero")){
-				this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = classList.indexOf("Hero");
+				this[characters[i].toLowerCase()+"ClassCaps"].value = "Hero";
 			}
 			else {
 				this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
@@ -1028,7 +1028,7 @@ function classCaps2(){
 		else if (characters[i] == "Owain"){
 			let classList = makeKidClassList("Owain", owaincapsparent.value);
 			if (classList.includes("Trickster")){
-				this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = classList.indexOf("Trickster");
+				this[characters[i].toLowerCase()+"ClassCaps"].value = "Trickster";
 			}
 			else {
 				this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 1;
@@ -1045,7 +1045,7 @@ function updateCharFixed(){
 	if (char.includes("'")){
 		char = char.replaceAll("'", "")
 	}
-	while (classfixed.options.length > 0){                
+	while (classfixed.length > 0){                
 		classfixed.remove(0);
 	}
 	let classList;
@@ -1056,7 +1056,7 @@ function updateCharFixed(){
 		classList = kidClasses.get(char);
 	}
 	for (let i = 0; i < classList.length-1; i++){
-		classfixed.options[i] = new Option(classList[i]);
+		classfixed[i] = new Option(classList[i]);
 	}
 	if (["Frederick", "Libra", "Anna", "Sayri", "Basilio", "Flavia", "Gangrel", "Emmeryn", "Yenfay", "Aversa", "Priam"].includes(char)){
 		classfixed.selectedIndex = 1;
@@ -1072,24 +1072,15 @@ function updateClassFixed(){
 	if (["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length < 30){
 		for (let i = 20; i < 30; i++){
 			var row = fixedgrowths.insertRow(i);
-			let level = row.insertCell(0);
-			let hp = row.insertCell(1);
-			let str = row.insertCell(2);
-			let mag = row.insertCell(3);
-			let skl = row.insertCell(4);
-			let spd = row.insertCell(5);
-			let lck = row.insertCell(6);
-			let def = row.insertCell(7);
-			let res = row.insertCell(8);
-			level.innerHTML = (i).toString() + " → " + (i+1).toString();
-			hp.innerHTML = "<span id=\"level"+(i+1).toString()+"HPgrowth\"></span>";
-			str.innerHTML = "<span id=\"level"+(i+1).toString()+"STRgrowth\"></span>";
-			mag.innerHTML = "<span id=\"level"+(i+1).toString()+"MAGgrowth\"></span>";
-			skl.innerHTML = "<span id=\"level"+(i+1).toString()+"SKLgrowth\"></span>";
-			spd.innerHTML = "<span id=\"level"+(i+1).toString()+"SPDgrowth\"></span>";
-			lck.innerHTML = "<span id=\"level"+(i+1).toString()+"LCKgrowth\"></span>";
-			def.innerHTML = "<span id=\"level"+(i+1).toString()+"DEFgrowth\"></span>";
-			res.innerHTML = "<span id=\"level"+(i+1).toString()+"RESgrowth\"></span>";
+			let level = row.insertCell(0).innerHTML = (i).toString() + " → " + (i+1).toString();
+			let hp = row.insertCell(1).innerHTML = "<span id=\"level"+(i+1).toString()+"HPgrowth\"></span>";
+			let str = row.insertCell(2).innerHTML = "<span id=\"level"+(i+1).toString()+"STRgrowth\"></span>";
+			let mag = row.insertCell(3).innerHTML = "<span id=\"level"+(i+1).toString()+"MAGgrowth\"></span>";
+			let skl = row.insertCell(4).innerHTML = "<span id=\"level"+(i+1).toString()+"SKLgrowth\"></span>";
+			let spd = row.insertCell(5).innerHTML = "<span id=\"level"+(i+1).toString()+"SPDgrowth\"></span>";
+			let lck = row.insertCell(6).innerHTML = "<span id=\"level"+(i+1).toString()+"LCKgrowth\"></span>";
+			let def = row.insertCell(7).innerHTML = "<span id=\"level"+(i+1).toString()+"DEFgrowth\"></span>";
+			let res = row.insertCell(8).innerHTML = "<span id=\"level"+(i+1).toString()+"RESgrowth\"></span>";
 		}
 	}
 	else if (!["Villager", "Dancer", "Taguel", "Manakete", "Conqueror", "Dread Fighter", "Bride", "Groom"].includes(classfixed.value) && fixedgrowths.rows.length > 20){
@@ -1102,7 +1093,7 @@ function updateClassFixed(){
 			for (let j = 0; j < 8; j++){
 				let stat;
 				if (charfixed.value == "Robin"){
-					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetgrowths.get(asset1.value)[j] + flawgrowths.get(flaw1.value)[j]) / 100);
+					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetGrowths.get(asset1.value)[j] + flawGrowths.get(flaw1.value)[j]) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + assetGrowths.get(asset1.value)[j] + flawGrowths.get(flaw1.value)[j]) / 100);
 				}
 				else if (charfixed.value == "Donnel"){
 					stat = Math.round((i+1) * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100) - Math.round(i * (charGrowths.get(char)[j] + classGrowths.get(classfixed.value)[j] + aptitude1.checked*20) / 100);
@@ -1268,25 +1259,25 @@ function updateClassChange(){
 }
 
 function updateKidBases(){
-	while (kidBaseClass.options.length > 0){
+	while (kidBaseClass.length > 0){
 		kidBaseClass.remove(0);
 	}
 	for (let i = 0; i < classes.length - 1; i++){
-		kidBaseClass.options[i] = new Option(classes[i]);
+		kidBaseClass[i] = new Option(classes[i]);
 	}
 	if (genders.get(kidSelect.value) == "M"){
 		kidBaseClass.remove(4);
 		kidBaseClass.remove(4);
-		kidBaseClass.options[31] = new Option("Priest");
-		kidBaseClass.options[32] = new Option("War Monk");
-		kidBaseClass.options[44] = new Option("Groom");
+		kidBaseClass[31] = new Option("Priest");
+		kidBaseClass[32] = new Option("War Monk");
+		kidBaseClass[44] = new Option("Groom");
 	}
 	if (genders.get(kidSelect.value) == "F"){
 		kidBaseClass.remove(2);
 		kidBaseClass.remove(2);
-		kidBaseClass.options[31] = new Option("Cleric");
-		kidBaseClass.options[32] = new Option("War Cleric");
-		kidBaseClass.options[44] = new Option("Bride");
+		kidBaseClass[31] = new Option("Cleric");
+		kidBaseClass[32] = new Option("War Cleric");
+		kidBaseClass[44] = new Option("Bride");
 	}
 	if (kidSelect.value == "Lucina"){
 		kidBaseClass.selectedIndex = 2;
@@ -1324,25 +1315,25 @@ function updateKidBases(){
 		kidBaseClass.selectedIndex = 41;
 	}
 	baseParent.innerHTML = defaultParents.get(kidSelect.value);
-	while (baseParentClass.options.length > 0){
+	while (baseParentClass.length > 0){
 		baseParentClass.remove(0);
 	}
 	for (let i = 0; i < classPools.get(baseParent.innerHTML).length - 1; i++){
 		if (classPools.get(baseParent.innerHTML)[i] == "Lord"){
-			baseParentClass.options[i] = new Option("Lord (M)");
+			baseParentClass[i] = new Option("Lord (M)");
 		}
 		else if (classPools.get(baseParent.innerHTML)[i] == "Taguel (F)"){
-			baseParentClass.options[i] = new Option("Taguel");
+			baseParentClass[i] = new Option("Taguel");
 		}
 		else{
-			baseParentClass.options[i] = new Option(classPools.get(baseParent.innerHTML)[i]);
+			baseParentClass[i] = new Option(classPools.get(baseParent.innerHTML)[i]);
 		}
 	}
 	if (!["Panne", "Nowi", "Olivia"].includes(baseParent.innerHTML)){
 		baseParentClass.selectedIndex = 1;
 	}
 	for (let i = 0; i < classes.length - 1; i++){
-		altParentClass.options[i] = new Option(classes[i]);
+		altParentClass[i] = new Option(classes[i]);
 	}
 	altParentClass.selectedIndex = 1;
 	updateKidBaseStats();
@@ -1468,7 +1459,7 @@ function updateKidBaseStat(stat){
 var displayedHit = document.getElementById("displayedHit");
 var trueHit = document.getElementById("trueHit");
 for (let i = 0; i <= 100; i++){
-	displayedHit.options[i] = new Option(100-i);
+	displayedHit[i] = new Option(100-i);
 }
 displayedHit.selectedIndex = 25;
 updateHit();
@@ -1484,7 +1475,7 @@ var aether = document.getElementById("aether");
 var lethality = document.getElementById("lethality");
 var procs = document.getElementById("procs");
 for (let i = 0; i < 100; i++){
-	skillstat.options[i] = new Option(99-i);
+	skillstat[i] = new Option(99-i);
 }
 skillstat.selectedIndex = 59;
 rightfulking.checked = false;
@@ -1505,10 +1496,10 @@ var bossEXP = document.getElementById("bossEXP");
 var bonusEXP = document.getElementById("bonusEXP");
 var exp = document.getElementById("exp");
 for (let i = 0; i < 80; i++){
-	internalLevel.options[i] = new Option(80-i);
+	internalLevel[i] = new Option(80-i);
 }
 for (let i = 0; i < 40; i++){
-	enemyLevel.options[i] = new Option(40-i);
+	enemyLevel[i] = new Option(40-i);
 }
 internalLevel.selectedIndex = 60;
 enemyLevel.selectedIndex = 20;
@@ -1531,8 +1522,8 @@ var RESchange = document.getElementById("RESchange");
 var MOVchange = document.getElementById("MOVchange");
 
 for (let i = 0; i < classes.length; i++){
-	oldclass.options[i] = new Option(classes[i]);
-	newclass.options[i] = new Option(classes[i]);
+	oldclass[i] = new Option(classes[i]);
+	newclass[i] = new Option(classes[i]);
 }
 newclass.selectedIndex = 1;
 updateClassChange();
@@ -1560,17 +1551,11 @@ let aptitude3 = document.getElementById("aptitude3");
 
 var charfixed = document.getElementById("charfixed");
 for (let i = 0; i < 50; i++){
-	if (characters[i] == "Lonqu"){
-		charfixed.options[i] = new Option("Lon'qu");
-	}
-	else if (characters[i] == "Sayri"){
-		charfixed.options[i] = new Option("Say'ri");
-	}
-	else if (characters[i] == "Yenfay"){
-		charfixed.options[i] = new Option("Yen'fay");
+	if (["Lonqu", "Sayri", "Yenfay"].includes(characters[i])){
+		charfixed[i] = new Option(characters[i].slice(0, 3) + "'" + characters[i].slice(3));
 	}
 	else {
-		charfixed.options[i] = new Option(characters[i]);
+		charfixed[i] = new Option(characters[i]);
 	}
 }
 var classfixed = document.getElementById("classfixed");
@@ -1578,44 +1563,26 @@ var classfixed = document.getElementById("classfixed");
 var gen1growths = document.getElementById("gen1growths");
 for (let i = 0; i < 36; i++){
 	var row = gen1growths.insertRow(i+1);
-	let name = row.insertCell(0);
-	let classSelect = row.insertCell(1);
-	let hp = row.insertCell(2);
-	let str = row.insertCell(3);
-	let mag = row.insertCell(4);
-	let skl = row.insertCell(5);
-	let spd = row.insertCell(6);
-	let lck = row.insertCell(7);
-	let def = row.insertCell(8);
-	let res = row.insertCell(9);
-	if (characters[i] == "Lonqu"){
-		name.innerHTML = "Lon'qu";
+	let name = row.insertCell(0).innerHTML = characters[i];
+	let classSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassGrowths\" onchange=\"updateClassGrowths('"+characters[i]+"')\"></select>";
+	let hp = row.insertCell(2).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPgrowth\"></span>";
+	let str = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRgrowth\"></span>";
+	let mag = row.insertCell(4).innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGgrowth\"></span>";
+	let skl = row.insertCell(5).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLgrowth\"></span>";
+	let spd = row.insertCell(6).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDgrowth\"></span>";
+	let lck = row.insertCell(7).innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKgrowth\"></span>";
+	let def = row.insertCell(8).innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFgrowth\"></span>";
+	let res = row.insertCell(9).innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
+	if (["Lonqu", "Sayri", "Yenfay"].includes(name.innerHTML)){
+		name.innerHTML = name.innerHTML.slice(0, 3) + "'" + name.innerHTML.slice(3);
 	}
-	else if (characters[i] == "Sayri"){
-		name.innerHTML = "Say'ri";
-	}
-	else if (characters[i] == "Yenfay"){
-		name.innerHTML = "Yen'fay";
-	}
-	else {
-		name.innerHTML = characters[i];
-	}
-	classSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassGrowths\" onchange=\"updateClassGrowths('"+characters[i]+"')\"></select>";
-	hp.innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPgrowth\"></span>";
-	str.innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRgrowth\"></span>";
-	mag.innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGgrowth\"></span>";
-	skl.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLgrowth\"></span>";
-	spd.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDgrowth\"></span>";
-	lck.innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKgrowth\"></span>";
-	def.innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFgrowth\"></span>";
-	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
 for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassGrowths"] = document.getElementById(char+"ClassGrowths");
 	for (let j = 0; j < classPools.get(characters[i]).length; j++){
-		this[char+"ClassGrowths"].options[j] = new Option(classPools.get(characters[i])[j]);
+		this[char+"ClassGrowths"][j] = new Option(classPools.get(characters[i])[j]);
 	}
 }
 
@@ -1638,72 +1605,58 @@ for (let i = 0; i < 36; i++){
 var gen2growths = document.getElementById("gen2growths");
 for (let i = 36; i < 50; i++){
 	var row = gen2growths.insertRow(i-35);
-	let name = row.insertCell(0);
-	let parentSelect = row.insertCell(1);
-	let classSelect = row.insertCell(2);
-	let hp = row.insertCell(3);
-	let str = row.insertCell(4);
-	let mag = row.insertCell(5);
-	let skl = row.insertCell(6);
-	let spd = row.insertCell(7);
-	let lck = row.insertCell(8);
-	let def = row.insertCell(9);
-	let res = row.insertCell(10);
-	name.innerHTML = characters[i];
-	parentSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"growthsparent\" onchange=\"syncParentGrowths('"+characters[i]+"')\"></select>";
-	classSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassGrowths\" onchange=\"updateKidClassGrowths('"+characters[i]+"')\"></select>";
-	hp.innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPgrowth\"></span>";
-	str.innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRgrowth\"></span>";
-	mag.innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGgrowth\"></span>";
-	skl.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLgrowth\"></span>";
-	spd.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDgrowth\"></span>";
-	lck.innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKgrowth\"></span>";
-	def.innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFgrowth\"></span>";
-	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
+	let name = row.insertCell(0).innerHTML = characters[i];
+	let parentSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"growthsparent\" onchange=\"syncParentGrowths('"+characters[i]+"')\"></select>";
+	let classSelect = row.insertCell(2).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassGrowths\" onchange=\"updateKidClassGrowths('"+characters[i]+"')\"></select>";
+	let hp = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPgrowth\"></span>";
+	let str = row.insertCell(4).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRgrowth\"></span>";
+	let mag = row.insertCell(5).innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGgrowth\"></span>";
+	let skl = row.insertCell(6).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLgrowth\"></span>";
+	let spd = row.insertCell(7).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDgrowth\"></span>";
+	let lck = row.insertCell(8).innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKgrowth\"></span>";
+	let def = row.insertCell(9).innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFgrowth\"></span>";
+	let res = row.insertCell(10).innerHTML = "<span id=\""+characters[i].toLowerCase()+"RESgrowth\"></span>";
 }
 
 for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"growthsparent"] = document.getElementById(char+"growthsparent");
 	for (let j = 0; j < 30; j++){
-		if (characters[j] == "Lonqu"){
-			this[char+"growthsparent"].options[j] = new Option("Lon'qu");
-		}
-		else if (characters[j] == "Sayri"){
-			this[char+"growthsparent"].options[j] = new Option("Say'ri");
+		if (["Lonqu", "Sayri"].includes(characters[j])){
+			this[char+"growthsparent"][j] = new Option(characters[j].slice(0, 3) + "'" + characters[j].slice(3));
 		}
 		else {
-			this[char+"growthsparent"].options[j] = new Option(characters[j]);
+			this[char+"growthsparent"][j] = new Option(characters[j]);
 		}
 	}
 	if (char == "morgan" || char == "marc"){
 		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
-				this[char+"growthsparent"].options[j] = new Option("Yen'fay");	
+				this[char+"growthsparent"][j] = new Option("Yen'fay");	
 			}
 			else {
-				this[char+"growthsparent"].options[j] = new Option(characters[j]);
+				this[char+"growthsparent"][j] = new Option(characters[j]);
 			}
 		}
 	}
 	else {
 		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
-				this[char+"growthsparent"].options[j-3] = new Option("Yen'fay");	
+				this[char+"growthsparent"][j-3] = new Option("Yen'fay");	
 			}
 			else {
-				this[char+"growthsparent"].options[j-3] = new Option(characters[j]);
+				this[char+"growthsparent"][j-3] = new Option(characters[j]);
 			}
 		}
 	}
 }
 for (let i = 36; i < 44; i++){
-	morgangrowthsparent.options[i] = new Option(characters[i]);
-	marcgrowthsparent.options[i] = new Option(characters[i]);
+	morgangrowthsparent[i] = new Option(characters[i]);
+	marcgrowthsparent[i] = new Option(characters[i]);
 }
 for (let i = 46; i < 50; i++){
-	morgangrowthsparent.options[i-2] = new Option(characters[i]);
-	marcgrowthsparent.options[i-2] = new Option(characters[i]);
+	morgangrowthsparent[i-2] = new Option(characters[i]);
+	marcgrowthsparent[i-2] = new Option(characters[i]);
 }
 
 lucinagrowthsparent.remove(1);
@@ -1748,44 +1701,26 @@ for (let i = 36; i < 50; i++){
 var gen1caps = document.getElementById("gen1caps");
 for (let i = 0; i < 36; i++){
 	var row = gen1caps.insertRow(i+1);
-	let name = row.insertCell(0);
-	let classSelect = row.insertCell(1);
-	let hp = row.insertCell(2);
-	let str = row.insertCell(3);
-	let mag = row.insertCell(4);
-	let skl = row.insertCell(5);
-	let spd = row.insertCell(6);
-	let lck = row.insertCell(7);
-	let def = row.insertCell(8);
-	let res = row.insertCell(9);
-	if (characters[i] == "Lonqu"){
-		name.innerHTML = "Lon'qu";
+	let name = row.insertCell(0).innerHTML = characters[i];
+	let classSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassCaps\" onchange=\"updateClassCaps('"+characters[i]+"')\"></select>";
+	let hp = row.insertCell(2).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPcap\"></span>";
+	let str = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRcap\"></span>";
+	let mag = row.insertCell(4).innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGcap\"></span>";
+	let skl = row.insertCell(5).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLcap\"></span>";
+	let spd = row.insertCell(6).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDcap\"></span>";
+	let lck = row.insertCell(7).innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKcap\"></span>";
+	let def = row.insertCell(8).innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFcap\"></span>";
+	let res = row.insertCell(9).innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
+	if (["Lonqu", "Sayri", "Yenfay"].includes(name.innerHTML)){
+		name.innerHTML = name.innerHTML.slice(0, 3) + "'" + name.innerHTML.slice(3);
 	}
-	else if (characters[i] == "Sayri"){
-		name.innerHTML = "Say'ri";
-	}
-	else if (characters[i] == "Yenfay"){
-		name.innerHTML = "Yen'fay";
-	}
-	else {
-		name.innerHTML = characters[i];
-	}
-	classSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassCaps\" onchange=\"updateClassCaps('"+characters[i]+"')\"></select>";
-	hp.innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPcap\"></span>";
-	str.innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRcap\"></span>";
-	mag.innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGcap\"></span>";
-	skl.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLcap\"></span>";
-	spd.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDcap\"></span>";
-	lck.innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKcap\"></span>";
-	def.innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFcap\"></span>";
-	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
 for (let i = 0; i < 36; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"ClassCaps"] = document.getElementById(char+"ClassCaps");
 	for (let j = 0; j < classPools.get(characters[i]).length; j++){
-		this[char+"ClassCaps"].options[j] = new Option(classPools.get(characters[i])[j]);
+		this[char+"ClassCaps"][j] = new Option(classPools.get(characters[i])[j]);
 	}
 	this[char+"ClassCaps"].selectedIndex = 1;
 	updateClassCaps(characters[i]);
@@ -1805,72 +1740,58 @@ for (let i = 0; i < 36; i++){
 var gen2caps = document.getElementById("gen2caps");
 for (let i = 36; i < 50; i++){
 	var row = gen2caps.insertRow(i-35);
-	let name = row.insertCell(0);
-	let parentSelect = row.insertCell(1);
-	let classSelect = row.insertCell(2);
-	let hp = row.insertCell(3);
-	let str = row.insertCell(4);
-	let mag = row.insertCell(5);
-	let skl = row.insertCell(6);
-	let spd = row.insertCell(7);
-	let lck = row.insertCell(8);
-	let def = row.insertCell(9);
-	let res = row.insertCell(10);
-	name.innerHTML = characters[i];
-	parentSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"capsparent\" onchange=\"syncParentCaps('"+characters[i]+"')\"></select>";
-	classSelect.innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassCaps\" onchange=\"updateKidClassCaps('"+characters[i]+"')\"></select>";
-	hp.innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPcap\"></span>";
-	str.innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRcap\"></span>";
-	mag.innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGcap\"></span>";
-	skl.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLcap\"></span>";
-	spd.innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDcap\"></span>";
-	lck.innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKcap\"></span>";
-	def.innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFcap\"></span>";
-	res.innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
+	let name = row.insertCell(0).innerHTML = characters[i];
+	let parentSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"capsparent\" onchange=\"syncParentCaps('"+characters[i]+"')\"></select>";
+	let classSelect = row.insertCell(2).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassCaps\" onchange=\"updateKidClassCaps('"+characters[i]+"')\"></select>";
+	let hp = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPcap\"></span>";
+	let str = row.insertCell(4).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRcap\"></span>";
+	let mag = row.insertCell(5).innerHTML = "<span id=\""+characters[i].toLowerCase()+"MAGcap\"></span>";
+	let skl = row.insertCell(6).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SKLcap\"></span>";
+	let spd = row.insertCell(7).innerHTML = "<span id=\""+characters[i].toLowerCase()+"SPDcap\"></span>";
+	let lck = row.insertCell(8).innerHTML = "<span id=\""+characters[i].toLowerCase()+"LCKcap\"></span>";
+	let def = row.insertCell(9).innerHTML = "<span id=\""+characters[i].toLowerCase()+"DEFcap\"></span>";
+	let res = row.insertCell(10).innerHTML = "<span id=\""+characters[i].toLowerCase()+"REScap\"></span>";
 }
 
 for (let i = 36; i < 50; i++){
 	let char = characters[i].toLowerCase();
 	this[char+"capsparent"] = document.getElementById(char+"capsparent");
 	for (let j = 0; j < 30; j++){
-		if (characters[j] == "Lonqu"){
-			this[char+"capsparent"].options[j] = new Option("Lon'qu");
-		}
-		else if (characters[j] == "Sayri"){
-			this[char+"capsparent"].options[j] = new Option("Say'ri");
+		if (["Lonqu", "Sayri"].includes(characters[j])){
+			this[char+"capsparent"][j] = new Option(characters[j].slice(0, 3) + "'" + characters[j].slice(3));
 		}
 		else {
-			this[char+"capsparent"].options[j] = new Option(characters[j]);
+			this[char+"capsparent"][j] = new Option(characters[j]);
 		}
 	}
 	if (char == "morgan" || char == "marc"){
 		for (let j = 30; j < 36; j++){
 			if (characters[j] == "Yenfay"){
-				this[char+"capsparent"].options[j] = new Option("Yen'fay");	
+				this[char+"capsparent"][j] = new Option("Yen'fay");	
 			}
 			else {
-				this[char+"capsparent"].options[j] = new Option(characters[j]);
+				this[char+"capsparent"][j] = new Option(characters[j]);
 			}
 		}
 	}
 	else {
 		for (let j = 33; j < 36; j++){
 			if (characters[j] == "Yenfay"){
-				this[char+"capsparent"].options[j-3] = new Option("Yen'fay");	
+				this[char+"capsparent"][j-3] = new Option("Yen'fay");	
 			}
 			else {
-				this[char+"capsparent"].options[j-3] = new Option(characters[j]);
+				this[char+"capsparent"][j-3] = new Option(characters[j]);
 			}
 		}
 	}
 }
 for (let i = 36; i < 44; i++){
-	morgancapsparent.options[i] = new Option(characters[i]);
-	marccapsparent.options[i] = new Option(characters[i]);
+	morgancapsparent[i] = new Option(characters[i]);
+	marccapsparent[i] = new Option(characters[i]);
 }
 for (let i = 46; i < 50; i++){
-	morgancapsparent.options[i-2] = new Option(characters[i]);
-	marccapsparent.options[i-2] = new Option(characters[i]);
+	morgancapsparent[i-2] = new Option(characters[i]);
+	marccapsparent[i-2] = new Option(characters[i]);
 }
 
 lucinacapsparent.remove(1);
@@ -1965,24 +1886,15 @@ for (let i = 0; i < 8; i++){
 var fixedgrowths = document.getElementById("fixedgrowths");
 for (let i = 0; i < 19; i++){
 	var row = fixedgrowths.insertRow(i+1);
-	let level = row.insertCell(0);
-	let hp = row.insertCell(1);
-	let str = row.insertCell(2);
-	let mag = row.insertCell(3);
-	let skl = row.insertCell(4);
-	let spd = row.insertCell(5);
-	let lck = row.insertCell(6);
-	let def = row.insertCell(7);
-	let res = row.insertCell(8);
-	level.innerHTML = (i+1).toString() + " → " + (i+2).toString();
-	hp.innerHTML = "<span id=\"level"+(i+2).toString()+"HPgrowth\"></span>";
-	str.innerHTML = "<span id=\"level"+(i+2).toString()+"STRgrowth\"></span>";
-	mag.innerHTML = "<span id=\"level"+(i+2).toString()+"MAGgrowth\"></span>";
-	skl.innerHTML = "<span id=\"level"+(i+2).toString()+"SKLgrowth\"></span>";
-	spd.innerHTML = "<span id=\"level"+(i+2).toString()+"SPDgrowth\"></span>";
-	lck.innerHTML = "<span id=\"level"+(i+2).toString()+"LCKgrowth\"></span>";
-	def.innerHTML = "<span id=\"level"+(i+2).toString()+"DEFgrowth\"></span>";
-	res.innerHTML = "<span id=\"level"+(i+2).toString()+"RESgrowth\"></span>";
+	let level = row.insertCell(0).innerHTML = (i+1).toString() + " → " + (i+2).toString();
+	let hp = row.insertCell(1).innerHTML = "<span id=\"level"+(i+2).toString()+"HPgrowth\"></span>";
+	let str = row.insertCell(2).innerHTML = "<span id=\"level"+(i+2).toString()+"STRgrowth\"></span>";
+	let mag = row.insertCell(3).innerHTML = "<span id=\"level"+(i+2).toString()+"MAGgrowth\"></span>";
+	let skl = row.insertCell(4).innerHTML = "<span id=\"level"+(i+2).toString()+"SKLgrowth\"></span>";
+	let spd = row.insertCell(5).innerHTML = "<span id=\"level"+(i+2).toString()+"SPDgrowth\"></span>";
+	let lck = row.insertCell(6).innerHTML = "<span id=\"level"+(i+2).toString()+"LCKgrowth\"></span>";
+	let def = row.insertCell(7).innerHTML = "<span id=\"level"+(i+2).toString()+"DEFgrowth\"></span>";
+	let res = row.insertCell(8).innerHTML = "<span id=\"level"+(i+2).toString()+"RESgrowth\"></span>";
 }
 
 updateKidBases();

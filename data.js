@@ -1563,7 +1563,13 @@ var classfixed = document.getElementById("classfixed");
 var gen1growths = document.getElementById("gen1growths");
 for (let i = 0; i < 36; i++){
 	var row = gen1growths.insertRow(i+1);
-	let name = row.insertCell(0).innerHTML = characters[i];
+	let name = characters[i];
+	if (["Lonqu", "Sayri", "Yenfay"].includes(name)){
+		row.insertCell(0).innerHTML = characters[i].slice(0, 3) + "'" + characters[i].slice(3);
+	}
+	else{
+		row.insertCell(0).innerHTML = characters[i];
+	}
 	let classSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassGrowths\" onchange=\"updateClassGrowths('"+characters[i]+"')\"></select>";
 	let hp = row.insertCell(2).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPgrowth\"></span>";
 	let str = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRgrowth\"></span>";
@@ -1701,7 +1707,13 @@ for (let i = 36; i < 50; i++){
 var gen1caps = document.getElementById("gen1caps");
 for (let i = 0; i < 36; i++){
 	var row = gen1caps.insertRow(i+1);
-	let name = row.insertCell(0).innerHTML = characters[i];
+	let name = characters[i];
+	if (["Lonqu", "Sayri", "Yenfay"].includes(name)){
+		row.insertCell(0).innerHTML = characters[i].slice(0, 3) + "'" + characters[i].slice(3);
+	}
+	else{
+		row.insertCell(0).innerHTML = characters[i];
+	}
 	let classSelect = row.insertCell(1).innerHTML = "<select id=\""+characters[i].toLowerCase()+"ClassCaps\" onchange=\"updateClassCaps('"+characters[i]+"')\"></select>";
 	let hp = row.insertCell(2).innerHTML = "<span id=\""+characters[i].toLowerCase()+"HPcap\"></span>";
 	let str = row.insertCell(3).innerHTML = "<span id=\""+characters[i].toLowerCase()+"STRcap\"></span>";
@@ -1806,7 +1818,7 @@ owaincapsparent.remove(1);
 for (let i = 0; i < 6 ; i++){
 	owaincapsparent.remove(25);
 }
-owaincapsparent.selectedIndex = 14;
+owaincapsparent.selectedIndex = 18;
 inigocapsparent.remove(23);
 inigocapsparent.selectedIndex = 14;
 bradycapsparent.remove(14);
@@ -1815,6 +1827,7 @@ kjellecapsparent.remove(4);
 kjellecapsparent.selectedIndex = 6;
 cynthiacapsparent.remove(9);
 severacapsparent.remove(17);
+severacapsparent.selectedIndex = 6;
 geromecapsparent.remove(24);
 geromecapsparent.selectedIndex = 3;
 morgancapsparent.remove(0);
@@ -1823,7 +1836,7 @@ marccapsparent.remove(0);
 yarnecapsparent.remove(15);
 yarnecapsparent.selectedIndex = 12;
 laurentcapsparent.remove(8);
-laurentcapsparent.selectedIndex = 5;
+laurentcapsparent.selectedIndex = 17;
 noirecapsparent.remove(21);
 noirecapsparent.selectedIndex = 24;
 nahcapsparent.remove(19);
@@ -1837,13 +1850,13 @@ lucinaClassCaps.selectedIndex = 1;
 owainClassCaps.selectedIndex = 15;
 inigoClassCaps.selectedIndex = 4;
 bradyClassCaps.selectedIndex = 1;
-kjelleClassCaps.selectedIndex = 1;
+kjelleClassCaps.selectedIndex = 2;
 cynthiaClassCaps.selectedIndex = 18;
-severaClassCaps.selectedIndex = 4;
+severaClassCaps.selectedIndex = 10;
 geromeClassCaps.selectedIndex = 1;
-morganClassCaps.selectedIndex = 23;
+morganClassCaps.selectedIndex = 35;
 marcClassCaps.selectedIndex = 1;
-laurentClassCaps.selectedIndex = 1;
+laurentClassCaps.selectedIndex = 2;
 noireClassCaps.selectedIndex = 4;;
 
 for (let i = 36; i < 50; i++){

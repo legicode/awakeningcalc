@@ -1680,7 +1680,7 @@ owaingrowthsparent.remove(1);
 for (let i = 0; i < 6 ; i++){
 	owaingrowthsparent.remove(25);
 }
-owaingrowthsparent.selectedIndex = 14;
+owaingrowthsparent.selectedIndex = 18;
 inigogrowthsparent.remove(23);
 inigogrowthsparent.selectedIndex = 14;
 bradygrowthsparent.remove(14);
@@ -1689,6 +1689,7 @@ kjellegrowthsparent.remove(4);
 kjellegrowthsparent.selectedIndex = 6;
 cynthiagrowthsparent.remove(9);
 severagrowthsparent.remove(17);
+severagrowthsparent.selectedIndex = 6;
 geromegrowthsparent.remove(24);
 geromegrowthsparent.selectedIndex = 3;
 morgangrowthsparent.remove(0);
@@ -1697,7 +1698,7 @@ marcgrowthsparent.remove(0);
 yarnegrowthsparent.remove(15);
 yarnegrowthsparent.selectedIndex = 12;
 laurentgrowthsparent.remove(8);
-laurentgrowthsparent.selectedIndex = 5;
+laurentgrowthsparent.selectedIndex = 17;
 noiregrowthsparent.remove(21);
 noiregrowthsparent.selectedIndex = 24;
 nahgrowthsparent.remove(19);
@@ -1706,6 +1707,8 @@ nahgrowthsparent.selectedIndex = 11;
 for (let i = 36; i < 50; i++){
 	updateParentGrowths(characters[i]);
 }
+
+morganClassGrowths.selectedIndex = 21;
 
 var gen1caps = document.getElementById("gen1caps");
 for (let i = 0; i < 36; i++){

@@ -1846,7 +1846,7 @@ for (let i = 36; i < 50; i++){
 	updateParentCaps(characters[i]);
 }
 
-lucinaClassCaps.selectedIndex = 1;
+lucinaClassCaps.selectedIndex = 3;
 owainClassCaps.selectedIndex = 15;
 inigoClassCaps.selectedIndex = 4;
 bradyClassCaps.selectedIndex = 1;
@@ -1855,9 +1855,11 @@ cynthiaClassCaps.selectedIndex = 18;
 severaClassCaps.selectedIndex = 10;
 geromeClassCaps.selectedIndex = 1;
 morganClassCaps.selectedIndex = 35;
-marcClassCaps.selectedIndex = 1;
+marcClassCaps.selectedIndex = 34;
+yarneClassCaps.selectedIndex = 2;
 laurentClassCaps.selectedIndex = 2;
-noireClassCaps.selectedIndex = 4;;
+noireClassCaps.selectedIndex = 4;
+nahClassCaps.selectedIndex = 3;
 
 for (let i = 36; i < 50; i++){
 	updateKidClassCaps(characters[i]);

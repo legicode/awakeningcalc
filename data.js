@@ -1848,7 +1848,7 @@ for (let i = 36; i < 50; i++){
 
 lucinaClassCaps.selectedIndex = 3;
 owainClassCaps.selectedIndex = 15;
-inigoClassCaps.selectedIndex = 4;
+inigoClassCaps.selectedIndex = 2;
 bradyClassCaps.selectedIndex = 1;
 kjelleClassCaps.selectedIndex = 2;
 cynthiaClassCaps.selectedIndex = 18;

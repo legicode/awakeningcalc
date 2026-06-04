@@ -1010,8 +1010,11 @@ function classCaps2(){
 		else if (["Inigo", "Severa", "Noire"].includes(characters[i])){
 			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 4;
 		}
-		else if (["Yarne", "Nah"].includes(characters[i])){
-			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 0;
+		else if (characters[i] == "Yarne"){
+			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 2;
+		}
+		else if (characters[i] == "Nah"){
+			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 3;
 		}
 		else if (characters[i] == "Morgan"){
 			this[characters[i].toLowerCase()+"ClassCaps"].selectedIndex = 23;

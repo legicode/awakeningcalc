@@ -1,7 +1,7 @@
 const stats = ["HP", "STR", "MAG", "SKL", "SPD", "LCK", "DEF", "RES", "MOV"];
 const statsfull = ["HP", "Strength", "Magic", "Skill", "Speed", "Luck", "Defense", "Resistance"];
 
-const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Stahl", "Vaike", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", 
+const characters = ["Robin", "Chrom", "Lissa", "Frederick", "Sully", "Virion", "Vaike", "Stahl", "Miriel", "Sumia", "Kellam", "Donnel", "Lonqu", "Ricken", "Maribelle", "Panne", 
 	"Gaius", "Cordelia", "Gregor", "Nowi", "Libra", "Tharja", "Anna", "Olivia", "Cherche", "Henry", "Sayri", "Tiki", "Basilio", "Flavia", "Gangrel", "Walhart", "Emmeryn", 
 	"Yenfay", "Aversa", "Priam", "Lucina", "Owain", "Inigo", "Brady", "Kjelle", "Cynthia", "Severa", "Gerome", "Morgan", "Marc", "Yarne", "Laurent", "Noire", "Nah"];
 
@@ -29,8 +29,8 @@ const genders = new Map([
 	["Frederick", 	"M"],
 	["Sully", 		"F"],
 	["Virion", 		"M"],
-	["Stahl", 		"M"],
 	["Vaike", 		"M"],
+	["Stahl", 		"M"],
 	["Miriel", 		"F"],
 	["Sumia", 		"F"],
 	["Kellam", 		"M"],
@@ -126,8 +126,8 @@ const charGrowths = new Map([
 	["Frederick", 	[60, 40, 10, 40, 35, 40, 40, 20]],
 	["Sully", 		[40, 35, 20, 40, 40, 60, 35, 20]],
 	["Virion", 		[35, 40, 30, 40, 45, 40, 25, 25]],
-	["Stahl", 		[50, 45, 10, 35, 30, 50, 50, 10]],
 	["Vaike", 		[60, 50, 10, 45, 35, 45, 40,  5]],
+	["Stahl", 		[50, 45, 10, 35, 30, 50, 50, 10]],
 	["Miriel", 		[35, 15, 40, 40, 40, 50, 20, 30]],
 	["Sumia", 		[35, 30, 20, 45, 45, 60, 25, 30]],
 	["Kellam", 		[50, 40, 15, 40, 35, 35, 55, 30]],
@@ -179,8 +179,8 @@ const charCaps = new Map([
 	["Frederick", 	[0,  2, -2,  2, -2,  0,  2,  0]],
 	["Sully", 		[0, -1, -1,  2,  2,  0, -1,  0]],
 	["Virion", 		[0,  0,  0,  2,  2, -1, -2,  0]],
-	["Stahl", 		[0,  2, -1,  1,  0, -2,  2, -1]],
 	["Vaike", 		[0,  3, -2,  1,  1, -1,  0, -2]],
+	["Stahl", 		[0,  2, -1,  1,  0, -2,  2, -1]],
 	["Miriel", 		[0, -2,  3,  1,  1,  0, -2,  0]],
 	["Sumia", 		[0, -2,  0,  2,  3,  0, -2,  1]],
 	["Kellam", 		[0,  1,  0,  1, -2, -2,  3,  0]],
@@ -395,8 +395,8 @@ const classPools = new Map([
 	["Frederick", 	["Cavalier", "Great Knight", "Paladin", "Knight", "General", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Groom", "Base stats"]],
 	["Sully", 		["Cavalier", "Paladin", "Great Knight", "Myrmidon", "Swordmaster", "Assassin", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Dread Fighter", "Bride", "Base stats"]],
 	["Virion", 		["Archer", "Sniper", "Bow Knight", "Wyvern Rider", "Wyvern Lord", "Griffon Rider", "Mage", "Sage", "Dark Knight", "Dread Fighter", "Groom", "Base stats"]],
-	["Stahl", 		["Cavalier", "Paladin", "Great Knight", "Myrmidon", "Swordmaster", "Assassin", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
 	["Vaike", 		["Fighter", "Warrior", "Hero", "Barbarian", "Berserker", "Thief", "Assassin", "Trickster", "Dread Fighter", "Groom", "Base stats"]],
+	["Stahl", 		["Cavalier", "Paladin", "Great Knight", "Myrmidon", "Swordmaster", "Assassin", "Archer", "Bow Knight", "Sniper", "Dread Fighter", "Groom", "Base stats"]],
 	["Miriel", 		["Mage", "Sage", "Dark Knight", "Dark Mage", "Sorcerer", "Troubador", "Valkyrie", "War Cleric", "Dread Fighter", "Bride", "Base stats"]],
 	["Sumia", 		["Pegasus Knight", "Dark Flier", "Falcon Knight", "Cleric", "War Cleric", "Sage", "Knight", "Great Knight", "General", "Dread Fighter", "Bride", "Base stats"]],
 	["Kellam", 		["Knight", "General", "Great Knight", "Thief", "Assassin", "Trickster", "Priest", "War Monk", "Sage", "Dread Fighter", "Groom", "Base stats"]],
